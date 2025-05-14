@@ -3,10 +3,11 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, ShoppingCart, User, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useCart } from '@/context/CartContext';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [cartCount, setCartCount] = useState(0);
+  const { cartCount, toggleCart } = useCart();
 
   return (
     <header className="bg-white border-b border-natural-200 sticky top-0 z-50">
@@ -57,14 +58,17 @@ const Header = () => {
               />
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-natural-400" />
             </div>
-            <Link to="/cart" className="relative text-earth-600 hover:text-natural-500 transition-colors">
+            <button 
+              onClick={() => toggleCart(true)} 
+              className="relative text-earth-600 hover:text-natural-500 transition-colors"
+            >
               <ShoppingCart className="h-6 w-6" />
               {cartCount > 0 && (
                 <span className="absolute -top-2 -right-2 w-5 h-5 bg-natural-500 text-white text-xs rounded-full flex items-center justify-center">
                   {cartCount}
                 </span>
               )}
-            </Link>
+            </button>
             <Link to="/account" className="text-earth-600 hover:text-natural-500 transition-colors">
               <User className="h-6 w-6" />
             </Link>
@@ -129,14 +133,16 @@ const Header = () => {
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-natural-400" />
                 </div>
                 <div className="flex space-x-4">
-                  <Link 
-                    to="/cart" 
+                  <button 
+                    onClick={() => {
+                      toggleCart(true);
+                      setIsMenuOpen(false);
+                    }} 
                     className="flex items-center space-x-2 text-earth-600 hover:text-natural-500 transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
                   >
                     <ShoppingCart className="h-5 w-5" />
                     <span>Cart {cartCount > 0 && `(${cartCount})`}</span>
-                  </Link>
+                  </button>
                   <Link 
                     to="/account" 
                     className="flex items-center space-x-2 text-earth-600 hover:text-natural-500 transition-colors"

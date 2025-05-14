@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
+import { useCart } from "@/context/CartContext";
 
 // This is mock data for the MVP. In a real app, this would come from an API
 const productData = {
@@ -41,6 +42,7 @@ const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [quantity, setQuantity] = useState(1);
   const [selectedImage, setSelectedImage] = useState(0);
+  const { addToCart } = useCart();
 
   // In a real app, you would fetch the product based on the ID
   // For the MVP, we'll just use the mock data
@@ -56,6 +58,17 @@ const ProductDetail = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
     }
+  };
+
+  const handleAddToCart = () => {
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      quantity: quantity,
+      image: product.images[0],
+      category: product.category,
+    });
   };
 
   return (
@@ -177,7 +190,10 @@ const ProductDetail = () => {
                     +
                   </button>
                 </div>
-                <Button className="bg-natural-500 hover:bg-natural-600 flex-grow">
+                <Button 
+                  className="bg-natural-500 hover:bg-natural-600 flex-grow"
+                  onClick={handleAddToCart}
+                >
                   Add to Cart
                 </Button>
               </div>
