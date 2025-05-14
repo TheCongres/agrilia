@@ -21,7 +21,7 @@ const testimonials = [
     name: 'Emma Roberts',
     role: 'Mother of Two',
     image: 'https://randomuser.me/api/portraits/women/42.jpg',
-    content: 'Since switching to OrganiMarket for my family's groceries, I've noticed a significant difference in the taste and quality. My children are now more excited about eating fruits and vegetables, which is a win for any parent!',
+    content: "Since switching to OrganiMarket for my family's groceries, I've noticed a significant difference in the taste and quality. My children are now more excited about eating fruits and vegetables, which is a win for any parent!",
     rating: 4,
   },
 ];
