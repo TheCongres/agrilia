@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
-import { useToast } from "@/hooks/use-toast";
 
 interface ProductPurchaseProps {
   product: {
@@ -33,7 +32,7 @@ const ProductPurchase = ({ product }: ProductPurchaseProps) => {
 
   const handleAddToCart = () => {
     addToCart({
-      id: product.id,
+      product_id: product.id,
       name: product.name,
       price: product.price,
       quantity: quantity,

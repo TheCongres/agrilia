@@ -3,11 +3,10 @@ import { useCart } from "@/context/CartContext";
 import { Button } from "@/components/ui/button";
 import { X, Plus, Minus, ShoppingBag } from "lucide-react";
 import { Link } from "react-router-dom";
-import { formatCurrency } from "@/lib/utils";
 
 const CartDrawer = () => {
   const { cartState, removeFromCart, updateQuantity, toggleCart, cartTotal } = useCart();
-  const { items, isOpen } = cartState;
+  const { items, isOpen, loading } = cartState;
 
   return (
     <>
@@ -42,7 +41,11 @@ const CartDrawer = () => {
 
           {/* Cart Items */}
           <div className="flex-grow overflow-auto p-4">
-            {items.length === 0 ? (
+            {loading ? (
+              <div className="flex justify-center items-center h-40">
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-natural-500"></div>
+              </div>
+            ) : items.length === 0 ? (
               <div className="flex flex-col items-center justify-center h-full text-center p-4">
                 <ShoppingBag className="h-16 w-16 text-natural-300 mb-4" />
                 <h3 className="text-lg font-medium text-earth-600 mb-2">Your cart is empty</h3>

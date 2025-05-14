@@ -1,13 +1,15 @@
 
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, ShoppingCart, User, Menu, X } from 'lucide-react';
+import { Search, ShoppingCart, User, Menu, X, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/context/CartContext';
+import { useAuth } from '@/context/AuthContext';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { cartCount, toggleCart } = useCart();
+  const { user, signOut } = useAuth();
 
   return (
     <header className="bg-white border-b border-natural-200 sticky top-0 z-50">
@@ -69,9 +71,44 @@ const Header = () => {
                 </span>
               )}
             </button>
-            <Link to="/account" className="text-earth-600 hover:text-natural-500 transition-colors">
-              <User className="h-6 w-6" />
-            </Link>
+            
+            {user ? (
+              <div className="relative group">
+                <button className="flex items-center gap-2 text-earth-600 hover:text-natural-500 transition-colors">
+                  <span className="text-sm font-medium">
+                    {user.first_name || user.email.split('@')[0]}
+                  </span>
+                  <User className="h-6 w-6" />
+                </button>
+                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden group-hover:block">
+                  <Link 
+                    to="/account" 
+                    className="block px-4 py-2 text-sm text-earth-600 hover:bg-natural-50"
+                  >
+                    My Account
+                  </Link>
+                  <Link 
+                    to="/orders" 
+                    className="block px-4 py-2 text-sm text-earth-600 hover:bg-natural-50"
+                  >
+                    My Orders
+                  </Link>
+                  <button 
+                    onClick={signOut}
+                    className="block w-full text-left px-4 py-2 text-sm text-earth-600 hover:bg-natural-50"
+                  >
+                    <div className="flex items-center">
+                      <LogOut className="h-4 w-4 mr-2" />
+                      Sign Out
+                    </div>
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <Link to="/login" className="text-earth-600 hover:text-natural-500 transition-colors">
+                <User className="h-6 w-6" />
+              </Link>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -132,7 +169,7 @@ const Header = () => {
                   />
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-natural-400" />
                 </div>
-                <div className="flex space-x-4">
+                <div className="flex flex-col space-y-2">
                   <button 
                     onClick={() => {
                       toggleCart(true);
@@ -143,14 +180,38 @@ const Header = () => {
                     <ShoppingCart className="h-5 w-5" />
                     <span>Cart {cartCount > 0 && `(${cartCount})`}</span>
                   </button>
-                  <Link 
-                    to="/account" 
-                    className="flex items-center space-x-2 text-earth-600 hover:text-natural-500 transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <User className="h-5 w-5" />
-                    <span>Account</span>
-                  </Link>
+                  
+                  {user ? (
+                    <>
+                      <Link 
+                        to="/account" 
+                        className="flex items-center space-x-2 text-earth-600 hover:text-natural-500 transition-colors"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        <User className="h-5 w-5" />
+                        <span>{user.first_name || user.email.split('@')[0]}'s Account</span>
+                      </Link>
+                      <button 
+                        onClick={() => {
+                          signOut();
+                          setIsMenuOpen(false);
+                        }}
+                        className="flex items-center space-x-2 text-earth-600 hover:text-natural-500 transition-colors"
+                      >
+                        <LogOut className="h-5 w-5" />
+                        <span>Sign Out</span>
+                      </button>
+                    </>
+                  ) : (
+                    <Link 
+                      to="/login" 
+                      className="flex items-center space-x-2 text-earth-600 hover:text-natural-500 transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <User className="h-5 w-5" />
+                      <span>Sign In</span>
+                    </Link>
+                  )}
                 </div>
               </div>
             </nav>
