@@ -1,5 +1,5 @@
 
-import ProductCard from "./ProductCard";
+import { ProductCard } from "./ProductCard";
 import { useState, useEffect } from "react";
 
 interface ProductGridProps {
@@ -170,7 +170,18 @@ const ProductGrid = ({ filters }: ProductGridProps) => {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProducts.map(product => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard 
+              key={product.id} 
+              id={product.id}
+              name={product.name}
+              price={product.price}
+              image={product.image}
+              category={product.category}
+              producer={product.producer ? {
+                id: 1, // Using a default ID since the sample data doesn't have producer IDs
+                name: product.producer
+              } : undefined}
+            />
           ))}
         </div>
       )}
