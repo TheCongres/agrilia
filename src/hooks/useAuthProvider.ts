@@ -70,13 +70,34 @@ export function useAuthProvider() {
 
   const signIn = async (email: string, password: string) => {
     try {
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      const { error, data } = await supabase.auth.signInWithPassword({ email, password });
 
       if (error) {
         throw error;
       }
       
-      navigate('/');
+      // Check if we have a profile, if not create one
+      if (data.user) {
+        const { data: profileData, error: profileError } = await supabase
+          .from('profiles')
+          .select('*')
+          .eq('id', data.user.id)
+          .single();
+        
+        if (profileError && profileError.code === 'PGRST116') {
+          // Profile doesn't exist, create one
+          const { email } = data.user;
+          await supabase
+            .from('profiles')
+            .insert({
+              id: data.user.id,
+              email,
+              first_name: email.split('@')[0], // Default first name
+              last_name: '',
+            });
+        }
+      }
+      
       toast({
         title: "Login successful",
         description: "Welcome back to OrganiMarket!",
@@ -110,7 +131,7 @@ export function useAuthProvider() {
 
       if (data.user) {
         // Create a profile for the new user
-        await supabase
+        const { error: profileError } = await supabase
           .from('profiles')
           .insert({
             id: data.user.id,
@@ -118,6 +139,11 @@ export function useAuthProvider() {
             first_name: firstName,
             last_name: lastName,
           });
+          
+        if (profileError) {
+          console.error("Error creating user profile:", profileError);
+          throw new Error("Failed to create user profile");
+        }
       }
 
       navigate('/login');

@@ -1,21 +1,20 @@
 
 import { createClient } from '@supabase/supabase-js';
 
-// For development purposes only - replace with your actual Supabase URL and anon key
-// In production, use environment variables (import.meta.env.VITE_SUPABASE_URL)
-const supabaseUrl = 'https://your-supabase-project-url.supabase.co';
-const supabaseAnonKey = 'your-supabase-anon-key';
+// Use environment variables for Supabase configuration
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 console.log('Supabase URL:', supabaseUrl);
 console.log('Supabase Anon Key:', supabaseAnonKey);
 
 if (!supabaseUrl || !supabaseAnonKey) {
-  console.error('Supabase URL and Anon Key must be defined!');
+  console.error('Supabase URL and Anon Key must be defined! Please set the environment variables.');
 }
 
 export const supabase = createClient(
-  supabaseUrl,
-  supabaseAnonKey
+  supabaseUrl as string,
+  supabaseAnonKey as string
 );
 
 export type User = {

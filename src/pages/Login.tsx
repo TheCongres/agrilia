@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
@@ -14,7 +14,11 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   const { signIn } = useAuth();
+
+  // Get the return path from location state or default to home
+  const from = (location.state as { from?: string })?.from || "/";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,7 +26,8 @@ const Login = () => {
     
     try {
       await signIn(email, password);
-      // The navigation and success toast are handled in the signIn function
+      // Navigate to the page user was trying to access before login
+      navigate(from, { replace: true });
     } catch (error) {
       // Error toast is handled in the signIn function
       console.error("Login error:", error);
