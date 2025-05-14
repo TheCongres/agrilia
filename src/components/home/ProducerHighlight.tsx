@@ -1,0 +1,100 @@
+
+const featuredProducers = [
+  {
+    id: 1,
+    name: 'Green Valley Farm',
+    location: 'Oakridge, CA',
+    image: 'https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80',
+    specialties: ['Avocados', 'Citrus', 'Berries'],
+    story: 'We\'ve been farming organically for three generations, focusing on biodiversity and sustainable water practices.',
+    years: 32,
+  },
+  {
+    id: 2,
+    name: 'Sunrise Dairy',
+    location: 'Meadowbrook, WI',
+    image: 'https://images.unsplash.com/photo-1516253593875-bd7ba052fbc5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80',
+    specialties: ['Milk', 'Cheese', 'Yogurt'],
+    story: 'Our grass-fed jersey cows produce exceptional dairy products while we maintain the highest animal welfare standards.',
+    years: 15,
+  },
+  {
+    id: 3,
+    name: 'Hearty Roots Farm',
+    location: 'Greenfield, VT',
+    image: 'https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80',
+    specialties: ['Root Vegetables', 'Leafy Greens'],
+    story: 'We believe in caring for the soil first - healthy soil grows healthy food and supports healthy communities.',
+    years: 8,
+  },
+];
+
+const ProducerHighlight = () => {
+  return (
+    <section className="py-16">
+      <div className="container-custom">
+        <div className="text-center mb-12">
+          <span className="inline-block category-badge mb-3">Our Producers</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-earth-700 mb-4">
+            Meet the <span className="text-natural-500">Farmers</span> Behind Your Food
+          </h2>
+          <p className="text-earth-500 max-w-2xl mx-auto">
+            We work directly with passionate local farmers committed to sustainable and organic 
+            farming practices. Get to know the people who grow your food.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {featuredProducers.map((producer) => (
+            <div key={producer.id} className="card-organic overflow-hidden">
+              <div className="aspect-square relative">
+                <img
+                  src={producer.image}
+                  alt={producer.name}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-earth-700/80 to-transparent p-4">
+                  <h3 className="font-semibold text-white text-xl">{producer.name}</h3>
+                  <p className="text-white/80">{producer.location}</p>
+                </div>
+              </div>
+              <div className="p-5">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="text-xs text-natural-600 font-medium bg-natural-100 rounded-full px-3 py-1">
+                    {producer.years} Years of Organic Farming
+                  </div>
+                  <div className="flex space-x-1">
+                    {producer.specialties.slice(0, 2).map((specialty, index) => (
+                      <span key={index} className="text-xs bg-earth-100 text-earth-600 px-2 py-1 rounded">
+                        {specialty}
+                      </span>
+                    ))}
+                    {producer.specialties.length > 2 && (
+                      <span className="text-xs bg-earth-100 text-earth-600 px-2 py-1 rounded">
+                        +{producer.specialties.length - 2}
+                      </span>
+                    )}
+                  </div>
+                </div>
+                <p className="text-earth-600 mb-4">{producer.story}</p>
+                <div className="text-center">
+                  <a href={`/producer/${producer.id}`} className="text-natural-600 hover:text-natural-700 font-medium">
+                    View Producer Profile →
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <div className="text-center mt-8">
+          <a href="/producers" className="btn-secondary inline-block">
+            Meet All Our Producers
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ProducerHighlight;
