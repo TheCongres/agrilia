@@ -1,16 +1,21 @@
 
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+// For development purposes only - replace with your actual Supabase URL and anon key
+// In production, use environment variables (import.meta.env.VITE_SUPABASE_URL)
+const supabaseUrl = 'https://your-supabase-project-url.supabase.co';
+const supabaseAnonKey = 'your-supabase-anon-key';
+
+console.log('Supabase URL:', supabaseUrl);
+console.log('Supabase Anon Key:', supabaseAnonKey);
 
 if (!supabaseUrl || !supabaseAnonKey) {
-  console.error('Supabase URL and Anon Key must be defined in environment variables!');
+  console.error('Supabase URL and Anon Key must be defined!');
 }
 
 export const supabase = createClient(
-  supabaseUrl || '',
-  supabaseAnonKey || ''
+  supabaseUrl,
+  supabaseAnonKey
 );
 
 export type User = {
@@ -32,4 +37,3 @@ export type CartItemDB = {
   category: string;
   created_at?: string;
 };
-
