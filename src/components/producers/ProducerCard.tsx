@@ -57,15 +57,26 @@ const ProducerCard = ({ producer }: ProducerCardProps) => {
           <span className="text-sm text-earth-500">
             {producer.productsCount} products
           </span>
-          <Link to={`/products?producer=${producer.id}`}>
-            <Button 
-              variant="outline"
-              size="sm"
-              className="text-natural-500 border-natural-500 hover:bg-natural-50"
-            >
-              View Products
-            </Button>
-          </Link>
+          <div className="flex gap-2">
+            <Link to={`/producer/${producer.id}`}>
+              <Button 
+                variant="outline"
+                size="sm"
+                className="text-natural-500 border-natural-500 hover:bg-natural-50"
+              >
+                View Profile
+              </Button>
+            </Link>
+            <Link to={`/products?producer=${producer.id}`}>
+              <Button 
+                variant="outline"
+                size="sm"
+                className="text-natural-500 border-natural-500 hover:bg-natural-50"
+              >
+                View Products
+              </Button>
+            </Link>
+          </div>
         </div>
       </CardContent>
     </Card>

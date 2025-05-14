@@ -1,4 +1,6 @@
 
+import { Link } from "react-router-dom";
+
 interface ProductHeaderProps {
   name: string;
   category: string;
@@ -37,9 +39,9 @@ const ProductHeader = ({ name, category, description, producer }: ProductHeaderP
       </div>
       <p className="text-earth-500 mb-4">{description}</p>
       <div className="flex items-center">
-        <a href={`/producer/${producer.id}`} className="text-earth-600 hover:text-natural-600">
+        <Link to={`/producer/${producer.id}`} className="text-earth-600 hover:text-natural-600">
           <span className="font-medium">From:</span> {producer.name}, {producer.location}
-        </a>
+        </Link>
       </div>
     </div>
   );

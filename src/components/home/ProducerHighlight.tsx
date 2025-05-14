@@ -1,4 +1,6 @@
 
+import { Link } from "react-router-dom";
+
 const featuredProducers = [
   {
     id: 1,
@@ -78,9 +80,9 @@ const ProducerHighlight = () => {
                 </div>
                 <p className="text-earth-600 mb-4">{producer.story}</p>
                 <div className="text-center">
-                  <a href={`/producer/${producer.id}`} className="text-natural-600 hover:text-natural-700 font-medium">
+                  <Link to={`/producer/${producer.id}`} className="text-natural-600 hover:text-natural-700 font-medium">
                     View Producer Profile →
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -88,9 +90,9 @@ const ProducerHighlight = () => {
         </div>
         
         <div className="text-center mt-8">
-          <a href="/producers" className="btn-secondary inline-block">
+          <Link to="/producers" className="btn-secondary inline-block">
             Meet All Our Producers
-          </a>
+          </Link>
         </div>
       </div>
     </section>

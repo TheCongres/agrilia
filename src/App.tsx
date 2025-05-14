@@ -10,6 +10,7 @@ import Index from "./pages/Index";
 import Products from "./pages/Products";
 import Categories from "./pages/Categories";
 import Producers from "./pages/Producers";
+import ProducerDetail from "./pages/ProducerDetail";
 import AboutUs from "./pages/AboutUs";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
@@ -38,6 +39,7 @@ const App = () => (
               <Route path="/products" element={<Products />} />
               <Route path="/categories" element={<Categories />} />
               <Route path="/producers" element={<Producers />} />
+              <Route path="/producer/:id" element={<ProducerDetail />} />
               <Route path="/about" element={<AboutUs />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
