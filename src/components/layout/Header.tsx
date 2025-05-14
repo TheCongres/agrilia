@@ -39,6 +39,9 @@ const Header = () => {
             <Link to="/producers" className="text-earth-600 hover:text-natural-500 font-medium transition-colors">
               Our Producers
             </Link>
+            <Link to="/blog" className="text-earth-600 hover:text-natural-500 font-medium transition-colors">
+              Blog
+            </Link>
             <Link to="/about" className="text-earth-600 hover:text-natural-500 font-medium transition-colors">
               About Us
             </Link>
@@ -100,6 +103,13 @@ const Header = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Our Producers
+              </Link>
+              <Link 
+                to="/blog" 
+                className="text-earth-600 hover:text-natural-500 font-medium transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Blog
               </Link>
               <Link 
                 to="/about" 
