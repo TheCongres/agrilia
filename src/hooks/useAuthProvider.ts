@@ -165,15 +165,28 @@ export function useAuthProvider() {
 
   const signOut = async () => {
     try {
-      // Clear state immediately to improve UX
+      console.log("Sign out initiated");
+      
+      // Clear state immediately to improve UX before attempting Supabase signOut
       setUser(null);
       setSession(null);
       
-      const { error } = await supabase.auth.signOut();
+      // Check if we actually have a session before calling signOut
+      const { data } = await supabase.auth.getSession();
       
-      if (error) {
-        console.error("Error during sign out:", error);
-        throw error;
+      if (data.session) {
+        console.log("Active session found, calling Supabase signOut");
+        const { error } = await supabase.auth.signOut();
+        
+        if (error) {
+          console.error("Error during Supabase sign out:", error);
+          throw error;
+        }
+        
+        console.log("Supabase sign out successful");
+      } else {
+        console.log("No active session found, skipping Supabase signOut call");
+        // We still want to navigate and show success message even if there's no session
       }
       
       navigate('/login');

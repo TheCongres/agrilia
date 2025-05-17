@@ -16,6 +16,15 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { cartCount, toggleCart } = useCart();
   const { user, signOut } = useAuth();
+  
+  const handleSignOut = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    try {
+      await signOut();
+    } catch (error) {
+      console.error("Error in Header during sign out:", error);
+    }
+  };
 
   return (
     <header className="bg-white border-b border-natural-200 sticky top-0 z-50">
@@ -99,7 +108,7 @@ const Header = () => {
                       My Orders
                     </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem onClick={signOut} className="cursor-pointer">
+                  <DropdownMenuItem onClick={handleSignOut} className="cursor-pointer">
                     <LogOut className="h-4 w-4 mr-2" />
                     Sign Out
                   </DropdownMenuItem>
@@ -193,8 +202,8 @@ const Header = () => {
                         <span>{user.first_name || user.email.split('@')[0]}'s Account</span>
                       </Link>
                       <button 
-                        onClick={() => {
-                          signOut();
+                        onClick={(e) => {
+                          handleSignOut(e);
                           setIsMenuOpen(false);
                         }}
                         className="flex items-center space-x-2 text-earth-600 hover:text-natural-500 transition-colors"
