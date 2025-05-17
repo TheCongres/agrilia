@@ -1,9 +1,16 @@
+
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, ShoppingCart, User, Menu, X, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/context/CartContext';
 import { useAuth } from '@/hooks/useAuth';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -72,37 +79,32 @@ const Header = () => {
             </button>
             
             {user ? (
-              <div className="relative group">
-                <button className="flex items-center gap-2 text-earth-600 hover:text-natural-500 transition-colors">
-                  <span className="text-sm font-medium">
-                    {user.first_name || user.email.split('@')[0]}
-                  </span>
-                  <User className="h-6 w-6" />
-                </button>
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden group-hover:block">
-                  <Link 
-                    to="/account" 
-                    className="block px-4 py-2 text-sm text-earth-600 hover:bg-natural-50"
-                  >
-                    My Account
-                  </Link>
-                  <Link 
-                    to="/orders" 
-                    className="block px-4 py-2 text-sm text-earth-600 hover:bg-natural-50"
-                  >
-                    My Orders
-                  </Link>
-                  <button 
-                    onClick={signOut}
-                    className="block w-full text-left px-4 py-2 text-sm text-earth-600 hover:bg-natural-50"
-                  >
-                    <div className="flex items-center">
-                      <LogOut className="h-4 w-4 mr-2" />
-                      Sign Out
-                    </div>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button className="flex items-center gap-2 text-earth-600 hover:text-natural-500 transition-colors">
+                    <span className="text-sm font-medium">
+                      {user.first_name || user.email.split('@')[0]}
+                    </span>
+                    <User className="h-6 w-6" />
                   </button>
-                </div>
-              </div>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-48 bg-white">
+                  <DropdownMenuItem asChild>
+                    <Link to="/account" className="w-full cursor-pointer">
+                      My Account
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link to="/orders" className="w-full cursor-pointer">
+                      My Orders
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={signOut} className="cursor-pointer">
+                    <LogOut className="h-4 w-4 mr-2" />
+                    Sign Out
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             ) : (
               <Link to="/login" className="text-earth-600 hover:text-natural-500 transition-colors">
                 <User className="h-6 w-6" />
