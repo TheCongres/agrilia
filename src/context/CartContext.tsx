@@ -1,7 +1,7 @@
 
 import React, { createContext, useContext, useReducer, useEffect } from "react";
 import { toast } from "@/components/ui/use-toast";
-import { supabase, CartItemDB } from "@/lib/supabase";
+import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "./AuthContext";
 import { v4 as uuidv4 } from "uuid";
 
