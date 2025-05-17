@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { formatCurrency } from '@/lib/utils';
 
 // Sample product data
 const products = [
@@ -206,7 +207,7 @@ const FeaturedProducts = () => {
                   <span className="text-xs text-earth-500 ml-1">({product.reviewCount})</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <div className="text-earth-700 font-semibold">{product.price} DZD <span className="text-xs text-earth-500 font-normal">/ {product.unit}</span></div>
+                  <div className="text-earth-700 font-semibold">{formatCurrency(product.price)} <span className="text-xs text-earth-500 font-normal">/ {product.unit}</span></div>
                   <button className="w-8 h-8 rounded-full bg-natural-100 hover:bg-natural-500 hover:text-white flex items-center justify-center transition-colors">
                     <svg 
                       xmlns="http://www.w3.org/2000/svg" 

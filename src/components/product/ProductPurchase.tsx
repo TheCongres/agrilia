@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
+import { formatCurrency } from "@/lib/utils";
 
 interface ProductPurchaseProps {
   product: {
@@ -45,7 +46,7 @@ const ProductPurchase = ({ product }: ProductPurchaseProps) => {
     <div className="mb-6 py-4 border-y border-natural-200">
       <div className="flex items-center justify-between mb-4">
         <div className="text-2xl font-bold text-earth-700">
-          ${product.price.toFixed(2)} <span className="text-sm font-normal text-earth-500">/ each</span>
+          {formatCurrency(product.price)} <span className="text-sm font-normal text-earth-500">/ each</span>
         </div>
         <div className="text-sm text-earth-500">
           {product.stock > 10 ? (

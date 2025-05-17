@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useCart } from "@/context/CartContext";
+import { formatCurrency } from "@/lib/utils";
 
 interface ProductCardProps {
   id: number;
@@ -56,7 +57,7 @@ export function ProductCard({ id, name, price, image, category, producer }: Prod
       <CardContent className="p-4 flex flex-col flex-grow">
         <h3 className="font-semibold text-lg mb-2 line-clamp-1">{name}</h3>
         <div className="flex items-center justify-between mt-auto pt-2">
-          <span className="text-green-700 font-bold">{price.toFixed(2)} DZD</span>
+          <span className="text-green-700 font-bold">{formatCurrency(price)}</span>
           <div className="flex gap-2">
             <Button size="sm" variant="outline" asChild>
               <Link to={`/product/${id}`}>Details</Link>
