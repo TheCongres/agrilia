@@ -37,7 +37,7 @@ const Testimonials = () => {
           </h2>
           <p className="text-earth-500 max-w-2xl mx-auto">
             Don't just take our word for it. Here's what our loyal customers have to say about 
-            their experiences shopping with AgriLia.
+            their experiences shopping with AgriLia in 2025.
           </p>
         </div>
 

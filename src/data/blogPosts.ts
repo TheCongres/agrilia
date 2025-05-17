@@ -63,7 +63,7 @@ export const blogPosts: BlogPostType[] = [
     },
     category: 'Sustainable Farming',
     tags: ['Organic', 'Biodiversity', 'Soil Health', 'Sustainability'],
-    publishedDate: 'May 12, 2024',
+    publishedDate: 'May 12, 2025',
     readTime: 5
   },
   {
@@ -124,7 +124,7 @@ export const blogPosts: BlogPostType[] = [
     },
     category: 'Nutrition',
     tags: ['Seasonal Eating', 'Local Food', 'Sustainability', 'Nutrition'],
-    publishedDate: 'May 8, 2024',
+    publishedDate: 'May 8, 2025',
     readTime: 6
   },
   {
@@ -189,7 +189,7 @@ export const blogPosts: BlogPostType[] = [
     },
     category: 'Consumer Education',
     tags: ['Organic', 'Certification', 'Food Labels', 'Shopping Guide'],
-    publishedDate: 'May 3, 2024',
+    publishedDate: 'May 3, 2025',
     readTime: 7
   }
 ];
