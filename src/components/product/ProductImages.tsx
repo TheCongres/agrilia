@@ -18,7 +18,7 @@ const ProductImages = ({ images, productName }: ProductImagesProps) => {
           className="w-full h-full object-cover"
         />
       </div>
-      <div className="flex gap-4">
+      <div className="flex gap-4 overflow-x-auto pb-2">
         {images.map((image, index) => (
           <button
             key={index}
@@ -27,7 +27,7 @@ const ProductImages = ({ images, productName }: ProductImagesProps) => {
               selectedImage === index
                 ? "border-natural-500"
                 : "border-natural-200"
-            } rounded-md overflow-hidden w-20 h-20`}
+            } rounded-md overflow-hidden w-20 h-20 flex-shrink-0`}
           >
             <img
               src={image}

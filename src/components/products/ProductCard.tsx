@@ -34,21 +34,28 @@ export function ProductCard({ id, name, price, image, category, producer }: Prod
     });
   };
 
+  // Ensure we have a valid image URL, fallback to placeholder if needed
+  const imageUrl = image || "/placeholder.svg";
+
   return (
-    <Card className="overflow-hidden">
+    <Card className="overflow-hidden h-full flex flex-col">
       <div className="relative">
         <AspectRatio ratio={4/3}>
           <img 
-            src={image || "/placeholder.svg"} 
+            src={imageUrl}
             alt={name}
             className="object-cover w-full h-full"
+            onError={(e) => {
+              // Fallback if the image fails to load
+              (e.target as HTMLImageElement).src = "/placeholder.svg";
+            }}
           />
         </AspectRatio>
         <Badge className="absolute top-2 right-2">{category}</Badge>
       </div>
-      <CardContent className="p-4">
+      <CardContent className="p-4 flex flex-col flex-grow">
         <h3 className="font-semibold text-lg mb-2 line-clamp-1">{name}</h3>
-        <div className="flex items-center justify-between mt-2">
+        <div className="flex items-center justify-between mt-auto pt-2">
           <span className="text-green-700 font-bold">{price.toFixed(2)} DZD</span>
           <div className="flex gap-2">
             <Button size="sm" variant="outline" asChild>
