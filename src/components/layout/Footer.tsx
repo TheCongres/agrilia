@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -20,10 +19,10 @@ const Footer = () => {
                   <path d="M14.5 7h-5A4.5 4.5 0 0 0 5 11.5V18a5 5 0 0 0 10 0v-6.5A4.5 4.5 0 0 0 14.5 7Zm-4.25 6.75a.75.75 0 0 1-1.5 0V11.5a.75.75 0 0 1 1.5 0v2.25Z" />
                 </svg>
               </div>
-              <span className="font-heading font-bold text-lg text-earth-600">OrganiMarket</span>
+              <span className="font-heading font-bold text-lg text-earth-600">AgriLia</span>
             </div>
             <p className="text-sm text-earth-500 mb-4">
-              Supporting local farmers and sustainable agriculture since 2024. 
+              Supporting local Algerian farmers and sustainable agriculture since 2024. 
               Fresh organic products delivered to your door.
             </p>
             <div className="flex space-x-3">
@@ -99,7 +98,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="mt-8 pt-6 border-t border-natural-200 text-sm text-earth-400 flex flex-col md:flex-row justify-between">
-          <p>&copy; 2024 OrganiMarket. All rights reserved.</p>
+          <p>&copy; 2024 AgriLia. All rights reserved.</p>
           <div className="flex space-x-4 mt-2 md:mt-0">
             <Link to="/terms" className="hover:text-natural-600">Terms of Service</Link>
             <Link to="/privacy" className="hover:text-natural-600">Privacy Policy</Link>

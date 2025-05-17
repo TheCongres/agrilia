@@ -18,7 +18,7 @@ const AboutUs = () => {
                   Bringing <span className="text-natural-500">Organic Goodness</span> to Your Table
                 </h1>
                 <p className="text-earth-600 text-lg mb-6">
-                  OrganiMarket was founded in 2020 with a simple mission: to create a direct connection between 
+                  AgriLia was founded in 2020 with a simple mission: to create a direct connection between 
                   local organic farmers and conscious consumers. We believe in supporting sustainable agriculture 
                   and making organic food accessible to everyone.
                 </p>
@@ -176,7 +176,7 @@ const AboutUs = () => {
                       </div>
                       <div>
                         <h4 className="font-medium text-earth-700">Address</h4>
-                        <p className="text-earth-500">123 Organic Lane, Farm Valley, CA 94123</p>
+                        <p className="text-earth-500">123 Agriculture Lane, Algiers, Algeria</p>
                       </div>
                     </div>
                     
@@ -189,7 +189,7 @@ const AboutUs = () => {
                       </div>
                       <div>
                         <h4 className="font-medium text-earth-700">Email</h4>
-                        <p className="text-earth-500">hello@organimarket.com</p>
+                        <p className="text-earth-500">hello@agrilia.com</p>
                       </div>
                     </div>
                     
@@ -201,7 +201,7 @@ const AboutUs = () => {
                       </div>
                       <div>
                         <h4 className="font-medium text-earth-700">Phone</h4>
-                        <p className="text-earth-500">(555) 123-4567</p>
+                        <p className="text-earth-500">(+213) 555-123-456</p>
                       </div>
                     </div>
                   </div>

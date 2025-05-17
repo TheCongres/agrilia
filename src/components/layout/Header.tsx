@@ -43,7 +43,7 @@ const Header = () => {
                 <path d="M14.5 7h-5A4.5 4.5 0 0 0 5 11.5V18a5 5 0 0 0 10 0v-6.5A4.5 4.5 0 0 0 14.5 7Zm-4.25 6.75a.75.75 0 0 1-1.5 0V11.5a.75.75 0 0 1 1.5 0v2.25Z" />
               </svg>
             </div>
-            <span className="font-heading font-bold text-xl text-earth-600">OrganiMarket</span>
+            <span className="font-heading font-bold text-xl text-earth-600">AgriLia</span>
           </Link>
 
           {/* Desktop Navigation */}
