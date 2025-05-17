@@ -8,42 +8,42 @@ const categoriesData = [
   {
     id: 'fruits',
     name: 'Fruits',
-    description: 'Fresh organic fruits from local orchards',
+    description: 'Fresh organic fruits from local Algerian orchards',
     image: 'https://images.unsplash.com/photo-1619566636858-adf3ef46400b?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=500',
     productCount: 24
   },
   {
     id: 'vegetables',
     name: 'Vegetables',
-    description: 'Seasonal vegetables grown without pesticides',
+    description: 'Seasonal vegetables grown without pesticides in the fertile lands of Algeria',
     image: 'https://images.unsplash.com/photo-1597362925123-77861d3fbac7?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=500',
     productCount: 36
   },
   {
     id: 'dairy',
     name: 'Dairy & Eggs',
-    description: 'Free-range eggs and organic dairy products',
+    description: 'Free-range eggs and organic dairy products from Algerian farms',
     image: 'https://images.unsplash.com/photo-1639557381932-5e3d5d2a1bfd?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=500',
     productCount: 18
   },
   {
     id: 'bakery',
     name: 'Bakery',
-    description: 'Freshly baked goods using organic flour',
+    description: 'Traditional Algerian baked goods using organic local flour',
     image: 'https://images.unsplash.com/photo-1549931319-a545dcf3bc73?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=500',
     productCount: 12
   },
   {
     id: 'honey',
     name: 'Honey & Preserves',
-    description: 'Local honey and homemade preserves',
+    description: 'Local Algerian honey and homemade preserves',
     image: 'https://images.unsplash.com/photo-1587049633312-d628ae20a4fa?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=500',
     productCount: 9
   },
   {
     id: 'meat',
     name: 'Meat & Poultry',
-    description: 'Ethically raised, organic meat products',
+    description: 'Ethically raised, organic meat products from Algerian farms',
     image: 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=500',
     productCount: 15
   },
@@ -67,7 +67,7 @@ const Categories = () => {
             </h1>
             <p className="text-earth-500 max-w-2xl mx-auto">
               Browse our products by category to find exactly what you're looking for. 
-              All our products are organic and sourced from trusted local farms.
+              All our products are organic and sourced from trusted local farms across Algeria.
             </p>
           </div>
 

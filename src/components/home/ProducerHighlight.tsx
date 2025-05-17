@@ -4,30 +4,30 @@ import { Link } from "react-router-dom";
 const featuredProducers = [
   {
     id: 1,
-    name: 'Green Valley Farm',
-    location: 'Oakridge, CA',
+    name: 'Ferme Verte d\'Alger',
+    location: 'Alger, Algeria',
     image: 'https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80',
-    specialties: ['Avocados', 'Citrus', 'Berries'],
-    story: 'We\'ve been farming organically for three generations, focusing on biodiversity and sustainable water practices.',
-    years: 32,
+    specialties: ['Organic Vegetables', 'Citrus', 'Herbs'],
+    story: 'We\'ve been farming organically for two generations, focusing on biodiversity and sustainable water practices adapted to Algeria\'s climate.',
+    years: 18,
   },
   {
     id: 2,
-    name: 'Sunrise Dairy',
-    location: 'Meadowbrook, WI',
+    name: 'Coopérative Laitière de Médéa',
+    location: 'Médéa, Algeria',
     image: 'https://images.unsplash.com/photo-1516253593875-bd7ba052fbc5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80',
-    specialties: ['Milk', 'Cheese', 'Yogurt'],
-    story: 'Our grass-fed jersey cows produce exceptional dairy products while we maintain the highest animal welfare standards.',
-    years: 15,
+    specialties: ['Milk', 'Traditional Cheese', 'Yogurt'],
+    story: 'Our grass-fed cattle produce exceptional dairy products while we maintain the highest animal welfare standards in the Médéa region.',
+    years: 12,
   },
   {
     id: 3,
-    name: 'Hearty Roots Farm',
-    location: 'Greenfield, VT',
+    name: 'Céréales de Sétif',
+    location: 'Sétif, Algeria',
     image: 'https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80',
-    specialties: ['Root Vegetables', 'Leafy Greens'],
-    story: 'We believe in caring for the soil first - healthy soil grows healthy food and supports healthy communities.',
-    years: 8,
+    specialties: ['Grains', 'Couscous', 'Semolina'],
+    story: 'We believe in preserving traditional Algerian cereal varieties while implementing modern sustainable farming techniques to create authentic products.',
+    years: 15,
   },
 ];
 
@@ -41,7 +41,7 @@ const ProducerHighlight = () => {
             Meet the <span className="text-natural-500">Farmers</span> Behind Your Food
           </h2>
           <p className="text-earth-500 max-w-2xl mx-auto">
-            We work directly with passionate local farmers committed to sustainable and organic 
+            We work directly with passionate local farmers across Algeria committed to sustainable and organic 
             farming practices. Get to know the people who grow your food.
           </p>
         </div>

@@ -6,11 +6,11 @@ import { Link } from 'react-router-dom';
 const products = [
   {
     id: 1,
-    name: 'Organic Avocado',
-    price: 3.99,
-    unit: 'piece',
+    name: 'Organic Deglet Nour Dates',
+    price: 350,
+    unit: 'box',
     image: 'https://images.unsplash.com/photo-1601039641847-7857b994d704?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80',
-    producer: 'Green Valley Farm',
+    producer: 'Oasis de Biskra',
     category: 'Fruits',
     rating: 4.8,
     reviewCount: 24,
@@ -18,32 +18,32 @@ const products = [
   {
     id: 2,
     name: 'Fresh Spinach Bunch',
-    price: 2.49,
+    price: 120,
     unit: 'bunch',
     image: 'https://images.unsplash.com/photo-1576045057995-568f588f82fb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80',
-    producer: 'Hillside Gardens',
+    producer: 'Ferme Verte d\'Alger',
     category: 'Vegetables',
     rating: 4.5,
     reviewCount: 18,
   },
   {
     id: 3,
-    name: 'Raw Honey',
-    price: 8.99,
+    name: 'Atlas Mountain Honey',
+    price: 650,
     unit: 'jar',
     image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80',
-    producer: 'Bee Happy Apiaries',
+    producer: 'Ruches de l\'Atlas',
     category: 'Honey',
     rating: 5.0,
     reviewCount: 32,
   },
   {
     id: 4,
-    name: 'Organic Strawberries',
-    price: 4.99,
+    name: 'Algerian Strawberries',
+    price: 280,
     unit: 'basket',
     image: 'https://images.unsplash.com/photo-1464965911861-746a04b4bca6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80',
-    producer: 'Sunrise Berries',
+    producer: 'Jardins de Mitidja',
     category: 'Fruits',
     rating: 4.7,
     reviewCount: 15,
@@ -51,10 +51,10 @@ const products = [
   {
     id: 5,
     name: 'Fresh Farm Milk',
-    price: 3.49,
+    price: 180,
     unit: 'bottle',
     image: 'https://images.unsplash.com/photo-1563636619-e9143da7973b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80',
-    producer: 'Happy Cow Dairy',
+    producer: 'Coopérative Laitière de Médéa',
     category: 'Dairy',
     rating: 4.9,
     reviewCount: 28,
@@ -62,32 +62,32 @@ const products = [
   {
     id: 6,
     name: 'Organic Bell Peppers',
-    price: 1.99,
+    price: 90,
     unit: 'each',
     image: 'https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80',
-    producer: 'Sunny Fields',
+    producer: 'Fermes du Sahara',
     category: 'Vegetables',
     rating: 4.6,
     reviewCount: 12,
   },
   {
     id: 7,
-    name: 'Fresh Basil',
-    price: 1.99,
+    name: 'Fresh Mint',
+    price: 60,
     unit: 'bunch',
     image: 'https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80',
-    producer: 'Herbal Haven',
+    producer: 'Herbes de l\'Atlas',
     category: 'Herbs',
     rating: 4.3,
     reviewCount: 9,
   },
   {
     id: 8,
-    name: 'Quinoa',
-    price: 5.99,
+    name: 'Couscous',
+    price: 220,
     unit: 'pack',
     image: 'https://images.unsplash.com/photo-1612258272175-91b8e70a8529?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80',
-    producer: 'Wholesome Grains',
+    producer: 'Céréales de Sétif',
     category: 'Grains',
     rating: 4.4,
     reviewCount: 16,
@@ -110,7 +110,7 @@ const FeaturedProducts = () => {
             Our Best <span className="text-natural-500">Organic Products</span>
           </h2>
           <p className="text-earth-500 max-w-2xl mx-auto">
-            Explore our most popular organic products, freshly harvested and carefully selected 
+            Explore our most popular organic products from across Algeria, freshly harvested and carefully selected 
             for their exceptional quality and taste.
           </p>
           
@@ -206,7 +206,7 @@ const FeaturedProducts = () => {
                   <span className="text-xs text-earth-500 ml-1">({product.reviewCount})</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <div className="text-earth-700 font-semibold">${product.price.toFixed(2)} <span className="text-xs text-earth-500 font-normal">/ {product.unit}</span></div>
+                  <div className="text-earth-700 font-semibold">{product.price} DZD <span className="text-xs text-earth-500 font-normal">/ {product.unit}</span></div>
                   <button className="w-8 h-8 rounded-full bg-natural-100 hover:bg-natural-500 hover:text-white flex items-center justify-center transition-colors">
                     <svg 
                       xmlns="http://www.w3.org/2000/svg" 

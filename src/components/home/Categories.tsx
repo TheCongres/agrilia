@@ -28,7 +28,7 @@ const categories = [
   },
   {
     id: 5,
-    name: 'Grains',
+    name: 'Couscous & Grains',
     image: 'https://images.unsplash.com/photo-1574323347407-f5e1c0b24776?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80',
     count: 15,
   },
@@ -47,11 +47,11 @@ const Categories = () => {
         <div className="text-center mb-12">
           <span className="inline-block category-badge mb-3">Browse Categories</span>
           <h2 className="text-3xl md:text-4xl font-bold text-earth-700 mb-4">
-            Explore Our Organic <span className="text-natural-500">Categories</span>
+            Explore Our Algerian <span className="text-natural-500">Categories</span>
           </h2>
           <p className="text-earth-500 max-w-2xl mx-auto">
             Discover our wide range of certified organic products across multiple categories. 
-            All sourced from local farms and producers committed to sustainable practices.
+            All sourced from local farms and producers across Algeria committed to sustainable practices.
           </p>
         </div>
 
