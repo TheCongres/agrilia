@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Slider } from "@/components/ui/slider";
+import { formatCurrency } from "@/lib/utils";
 
 interface ProductFiltersProps {
   filters: {
@@ -72,7 +73,7 @@ const ProductFilters = ({ filters, onChange }: ProductFiltersProps) => {
         <div className="flex justify-between items-center mb-3">
           <h4 className="text-sm font-medium text-earth-600">Price Range</h4>
           <span className="text-xs text-earth-500">
-            ${filters.priceRange[0].toFixed(2)} - ${filters.priceRange[1].toFixed(2)}
+            {formatCurrency(filters.priceRange[0] * 10)} - {formatCurrency(filters.priceRange[1] * 10)}
           </span>
         </div>
         <Slider

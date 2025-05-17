@@ -140,7 +140,11 @@ const ProductGrid = ({ filters }: ProductGridProps) => {
       }
       
       // Filter by price range
-      if (filters.priceRange && (product.price < filters.priceRange[0] || product.price > filters.priceRange[1])) {
+      // Convert filter price range to match the actual price scale
+      const minPrice = filters.priceRange[0] * 10; // Scale to match our product prices
+      const maxPrice = filters.priceRange[1] * 10;
+      
+      if (product.price < minPrice || product.price > maxPrice) {
         return false;
       }
       
