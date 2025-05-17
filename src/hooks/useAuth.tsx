@@ -1,7 +1,18 @@
 
 import { useContext } from 'react';
 import { AuthContext } from '@/context/AuthContext';
-import { AuthContextType } from '@/types/auth';
+import { User } from './useAuthProvider';
+import { Session } from '@supabase/supabase-js';
+
+export interface AuthContextType {
+  user: User | null;
+  session: Session | null;
+  loading: boolean;
+  signIn: (email: string, password: string) => Promise<any>;
+  signUp: (email: string, password: string, firstName: string, lastName: string) => Promise<any>;
+  signOut: () => Promise<void>;
+  updateProfile: (data: Partial<User>) => Promise<void>;
+}
 
 export const useAuth = (): AuthContextType => {
   const context = useContext(AuthContext);

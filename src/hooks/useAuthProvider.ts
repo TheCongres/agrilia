@@ -1,9 +1,16 @@
 
 import { useState, useEffect } from 'react';
 import { Session } from '@supabase/supabase-js';
-import { supabase, User } from '@/lib/supabase';
 import { useNavigate } from 'react-router-dom';
 import { toast } from '@/components/ui/use-toast';
+import { supabase } from '@/integrations/supabase/client';
+
+export type User = {
+  id: string;
+  email: string;
+  first_name?: string;
+  last_name?: string;
+};
 
 export function useAuthProvider() {
   const [user, setUser] = useState<User | null>(null);
@@ -12,59 +19,69 @@ export function useAuthProvider() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Get the initial session
-    const getSession = async () => {
-      setLoading(true);
-      const { data } = await supabase.auth.getSession();
-      
-      setSession(data.session);
-      
-      if (data.session?.user) {
-        const { data: userData } = await supabase
-          .from('profiles')
-          .select('*')
-          .eq('id', data.session.user.id)
-          .single();
+    // Set up auth state listener FIRST
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      async (event, session) => {
+        setSession(session);
+        
+        if (session?.user) {
+          // Defer Supabase profile fetch with setTimeout to prevent deadlocks
+          setTimeout(async () => {
+            const { data: userData, error } = await supabase
+              .from('profiles')
+              .select('*')
+              .eq('id', session.user.id)
+              .single();
 
-        setUser({
-          id: data.session.user.id,
-          email: data.session.user.email || '',
-          first_name: userData?.first_name,
-          last_name: userData?.last_name,
-        });
+            if (!error && userData) {
+              setUser({
+                id: session.user.id,
+                email: session.user.email || '',
+                first_name: userData.first_name,
+                last_name: userData.last_name,
+              });
+            } else {
+              console.error("Error fetching user profile:", error);
+            }
+          }, 0);
+        } else {
+          setUser(null);
+        }
+        
+        setLoading(false);
       }
-      
-      setLoading(false);
-    };
+    );
 
-    getSession();
-
-    // Listen for auth state changes
-    const { data: authListener } = supabase.auth.onAuthStateChange(async (event, session) => {
+    // THEN check for existing session
+    supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
-
+      
       if (session?.user) {
-        const { data: userData } = await supabase
+        supabase
           .from('profiles')
           .select('*')
           .eq('id', session.user.id)
-          .single();
-
-        setUser({
-          id: session.user.id,
-          email: session.user.email || '',
-          first_name: userData?.first_name,
-          last_name: userData?.last_name,
-        });
+          .single()
+          .then(({ data: userData, error }) => {
+            if (!error && userData) {
+              setUser({
+                id: session.user.id,
+                email: session.user.email || '',
+                first_name: userData.first_name,
+                last_name: userData.last_name,
+              });
+            } else {
+              console.error("Error fetching user profile:", error);
+            }
+            setLoading(false);
+          });
       } else {
-        setUser(null);
+        setLoading(false);
       }
-      
-      setLoading(false);
     });
 
     return () => {
-      authListener.subscription.unsubscribe();
+      subscription.unsubscribe();
     };
   }, []);
 
@@ -76,32 +93,13 @@ export function useAuthProvider() {
         throw error;
       }
       
-      // Check if we have a profile, if not create one
-      if (data.user) {
-        const { data: profileData, error: profileError } = await supabase
-          .from('profiles')
-          .select('*')
-          .eq('id', data.user.id)
-          .single();
-        
-        if (profileError && profileError.code === 'PGRST116') {
-          // Profile doesn't exist, create one
-          const { email } = data.user;
-          await supabase
-            .from('profiles')
-            .insert({
-              id: data.user.id,
-              email,
-              first_name: email.split('@')[0], // Default first name
-              last_name: '',
-            });
-        }
-      }
-      
       toast({
         title: "Login successful",
         description: "Welcome back to OrganiMarket!",
       });
+      
+      navigate('/');
+      return data;
     } catch (error: any) {
       toast({
         title: "Login failed",
@@ -129,28 +127,13 @@ export function useAuthProvider() {
         throw error;
       }
 
-      if (data.user) {
-        // Create a profile for the new user
-        const { error: profileError } = await supabase
-          .from('profiles')
-          .insert({
-            id: data.user.id,
-            email,
-            first_name: firstName,
-            last_name: lastName,
-          });
-          
-        if (profileError) {
-          console.error("Error creating user profile:", profileError);
-          throw new Error("Failed to create user profile");
-        }
-      }
-
-      navigate('/login');
       toast({
         title: "Account created successfully",
         description: "Please check your email to confirm your account before logging in.",
       });
+      
+      navigate('/login');
+      return data;
     } catch (error: any) {
       toast({
         title: "Sign up failed",

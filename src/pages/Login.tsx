@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/components/ui/use-toast";
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/hooks/useAuth";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -15,10 +15,17 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const { signIn } = useAuth();
+  const { user, signIn } = useAuth();
 
   // Get the return path from location state or default to home
   const from = (location.state as { from?: string })?.from || "/";
+  
+  // If user is already logged in, redirect to home
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,8 +33,7 @@ const Login = () => {
     
     try {
       await signIn(email, password);
-      // Navigate to the page user was trying to access before login
-      navigate(from, { replace: true });
+      // Navigation is handled in the signIn function
     } catch (error) {
       // Error toast is handled in the signIn function
       console.error("Login error:", error);

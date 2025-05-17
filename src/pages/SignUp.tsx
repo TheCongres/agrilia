@@ -1,6 +1,6 @@
 
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/components/ui/use-toast";
 import { Checkbox } from "@/components/ui/checkbox";
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/hooks/useAuth";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -20,7 +20,15 @@ const SignUp = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [agreeTerms, setAgreeTerms] = useState(false);
-  const { signUp } = useAuth();
+  const { user, signUp } = useAuth();
+  const navigate = useNavigate();
+
+  // If user is already logged in, redirect to home
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
