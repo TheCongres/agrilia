@@ -2,7 +2,7 @@
 import React, { createContext, useContext, useReducer, useEffect } from "react";
 import { toast } from "@/components/ui/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { useAuth } from "./AuthContext";
+import { useAuth } from "@/hooks/useAuth";
 import { v4 as uuidv4 } from "uuid";
 
 export interface CartItem {
