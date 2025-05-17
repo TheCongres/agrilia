@@ -2,26 +2,26 @@
 const testimonials = [
   {
     id: 1,
-    name: 'Sarah Johnson',
+    name: 'Yasmine Khiari',
     role: 'Regular Customer',
     image: 'https://randomuser.me/api/portraits/women/62.jpg',
-    content: 'The quality of organic produce I receive from OrganiMarket is exceptional! Everything is always fresh, and I love knowing exactly which local farm my food comes from. The delivery is always on time and the packaging is eco-friendly.',
+    content: 'The quality of organic produce I receive from AgriLia is exceptional! Everything is always fresh, and I love knowing exactly which local farm my food comes from. The delivery is always on time and the packaging is eco-friendly.',
     rating: 5,
   },
   {
     id: 2,
-    name: 'Michael Chen',
+    name: 'Mohammed Benchicou',
     role: 'Health Coach',
     image: 'https://randomuser.me/api/portraits/men/32.jpg',
-    content: 'As a health coach, I often recommend OrganiMarket to my clients. The variety of organic options and the transparency about farming practices really sets them apart. My clients have reported great experiences with both the products and service.',
+    content: 'As a health coach, I often recommend AgriLia to my clients. The variety of organic options and the transparency about farming practices really sets them apart. My clients have reported great experiences with both the products and service.',
     rating: 5,
   },
   {
     id: 3,
-    name: 'Emma Roberts',
+    name: 'Farida Merzoug',
     role: 'Mother of Two',
     image: 'https://randomuser.me/api/portraits/women/42.jpg',
-    content: "Since switching to OrganiMarket for my family's groceries, I've noticed a significant difference in the taste and quality. My children are now more excited about eating fruits and vegetables, which is a win for any parent!",
+    content: "Since switching to AgriLia for my family's groceries, I've noticed a significant difference in the taste and quality. My children are now more excited about eating fruits and vegetables, which is a win for any parent!",
     rating: 4,
   },
 ];
@@ -37,7 +37,7 @@ const Testimonials = () => {
           </h2>
           <p className="text-earth-500 max-w-2xl mx-auto">
             Don't just take our word for it. Here's what our loyal customers have to say about 
-            their experiences shopping with OrganiMarket.
+            their experiences shopping with AgriLia.
           </p>
         </div>
 

@@ -18,7 +18,7 @@ const AboutUs = () => {
                   Bringing <span className="text-natural-500">Organic Goodness</span> to Your Table
                 </h1>
                 <p className="text-earth-600 text-lg mb-6">
-                  AgriLia was founded in 2020 with a simple mission: to create a direct connection between 
+                  AgriLia was founded in 2025 with a simple mission: to create a direct connection between 
                   local organic farmers and conscious consumers. We believe in supporting sustainable agriculture 
                   and making organic food accessible to everyone.
                 </p>
@@ -113,25 +113,25 @@ const AboutUs = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
                 {
-                  name: "Elena Martinez",
+                  name: "Amina Benali",
                   role: "Founder & CEO",
                   image: "https://randomuser.me/api/portraits/women/23.jpg",
                   bio: "Former organic farmer with 15 years of experience in sustainable agriculture."
                 },
                 {
-                  name: "David Chen",
+                  name: "Karim Boudaoud",
                   role: "Operations Director",
                   image: "https://randomuser.me/api/portraits/men/52.jpg",
                   bio: "Logistics expert passionate about reducing food waste and improving efficiency."
                 },
                 {
-                  name: "Sophia Kim",
+                  name: "Leila Medjdoub",
                   role: "Producer Relations",
                   image: "https://randomuser.me/api/portraits/women/33.jpg", 
                   bio: "Works directly with our farmers to ensure quality and sustainable practices."
                 },
                 {
-                  name: "Marcus Johnson",
+                  name: "Nassim Hadjadj",
                   role: "Customer Experience",
                   image: "https://randomuser.me/api/portraits/men/41.jpg",
                   bio: "Dedicated to creating a seamless shopping experience for our customers."

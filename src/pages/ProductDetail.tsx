@@ -12,7 +12,7 @@ import ProductDetails from "@/components/product/ProductDetails";
 const productData = {
   id: 1,
   name: "Organic Deglet Nour Dates",
-  price: 350,
+  price: 450,
   unit: "box",
   images: [
     "https://images.unsplash.com/photo-1601039641847-7857b994d704?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800",
@@ -36,7 +36,7 @@ const productData = {
     fiber: "8g",
   },
   certifications: ["Organic Certified", "Non-GMO Verified"],
-  harvestDate: "2 weeks ago",
+  harvestDate: "March 2025",
   relatedProducts: [2, 4, 7],
 };
 
