@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "@/components/layout/Header";
@@ -23,12 +22,22 @@ const SignUp = () => {
   const { user, signUp } = useAuth();
   const navigate = useNavigate();
 
-  // If user is already logged in, redirect to home
+  // If user is already logged in, redirect to home but not if they just signed up
   useEffect(() => {
-    if (user) {
+    // Only redirect if they were already logged in before visiting signup page
+    const alreadyLoggedIn = sessionStorage.getItem('visiting_signup');
+    if (user && !alreadyLoggedIn) {
       navigate("/");
     }
   }, [user, navigate]);
+  
+  // Mark that we're on the signup page
+  useEffect(() => {
+    sessionStorage.setItem('visiting_signup', 'true');
+    return () => {
+      sessionStorage.removeItem('visiting_signup');
+    };
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

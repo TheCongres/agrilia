@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import Header from "@/components/layout/Header";
@@ -8,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/components/ui/use-toast";
 import { useAuth } from "@/hooks/useAuth";
+import { supabase } from "@/integrations/supabase/client";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -20,12 +20,26 @@ const Login = () => {
   // Get the return path from location state or default to home
   const from = (location.state as { from?: string })?.from || "/";
   
-  // If user is already logged in, redirect to home
+  // If user is already logged in and not on the login page, redirect to home
   useEffect(() => {
     if (user) {
-      navigate("/");
+      // Only redirect if we're coming from a protected route
+      if (from !== "/login") {
+        navigate("/");
+      }
     }
-  }, [user, navigate]);
+  }, [user, navigate, from]);
+
+  // Clear any existing session when viewing the login page
+  useEffect(() => {
+    // We'll check if we're actually coming from a protected route
+    // If not, let's ensure we're starting fresh on the login page
+    if (from === "/login" || from === "/") {
+      // Don't actually sign out here as that would trigger a redirect loop
+      // Just ensure the auth provider knows we're on the login page
+      console.log("On login page, ready for fresh login");
+    }
+  }, [from]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

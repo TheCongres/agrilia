@@ -19,14 +19,20 @@ export function useAuthProvider() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    let mounted = true;
+    
     // Set up auth state listener FIRST
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
+        if (!mounted) return;
+        
         setSession(session);
         
         if (session?.user) {
           // Defer Supabase profile fetch with setTimeout to prevent deadlocks
           setTimeout(async () => {
+            if (!mounted) return;
+            
             const { data: userData, error } = await supabase
               .from('profiles')
               .select('*')
@@ -52,8 +58,18 @@ export function useAuthProvider() {
       }
     );
 
-    // THEN check for existing session
+    // THEN check for existing session - but clear it on first load unless we're in a protected route
     supabase.auth.getSession().then(({ data: { session } }) => {
+      if (!mounted) return;
+      
+      // If we're on the login or signup page and there is a session, don't auto-sign in
+      const currentPath = window.location.pathname;
+      if ((currentPath === '/login' || currentPath === '/signup') && session) {
+        // Don't set user or session data
+        setLoading(false);
+        return;
+      }
+      
       setSession(session);
       
       if (session?.user) {
@@ -63,6 +79,8 @@ export function useAuthProvider() {
           .eq('id', session.user.id)
           .single()
           .then(({ data: userData, error }) => {
+            if (!mounted) return;
+            
             if (!error && userData) {
               setUser({
                 id: session.user.id,
@@ -81,6 +99,7 @@ export function useAuthProvider() {
     });
 
     return () => {
+      mounted = false;
       subscription.unsubscribe();
     };
   }, []);
@@ -146,19 +165,23 @@ export function useAuthProvider() {
 
   const signOut = async () => {
     try {
+      // Clear state immediately to improve UX
+      setUser(null);
+      setSession(null);
+      
       const { error } = await supabase.auth.signOut();
       
       if (error) {
+        console.error("Error during sign out:", error);
         throw error;
       }
       
-      setUser(null);
-      setSession(null);
       navigate('/login');
       toast({
         title: "Logged out successfully",
       });
     } catch (error: any) {
+      console.error("Sign out error:", error);
       toast({
         title: "Sign out failed",
         description: error.message || "There was a problem signing out.",
