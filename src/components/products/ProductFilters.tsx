@@ -11,24 +11,28 @@ interface ProductFiltersProps {
     priceRange: number[];
     organic: boolean;
     inStock: boolean;
+    producerId?: string;
+    search?: string;
   };
   onChange: (filters: any) => void;
+  categories?: { id: string; name: string; slug: string }[];
 }
 
-const ProductFilters = ({ filters, onChange }: ProductFiltersProps) => {
-  const categories = [
-    { id: "fruits", label: "Fruits" },
-    { id: "vegetables", label: "Vegetables" },
-    { id: "dairy", label: "Dairy & Eggs" },
-    { id: "bakery", label: "Bakery" },
-    { id: "honey", label: "Honey & Preserves" },
-    { id: "meat", label: "Meat & Poultry" },
+const ProductFilters = ({ filters, onChange, categories = [] }: ProductFiltersProps) => {
+  // Default categories if none are provided from the database
+  const categoryOptions = categories.length > 0 ? categories : [
+    { id: "fruits", name: "Fruits", slug: "fruits" },
+    { id: "vegetables", name: "Vegetables", slug: "vegetables" },
+    { id: "dairy", name: "Dairy & Eggs", slug: "dairy" },
+    { id: "bakery", name: "Bakery", slug: "bakery" },
+    { id: "honey", name: "Honey & Preserves", slug: "honey" },
+    { id: "meat", name: "Meat & Poultry", slug: "meat" },
   ];
 
-  const handleCategoryChange = (category: string) => {
-    const newCategories = filters.categories.includes(category)
-      ? filters.categories.filter(c => c !== category)
-      : [...filters.categories, category];
+  const handleCategoryChange = (categoryId: string) => {
+    const newCategories = filters.categories.includes(categoryId)
+      ? filters.categories.filter(c => c !== categoryId)
+      : [...filters.categories, categoryId];
     
     onChange({ ...filters, categories: newCategories });
   };
@@ -49,7 +53,7 @@ const ProductFilters = ({ filters, onChange }: ProductFiltersProps) => {
       <div className="mb-6">
         <h4 className="text-sm font-medium text-earth-600 mb-3">Categories</h4>
         <div className="space-y-2">
-          {categories.map(category => (
+          {categoryOptions.map(category => (
             <div key={category.id} className="flex items-center">
               <Checkbox
                 id={`category-${category.id}`}
@@ -61,7 +65,7 @@ const ProductFilters = ({ filters, onChange }: ProductFiltersProps) => {
                 htmlFor={`category-${category.id}`}
                 className="ml-2 text-sm text-earth-600 cursor-pointer"
               >
-                {category.label}
+                {category.name}
               </Label>
             </div>
           ))}
