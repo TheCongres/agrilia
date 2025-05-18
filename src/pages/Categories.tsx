@@ -47,6 +47,20 @@ const categoriesData = [
     image: 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=500',
     productCount: 15
   },
+  {
+    id: 'herbs',
+    name: 'Herbs & Spices',
+    description: 'Traditional Algerian herbs and spices grown with care in our rich soil',
+    image: 'https://images.unsplash.com/photo-1515586000433-45406d8e6662?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=500',
+    productCount: 24
+  },
+  {
+    id: 'couscous',
+    name: 'Couscous & Grains',
+    description: 'Authentic Algerian grains, including traditional hand-rolled couscous',
+    image: 'https://images.unsplash.com/photo-1574323347407-f5e1c0b24776?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=500',
+    productCount: 15
+  },
 ];
 
 const Categories = () => {

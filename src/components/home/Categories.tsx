@@ -3,37 +3,37 @@ import { Link } from 'react-router-dom';
 
 const categories = [
   {
-    id: 1,
+    id: 'fruits',
     name: 'Fruits',
     image: 'https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80',
     count: 32,
   },
   {
-    id: 2,
+    id: 'vegetables',
     name: 'Vegetables',
     image: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80',
     count: 45,
   },
   {
-    id: 3,
+    id: 'dairy',
     name: 'Dairy',
     image: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80',
     count: 18,
   },
   {
-    id: 4,
+    id: 'herbs',
     name: 'Herbs',
     image: 'https://images.unsplash.com/photo-1515586000433-45406d8e6662?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80',
     count: 24,
   },
   {
-    id: 5,
+    id: 'couscous',
     name: 'Couscous & Grains',
     image: 'https://images.unsplash.com/photo-1574323347407-f5e1c0b24776?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80',
     count: 15,
   },
   {
-    id: 6,
+    id: 'honey',
     name: 'Honey',
     image: 'https://images.unsplash.com/photo-1558642891-54be180ea339?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80',
     count: 7,
@@ -59,7 +59,7 @@ const Categories = () => {
           {categories.map((category) => (
             <Link 
               key={category.id}
-              to={`/category/${category.id}`}
+              to={`/products?category=${category.id}`}
               className="card-organic group"
             >
               <div className="aspect-square relative overflow-hidden">
