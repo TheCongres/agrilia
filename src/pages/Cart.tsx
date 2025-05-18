@@ -1,10 +1,10 @@
-
 import { useCart } from "@/context/CartContext";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Plus, Minus, Trash } from "lucide-react";
+import { formatCurrency } from "@/lib/utils";
 
 const Cart = () => {
   const { cartState, removeFromCart, updateQuantity, cartTotal } = useCart();
@@ -79,7 +79,7 @@ const Cart = () => {
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-earth-600">
-                        ${item.price.toFixed(2)}
+                        {formatCurrency(item.price)}
                       </td>
                       <td className="px-6 py-4">
                         <div className="flex border border-natural-200 rounded inline-flex">
@@ -102,7 +102,7 @@ const Cart = () => {
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-earth-600">
-                        ${(item.price * item.quantity).toFixed(2)}
+                        {formatCurrency(item.price * item.quantity)}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <button
@@ -132,7 +132,7 @@ const Cart = () => {
               <div className="space-y-3 mb-6">
                 <div className="flex justify-between">
                   <span className="text-earth-600">Subtotal</span>
-                  <span className="text-earth-700">${cartTotal.toFixed(2)}</span>
+                  <span className="text-earth-700">{formatCurrency(cartTotal)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-earth-600">Shipping</span>
@@ -141,7 +141,7 @@ const Cart = () => {
                 <div className="border-t border-natural-200 pt-3 mt-3">
                   <div className="flex justify-between font-semibold">
                     <span className="text-earth-600">Estimated Total</span>
-                    <span className="text-natural-500">${cartTotal.toFixed(2)}</span>
+                    <span className="text-natural-500">{formatCurrency(cartTotal)}</span>
                   </div>
                 </div>
               </div>

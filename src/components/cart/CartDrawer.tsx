@@ -3,6 +3,7 @@ import { useCart } from "@/context/CartContext";
 import { Button } from "@/components/ui/button";
 import { X, Plus, Minus, ShoppingBag } from "lucide-react";
 import { Link } from "react-router-dom";
+import { formatCurrency } from "@/lib/utils";
 
 const CartDrawer = () => {
   const { cartState, removeFromCart, updateQuantity, toggleCart, cartTotal } = useCart();
@@ -103,7 +104,7 @@ const CartDrawer = () => {
                           </button>
                         </div>
                         <p className="font-semibold text-earth-700">
-                          ${(item.price * item.quantity).toFixed(2)}
+                          {formatCurrency(item.price * item.quantity)}
                         </p>
                       </div>
                     </div>
@@ -119,7 +120,7 @@ const CartDrawer = () => {
               <div className="flex justify-between mb-4">
                 <span className="text-earth-600">Subtotal</span>
                 <span className="font-semibold text-earth-700">
-                  ${cartTotal.toFixed(2)}
+                  {formatCurrency(cartTotal)}
                 </span>
               </div>
               <div className="space-y-2">

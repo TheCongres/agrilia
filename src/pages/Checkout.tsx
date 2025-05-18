@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useCart } from "@/context/CartContext";
 import Header from "@/components/layout/Header";
@@ -6,6 +5,7 @@ import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
+import { formatCurrency } from "@/lib/utils";
 
 const Checkout = () => {
   const { cartState, cartTotal } = useCart();
@@ -122,13 +122,13 @@ const Checkout = () => {
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-earth-600">
-                          ${item.price.toFixed(2)}
+                          {formatCurrency(item.price)}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-earth-600">
                           {item.quantity}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-earth-600">
-                          ${(item.price * item.quantity).toFixed(2)}
+                          {formatCurrency(item.price * item.quantity)}
                         </td>
                       </tr>
                     ))}
@@ -138,7 +138,7 @@ const Checkout = () => {
                 <div className="px-6 py-4 bg-natural-50 border-t border-natural-200">
                   <div className="flex justify-between items-center">
                     <div className="text-sm text-earth-500">
-                      Subtotal: <span className="font-semibold text-earth-700">${cartTotal.toFixed(2)}</span>
+                      Subtotal: <span className="font-semibold text-earth-700">{formatCurrency(cartTotal)}</span>
                     </div>
                     <Button 
                       className="bg-natural-500 hover:bg-natural-600"
