@@ -35,7 +35,7 @@ const ProductPurchase = ({ product }: ProductPurchaseProps) => {
 
   const handleAddToCart = () => {
     addToCart({
-      product_id: product.id, // This is now correctly typed as a string
+      product_id: product.id,
       name: product.name,
       price: product.price,
       quantity: quantity,
