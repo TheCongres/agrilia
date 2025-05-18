@@ -29,6 +29,7 @@ interface CartContextType {
   toggleCart: (isOpen?: boolean) => void;
   clearCart: () => void;
   cartTotal: number;
+  cartCount: number;
 }
 
 // Create the context
@@ -120,6 +121,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     0
   );
 
+  // Calculate cart count (total number of items)
+  const cartCount = cartState.items.reduce(
+    (count, item) => count + item.quantity,
+    0
+  );
+
   // Cart actions
   const addToCart = (item: Omit<CartItem, 'id'>) => {
     dispatch({ type: 'ADD_ITEM', payload: item });
@@ -156,7 +163,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         updateQuantity,
         toggleCart,
         clearCart,
-        cartTotal
+        cartTotal,
+        cartCount
       }}
     >
       {children}
