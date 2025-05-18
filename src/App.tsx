@@ -17,6 +17,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import ProductDetail from "./pages/ProductDetail";
 import Account from "./pages/Account";
+import Orders from "./pages/Orders";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Cart from "./pages/Cart";
@@ -48,6 +49,11 @@ const App = () => (
               <Route path="/account" element={
                 <ProtectedRoute>
                   <Account />
+                </ProtectedRoute>
+              } />
+              <Route path="/orders" element={
+                <ProtectedRoute>
+                  <Orders />
                 </ProtectedRoute>
               } />
               <Route path="/blog" element={<Blog />} />
