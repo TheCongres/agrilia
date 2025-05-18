@@ -10,6 +10,18 @@ import ProductPurchase from "@/components/product/ProductPurchase";
 import ProductDetails from "@/components/product/ProductDetails";
 import { Skeleton } from "@/components/ui/skeleton";
 
+// Define interface for product data used by child components
+interface ProductDetailsData {
+  id: string;
+  name: string;
+  price: number;
+  stock: number;
+  category: string;
+  images: string[];
+  harvestDate?: string;
+  certifications?: string[];
+}
+
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
   const { data: product, isLoading, error } = useProduct(id || "");
@@ -63,7 +75,7 @@ const ProductDetail = () => {
     name: (product.producers as any).name || "",
     location: (product.producers as any).location || "",
     id: product.producer_id || "",
-  } : undefined;
+  } : { name: "", location: "", id: "" };
 
   // Extract nutritional info if present in description (would be more structured in a real app)
   const nutritionalInfo = {
@@ -74,13 +86,26 @@ const ProductDetail = () => {
     fiber: "8g",
   };
 
-  // Parse images array
-  const productImages = Array.isArray(product.images) ? product.images : [];
+  // Parse images array - already handled in useProduct hook
+  const productImages = product.images || [];
   
   // If no images, provide placeholder
   if (productImages.length === 0) {
     productImages.push("https://images.unsplash.com/photo-1576045057995-568f588f82fb?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800");
   }
+
+  // Prepare data for ProductPurchase component
+  const productDetailsForPurchase: ProductDetailsData = {
+    id: product.id,
+    name: product.name,
+    price: product.price,
+    stock: product.stock_quantity || 0,
+    category: categoryName,
+    images: productImages,
+  };
+
+  // Add certifications for ProductDetails component
+  const certifications = product.is_organic ? ["Organic Certified"] : [];
 
   return (
     <div className="min-h-screen bg-background">
@@ -104,15 +129,14 @@ const ProductDetail = () => {
             />
 
             <ProductPurchase product={{
-              ...product,
-              stock: product.stock_quantity || 0,
-              certifications: product.is_organic ? ["Organic Certified"] : [],
+              ...productDetailsForPurchase,
+              certifications,
               harvestDate: "Recent harvest"
             }} />
 
             <ProductDetails 
               nutritionalInfo={nutritionalInfo}
-              certifications={product.is_organic ? ["Organic Certified"] : []}
+              certifications={certifications}
               harvestDate="Recent harvest"
               longDescription={product.description || "No detailed description available."}
             />

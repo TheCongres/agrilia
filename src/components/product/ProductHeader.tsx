@@ -8,7 +8,7 @@ interface ProductHeaderProps {
   producer: {
     name: string;
     location: string;
-    id: number;
+    id: string | number;
   };
 }
 

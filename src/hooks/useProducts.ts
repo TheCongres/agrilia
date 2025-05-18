@@ -3,7 +3,9 @@ import { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/components/ui/use-toast';
+import { Json } from '@/integrations/supabase/types';
 
+// Updated Product interface to match the database structure
 export interface Product {
   id: string;
   name: string;
@@ -22,6 +24,15 @@ export interface Product {
   review_count: number | null;
   created_at: string;
   updated_at: string;
+  // Define nested relations as optional to handle different query responses
+  categories?: {
+    name: string;
+    slug: string;
+  };
+  producers?: {
+    name: string;
+    location: string | null;
+  };
 }
 
 export interface ProductFilters {
@@ -47,7 +58,6 @@ export async function fetchProducts(filters: ProductFilters = {}) {
   if (filters.categories && filters.categories.length > 0) {
     query = query.in(
       'category_id', 
-      // We'll need to fetch category IDs by slug later
       filters.categories
     );
   }
@@ -81,7 +91,13 @@ export async function fetchProducts(filters: ProductFilters = {}) {
     throw new Error('Failed to fetch products');
   }
 
-  return data || [];
+  // Process images to ensure they are strings
+  return (data || []).map(product => ({
+    ...product,
+    images: Array.isArray(product.images) 
+      ? product.images.map(img => typeof img === 'string' ? img : String(img))
+      : []
+  }));
 }
 
 // Hook to use products with react-query
@@ -89,13 +105,15 @@ export function useProducts(filters: ProductFilters = {}) {
   return useQuery({
     queryKey: ['products', filters],
     queryFn: () => fetchProducts(filters),
-    onError: (error: Error) => {
-      toast({
-        title: 'Error fetching products',
-        description: error.message,
-        variant: 'destructive',
-      });
-    },
+    meta: {
+      onError: (error: Error) => {
+        toast({
+          title: 'Error fetching products',
+          description: error.message,
+          variant: 'destructive',
+        });
+      }
+    }
   });
 }
 
@@ -130,10 +148,26 @@ export function useProduct(idOrSlug: string) {
         if (errorById) {
           throw new Error('Product not found');
         }
+        
+        // Process images
+        if (dataById) {
+          return {
+            ...dataById,
+            images: Array.isArray(dataById.images)
+              ? dataById.images.map(img => typeof img === 'string' ? img : String(img))
+              : []
+          };
+        }
         return dataById;
       }
 
-      return data;
+      // Process images
+      return {
+        ...data,
+        images: Array.isArray(data.images)
+          ? data.images.map(img => typeof img === 'string' ? img : String(img))
+          : []
+      };
     },
     enabled: Boolean(idOrSlug),
   });

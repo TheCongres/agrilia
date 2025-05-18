@@ -16,7 +16,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       : "https://images.unsplash.com/photo-1576045057995-568f588f82fb?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800";
 
   // Get producer name if available
-  const producerName = product.producers ? (product.producers as any).name : "";
+  const producerName = product.producers?.name || "";
 
   return (
     <Link 
