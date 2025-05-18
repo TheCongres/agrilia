@@ -1,6 +1,5 @@
 
 import { useParams } from "react-router-dom";
-import { useProduct } from "@/hooks/useProducts";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Breadcrumbs from "@/components/product/Breadcrumbs";
@@ -8,142 +7,74 @@ import ProductImages from "@/components/product/ProductImages";
 import ProductHeader from "@/components/product/ProductHeader";
 import ProductPurchase from "@/components/product/ProductPurchase";
 import ProductDetails from "@/components/product/ProductDetails";
-import { Skeleton } from "@/components/ui/skeleton";
 
-// Define interface for product data used by child components
-interface ProductDetailsData {
-  id: string;
-  name: string;
-  price: number;
-  stock: number;
-  category: string;
-  images: string[];
-  harvestDate?: string;
-  certifications?: string[];
-}
-
-const ProductDetail = () => {
-  const { id } = useParams<{ id: string }>();
-  const { data: product, isLoading, error } = useProduct(id || "");
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-background">
-        <Header />
-        <main className="container-custom py-8">
-          <div className="h-6 mb-8">
-            <Skeleton className="h-full w-64" />
-          </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            <Skeleton className="aspect-square" />
-            <div className="space-y-6">
-              <div className="space-y-2">
-                <Skeleton className="h-8 w-3/4" />
-                <Skeleton className="h-5 w-1/3" />
-                <Skeleton className="h-24 w-full" />
-              </div>
-              <Skeleton className="h-36 w-full" />
-              <Skeleton className="h-64 w-full" />
-            </div>
-          </div>
-        </main>
-        <Footer />
-      </div>
-    );
-  }
-
-  if (error || !product) {
-    return (
-      <div className="min-h-screen bg-background">
-        <Header />
-        <main className="container-custom py-16 text-center">
-          <h2 className="text-2xl font-semibold mb-4">Product Not Found</h2>
-          <p className="text-earth-500">
-            The product you're looking for doesn't exist or has been removed.
-          </p>
-        </main>
-        <Footer />
-      </div>
-    );
-  }
-
-  // Get category name if available
-  const categoryName = product.categories ? (product.categories as any).name : "";
-  
-  // Get producer info if available
-  const producer = product.producers ? {
-    name: (product.producers as any).name || "",
-    location: (product.producers as any).location || "",
-    id: product.producer_id || "",
-  } : { name: "", location: "", id: "" };
-
-  // Extract nutritional info if present in description (would be more structured in a real app)
-  const nutritionalInfo = {
+// This is mock data for the MVP. In a real app, this would come from an API
+const productData = {
+  id: 1,
+  name: "Organic Deglet Nour Dates",
+  price: 450,
+  unit: "box",
+  images: [
+    "https://images.unsplash.com/photo-1601039641847-7857b994d704?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800",
+    "https://images.unsplash.com/photo-1605709303005-0fddfcbba9ce?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800",
+    "https://images.unsplash.com/photo-1612125252751-83a3c24c621f?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800",
+  ],
+  description: "Premium Deglet Nour dates grown in the Algerian desert oasis. Known for their sweet taste and caramel-like texture, these organic dates are rich in nutrients and natural sweetness.",
+  longDescription: "Our organic Deglet Nour dates are sourced from Oasis de Biskra, where they're grown in nutrient-rich soil without synthetic pesticides or fertilizers. They're hand-picked at peak ripeness to ensure the best flavor and texture. \n\nDeglet Nour dates are known for their health benefits, including natural sugars that provide quick energy, fiber for digestive health, and various essential minerals. These 'Fingers of Light' dates are a staple of Algerian cuisine.",
+  producer: {
+    name: "Oasis de Biskra",
+    location: "Biskra, Algeria",
+    id: 101,
+  },
+  category: "Fruits",
+  stock: 24,
+  nutritionalInfo: {
     calories: "280 kcal",
     fat: "0.4g",
     carbs: "75g",
     protein: "2g",
     fiber: "8g",
-  };
+  },
+  certifications: ["Organic Certified", "Non-GMO Verified"],
+  harvestDate: "March 2025",
+  relatedProducts: [2, 4, 7],
+};
 
-  // Parse images array ensuring it's a string array
-  const productImages: string[] = [];
-  
-  // Handle images from Supabase which come as Json type
-  if (product.images) {
-    const imagesData = Array.isArray(product.images) ? product.images : [product.images];
-    imagesData.forEach(img => {
-      if (typeof img === 'string') {
-        productImages.push(img);
-      }
-    });
-  }
-  
-  // If no images, provide placeholder
-  if (productImages.length === 0) {
-    productImages.push("https://images.unsplash.com/photo-1576045057995-568f588f82fb?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800");
-  }
+const ProductDetail = () => {
+  const { id } = useParams<{ id: string }>();
 
-  // Prepare data for ProductPurchase component
-  const productDetailsForPurchase: ProductDetailsData = {
-    id: product.id,
-    name: product.name,
-    price: product.price,
-    stock: product.stock_quantity || 0,
-    category: categoryName,
-    images: productImages,
-    harvestDate: "Recent harvest",
-    certifications: product.is_organic ? ["Organic Certified"] : []
-  };
+  // In a real app, you would fetch the product based on the ID
+  // For the MVP, we'll just use the mock data
+  const product = productData;
 
   return (
     <div className="min-h-screen bg-background">
       <Header />
 
       <main className="container-custom py-8">
-        <Breadcrumbs category={categoryName} productName={product.name} />
+        <Breadcrumbs category={product.category} productName={product.name} />
 
         {/* Product Detail */}
         <div className="grid md:grid-cols-2 gap-8">
           {/* Product Images */}
-          <ProductImages images={productImages} productName={product.name} />
+          <ProductImages images={product.images} productName={product.name} />
 
           {/* Product Info */}
           <div>
             <ProductHeader 
               name={product.name} 
-              category={categoryName} 
-              description={product.description || ""} 
-              producer={producer} 
+              category={product.category} 
+              description={product.description} 
+              producer={product.producer} 
             />
 
-            <ProductPurchase product={productDetailsForPurchase} />
+            <ProductPurchase product={product} />
 
             <ProductDetails 
-              nutritionalInfo={nutritionalInfo}
-              certifications={product.is_organic ? ["Organic Certified"] : []}
-              harvestDate="Recent harvest"
-              longDescription={product.description || "No detailed description available."}
+              nutritionalInfo={product.nutritionalInfo}
+              certifications={product.certifications}
+              harvestDate={product.harvestDate}
+              longDescription={product.longDescription}
             />
           </div>
         </div>
