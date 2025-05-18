@@ -12,17 +12,17 @@ const producersData = [
     name: "Ferme Verte d'Alger",
     location: "Alger, Algeria",
     image: "https://images.unsplash.com/photo-1581578017093-cd30fce4eeb7?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=500",
-    description: "Family-owned organic farm specializing in heirloom vegetables and fruits. Ferme Verte d'Alger has been practicing sustainable farming for over 20 years.",
+    description: "Family-owned organic farm specializing in heirloom vegetables and fruits. Ferme Verte d'Alger has been practicing sustainable farming for over 20 years in the fertile plains surrounding Algiers.",
     productsCount: 28,
     featured: true,
-    specialties: ["Heirloom Tomatoes", "Stone Fruits", "Leafy Greens"]
+    specialties: ["Heirloom Tomatoes", "Citrus Fruits", "Leafy Greens"]
   },
   {
     id: 2,
     name: "Coopérative Laitière de Médéa",
     location: "Médéa, Algeria",
     image: "https://images.unsplash.com/photo-1594761946718-9442f3ebc349?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=500", 
-    description: "A cooperative of small dairy farms committed to ethical treatment of animals and organic practices. Producing milk, cheese, and traditional Algerian yogurt.",
+    description: "A cooperative of small dairy farms committed to ethical treatment of animals and organic practices. Producing milk, cheese, and traditional Algerian yogurt including raib and leben.",
     productsCount: 15,
     featured: true,
     specialties: ["Raw Milk", "Artisan Cheese", "Traditional Yogurt"]
@@ -32,7 +32,7 @@ const producersData = [
     name: "Ruches de l'Atlas",
     location: "Blida, Algeria",
     image: "https://images.unsplash.com/photo-1589923188651-268a961fad0d?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=500",
-    description: "Sustainable beekeeping operation producing raw honey, beeswax products, and pollination services for other organic farms in the Atlas Mountains.",
+    description: "Sustainable beekeeping operation producing raw honey, beeswax products, and pollination services for other organic farms in the Atlas Mountains region of Blida.",
     productsCount: 8,
     featured: false,
     specialties: ["Atlas Mountain Honey", "Bee Pollen", "Honeycomb"]
@@ -42,30 +42,30 @@ const producersData = [
     name: "Verger du Sahel",
     location: "Bouira, Algeria",
     image: "https://images.unsplash.com/photo-1613428792678-087afc9d2e0f?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=500",
-    description: "Specializing in organic apples, pears, and stone fruits. Verger du Sahel maintains over 40 varieties of fruit trees adapted to Algeria's climate.",
+    description: "Specializing in organic apples, pears, and stone fruits. Verger du Sahel maintains over 40 varieties of fruit trees adapted to Algeria's unique Mediterranean and semi-arid climate.",
     productsCount: 22,
     featured: false,
-    specialties: ["Algerian Apples", "Pears", "Peaches"]
+    specialties: ["Algerian Apples", "Pears", "Apricots"]
   },
   {
     id: 5,
     name: "Prairies de Kabylie",
     location: "Tizi Ouzou, Algeria",
     image: "https://images.unsplash.com/photo-1560493676-04071c5f467b?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=500",
-    description: "Pasture-raised chicken, eggs, and lamb from a family farm in the beautiful Kabylie region committed to regenerative agriculture.",
+    description: "Pasture-raised chicken, eggs, and lamb from a family farm in the beautiful Kabylie mountains, committed to regenerative agriculture and traditional Amazigh farming practices.",
     productsCount: 12,
     featured: true,
-    specialties: ["Free-Range Eggs", "Grass-Fed Lamb", "Organic Chicken"]
+    specialties: ["Free-Range Eggs", "Grass-Fed Lamb", "Heritage Chicken"]
   },
   {
     id: 6,
     name: "Céréales de Sétif",
     location: "Sétif, Algeria",
     image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=500",
-    description: "Dedicated to growing ancient and heritage grain varieties using organic methods. Specializing in wheat, barley, and oats adapted to Algeria's climate.",
+    description: "Dedicated to growing ancient and heritage grain varieties using organic methods. Specializing in wheat, barley, and oats in the fertile high plateaus of Sétif, historically known as Algeria's breadbasket.",
     productsCount: 10,
     featured: false,
-    specialties: ["Heritage Wheat", "Ancient Grains", "Organic Flour"]
+    specialties: ["Heritage Wheat", "Ancient Grains", "Traditional Couscous"]
   },
 ];
 

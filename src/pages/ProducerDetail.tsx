@@ -13,140 +13,140 @@ import { toast } from "@/components/ui/use-toast";
 const producersData = [
   {
     id: 1,
-    name: "Green Valley Farm",
-    location: "Sonoma County, CA",
+    name: "Ferme Verte d'Alger",
+    location: "Alger, Algeria",
     image: "https://images.unsplash.com/photo-1581578017093-cd30fce4eeb7?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=500",
-    description: "Family-owned organic farm specializing in heirloom vegetables and fruits. Green Valley has been practicing sustainable farming for over 25 years.",
+    description: "Family-owned organic farm specializing in heirloom vegetables and fruits. Ferme Verte d'Alger has been practicing sustainable farming for over 25 years in the fertile lands outside Algiers.",
     productsCount: 28,
     featured: true,
-    specialties: ["Heirloom Tomatoes", "Stone Fruits", "Leafy Greens"],
-    story: "Started in 1996 by the Johnson family, Green Valley Farm has grown from a small 5-acre plot to a thriving 40-acre organic operation. We're dedicated to preserving heirloom varieties and maintaining sustainable practices that nourish both the land and our community.",
+    specialties: ["Heirloom Tomatoes", "Citrus Fruits", "Leafy Greens"],
+    story: "Started in 1996 by the Belhadj family, Ferme Verte d'Alger has grown from a small 5-acre plot to a thriving 40-acre organic operation. We're dedicated to preserving local Algerian varieties and maintaining sustainable practices that nourish both the land and our community.",
     practices: [
       "No synthetic pesticides or fertilizers",
-      "Cover cropping and crop rotation",
-      "Water conservation techniques",
-      "On-site composting program"
+      "Traditional water conservation techniques adapted to Algerian climate",
+      "On-site composting program",
+      "Seed preservation of local Algerian varieties"
     ],
-    certifications: ["USDA Organic", "California Certified Organic Farmers (CCOF)"],
+    certifications: ["Bio Algérie", "Mediterranean Organic Agriculture Network"],
     contactInfo: {
-      email: "info@greenvalleyfarm.com",
-      phone: "(707) 555-1234",
-      website: "www.greenvalleyfarm.com"
+      email: "info@fermeverte-alger.dz",
+      phone: "(0)23 55 12 34",
+      website: "www.fermeverte-alger.dz"
     }
   },
   {
     id: 2,
-    name: "Sunshine Dairy Co-op",
-    location: "Marin County, CA",
+    name: "Coopérative Laitière de Médéa",
+    location: "Médéa, Algeria",
     image: "https://images.unsplash.com/photo-1594761946718-9442f3ebc349?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=500", 
-    description: "A cooperative of small dairy farms committed to ethical treatment of animals and organic practices. Producing milk, cheese, and yogurt.",
+    description: "A cooperative of small dairy farms committed to ethical treatment of animals and organic practices. Producing milk, cheese, and traditional Algerian yogurt products.",
     productsCount: 15,
     featured: true,
-    specialties: ["Raw Milk", "Artisan Cheese", "Greek Yogurt"],
-    story: "Founded in 2005, Sunshine Dairy Co-op brings together 7 small family farms in Marin County. Our cooperative model ensures fair prices for farmers while maintaining the highest standards of animal welfare and sustainable production methods.",
+    specialties: ["Raw Milk", "Atlas Mountain Cheese", "Leben (Traditional Yogurt)"],
+    story: "Founded in 2005, Coopérative Laitière de Médéa brings together 7 small family farms in the Médéa region. Our cooperative model ensures fair prices for farmers while maintaining the highest standards of animal welfare and sustainable production methods that respect our traditional Algerian dairy practices.",
     practices: [
-      "100% grass-fed cows",
+      "100% grass-fed cattle adapted to local climate",
       "No antibiotics or hormones",
-      "Rotational grazing systems",
-      "Animal welfare prioritized"
+      "Rotational grazing systems on Atlas mountain slopes",
+      "Traditional handcrafted dairy production methods"
     ],
-    certifications: ["USDA Organic", "Animal Welfare Approved"],
+    certifications: ["Bio Algérie", "Heritage Food Practices Certificate"],
     contactInfo: {
-      email: "contact@sunshinedairycoop.com",
-      phone: "(415) 555-9876",
-      website: "www.sunshinedairycoop.com"
+      email: "contact@cooperative-medea.dz",
+      phone: "(0)25 58 43 21",
+      website: "www.cooperative-medea.dz"
     }
   },
   {
     id: 3,
-    name: "Wild Honey Apiaries",
-    location: "Napa Valley, CA",
+    name: "Ruches de l'Atlas",
+    location: "Blida, Algeria",
     image: "https://images.unsplash.com/photo-1589923188651-268a961fad0d?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=500",
-    description: "Sustainable beekeeping operation producing raw honey, beeswax products, and pollination services for other organic farms.",
+    description: "Sustainable beekeeping operation producing raw honey, beeswax products, and pollination services for other organic farms in the Atlas Mountains.",
     productsCount: 8,
     featured: false,
-    specialties: ["Wildflower Honey", "Bee Pollen", "Honeycomb"],
-    story: "Wild Honey Apiaries was started by former entomologist Dr. Maya Chen in 2010. What began as two backyard hives has grown to over 50 colonies that we relocate seasonally to support organic farms across Northern California.",
+    specialties: ["Atlas Mountain Honey", "Bee Pollen", "Honeycomb"],
+    story: "Ruches de l'Atlas was started by former entomologist Dr. Amina Rahal in 2010. What began as two backyard hives has grown to over 50 colonies that we relocate seasonally to support organic farms across the Atlas Mountains, preserving traditional beekeeping knowledge while implementing sustainable practices.",
     practices: [
       "Treatment-free beekeeping",
       "Sustainable harvesting techniques",
       "Pollination services for local farms",
-      "Native plant preservation"
+      "Native plant preservation around hive locations"
     ],
-    certifications: ["Certified Naturally Grown"],
+    certifications: ["Bio Algérie", "Slow Food Presidium"],
     contactInfo: {
-      email: "hello@wildhoneyapiaries.com",
-      phone: "(707) 555-8765",
-      website: "www.wildhoneyapiaries.com"
+      email: "miel@ruchesdelatlas.dz",
+      phone: "(0)25 43 76 98",
+      website: "www.ruchesdelatlas.dz"
     }
   },
   {
     id: 4,
-    name: "Heritage Orchard",
-    location: "Sacramento Valley, CA",
+    name: "Verger du Sahel",
+    location: "Bouira, Algeria",
     image: "https://images.unsplash.com/photo-1613428792678-087afc9d2e0f?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=500",
-    description: "Specializing in organic apples, pears, and stone fruits. Heritage Orchard maintains over 50 varieties of heirloom fruit trees.",
+    description: "Specializing in organic apples, pears, and stone fruits. Verger du Sahel maintains over 40 varieties of fruit trees adapted to Algeria's unique climate.",
     productsCount: 22,
     featured: false,
-    specialties: ["Heirloom Apples", "Asian Pears", "Plums"],
-    story: "For three generations, the Rivera family has been tending to these orchards using traditional methods passed down through the generations. Our mission is to preserve rare and heirloom fruit varieties that might otherwise be lost to commercial standardization.",
+    specialties: ["Algerian Apples", "Pears", "Apricots"],
+    story: "For three generations, the Benali family has been tending to these orchards using traditional methods passed down through the generations. Our mission is to preserve rare and heirloom Algerian fruit varieties that might otherwise be lost to commercial standardization.",
     practices: [
-      "Organic pest management",
-      "Drip irrigation",
-      "Biodiversity promotion",
-      "Minimal intervention approach"
+      "Traditional organic pest management",
+      "Drip irrigation systems optimized for water conservation",
+      "Biodiversity promotion in dry climate",
+      "Minimal intervention approach respecting natural growth cycles"
     ],
-    certifications: ["USDA Organic", "Demeter Certified Biodynamic"],
+    certifications: ["Bio Algérie", "Biodiversity Protection Initiative"],
     contactInfo: {
-      email: "trees@heritageorchard.org",
-      phone: "(916) 555-3456",
-      website: "www.heritageorchard.org"
+      email: "fruits@vergerdusahel.dz",
+      phone: "(0)26 76 89 23",
+      website: "www.vergerdusahel.dz"
     }
   },
   {
     id: 5,
-    name: "Coastal Meadows",
-    location: "Mendocino County, CA",
+    name: "Prairies de Kabylie",
+    location: "Tizi Ouzou, Algeria",
     image: "https://images.unsplash.com/photo-1560493676-04071c5f467b?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=500",
-    description: "Pasture-raised chicken, eggs, and lamb from a family farm committed to regenerative agriculture and carbon sequestration.",
+    description: "Pasture-raised chicken, eggs, and lamb from a family farm in the beautiful Kabylie region committed to regenerative agriculture and traditional animal husbandry.",
     productsCount: 12,
     featured: true,
-    specialties: ["Pasture-Raised Eggs", "Grass-Fed Lamb", "Organic Chicken"],
-    story: "Coastal Meadows began as a regenerative agriculture project in 2012. We focus on rebuilding soil health while producing nutrient-dense foods. Our integrated animal management system helps sequester carbon while producing exceptional quality meats and eggs.",
+    specialties: ["Free-Range Eggs", "Grass-Fed Lamb", "Heritage Chicken"],
+    story: "Prairies de Kabylie began as a regenerative agriculture project in 2012 by the Ait Mouloud family. We focus on rebuilding soil health while producing nutrient-dense foods. Our integrated animal management system helps sequester carbon while producing exceptional quality meats and eggs using traditional Kabyle farming techniques.",
     practices: [
-      "Holistic planned grazing",
-      "Mobile chicken coops",
-      "Silvopasture systems",
-      "Carbon farming practices"
+      "Holistic planned grazing adapted to mountainous terrain",
+      "Mobile chicken coops for free ranging",
+      "Silvopasture systems with native trees",
+      "Traditional animal breeding practices"
     ],
-    certifications: ["USDA Organic", "Regenerative Organic Certified"],
+    certifications: ["Bio Algérie", "Regenerative Agricultural Network"],
     contactInfo: {
-      email: "farm@coastalmeadows.com",
-      phone: "(707) 555-2345",
-      website: "www.coastalmeadows.com"
+      email: "ferme@prairiesdekabylie.dz",
+      phone: "(0)26 12 45 78",
+      website: "www.prairiesdekabylie.dz"
     }
   },
   {
     id: 6,
-    name: "Earth First Grains",
-    location: "Yolo County, CA",
+    name: "Céréales de Sétif",
+    location: "Sétif, Algeria",
     image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=500",
-    description: "Dedicated to growing ancient and heritage grain varieties using organic methods. Specializing in wheat, barley, and oats.",
+    description: "Dedicated to growing ancient and heritage grain varieties using organic methods. Specializing in wheat, barley, and oats adapted to Algeria's climate.",
     productsCount: 10,
     featured: false,
-    specialties: ["Heritage Wheat", "Ancient Grains", "Organic Flour"],
-    story: "Earth First Grains was established in 2008 by former bakery owner Mai Wong, who became fascinated with the lost flavors and nutrition of heritage grains. Today, we cultivate over 15 varieties of rare and ancient grains on 120 acres of certified organic farmland.",
+    specialties: ["Heritage Wheat", "Ancient Grains", "Traditional Couscous"],
+    story: "Céréales de Sétif was established in 2008 by former baker Karim Benmalek, who became fascinated with the lost flavors and nutrition of heritage Algerian grains. Today, we cultivate over 15 varieties of rare and ancient grains on 120 hectares of certified organic farmland in the Sétif region, known as Algeria's breadbasket.",
     practices: [
       "No-till farming techniques",
-      "Seed saving program",
-      "On-site stone milling",
-      "Drought-resistant varieties"
+      "Seed saving program for indigenous grain varieties",
+      "On-site stone milling using traditional methods",
+      "Drought-resistant varieties adapted to local climate"
     ],
-    certifications: ["USDA Organic", "Real Organic Project Certified"],
+    certifications: ["Bio Algérie", "Heritage Seed Preservation Certificate"],
     contactInfo: {
-      email: "grains@earthfirstgrains.com",
-      phone: "(530) 555-7890",
-      website: "www.earthfirstgrains.com"
+      email: "grains@cerealesdesetif.dz",
+      phone: "(0)36 92 18 45",
+      website: "www.cerealesdesetif.dz"
     }
   },
 ];

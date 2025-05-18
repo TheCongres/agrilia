@@ -42,7 +42,7 @@ const ProducerHighlight = () => {
           </h2>
           <p className="text-earth-500 max-w-2xl mx-auto">
             We work directly with passionate local farmers across Algeria committed to sustainable and organic 
-            farming practices. Get to know the people who grow your food.
+            farming practices. Get to know the people who grow your food using traditional Algerian agricultural methods.
           </p>
         </div>
 
