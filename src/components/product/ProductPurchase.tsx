@@ -6,12 +6,14 @@ import { formatCurrency } from "@/lib/utils";
 
 interface ProductPurchaseProps {
   product: {
-    id: number;
+    id: string;
     name: string;
     price: number;
     stock: number;
     category: string;
     images: string[];
+    harvestDate?: string;
+    certifications?: string[];
   };
 }
 

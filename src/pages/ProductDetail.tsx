@@ -86,8 +86,18 @@ const ProductDetail = () => {
     fiber: "8g",
   };
 
-  // Parse images array - already handled in useProduct hook
-  const productImages = product.images || [];
+  // Parse images array ensuring it's a string array
+  const productImages: string[] = [];
+  
+  // Handle images from Supabase which come as Json type
+  if (product.images) {
+    const imagesData = Array.isArray(product.images) ? product.images : [product.images];
+    imagesData.forEach(img => {
+      if (typeof img === 'string') {
+        productImages.push(img);
+      }
+    });
+  }
   
   // If no images, provide placeholder
   if (productImages.length === 0) {
@@ -102,10 +112,9 @@ const ProductDetail = () => {
     stock: product.stock_quantity || 0,
     category: categoryName,
     images: productImages,
+    harvestDate: "Recent harvest",
+    certifications: product.is_organic ? ["Organic Certified"] : []
   };
-
-  // Add certifications for ProductDetails component
-  const certifications = product.is_organic ? ["Organic Certified"] : [];
 
   return (
     <div className="min-h-screen bg-background">
@@ -128,15 +137,11 @@ const ProductDetail = () => {
               producer={producer} 
             />
 
-            <ProductPurchase product={{
-              ...productDetailsForPurchase,
-              certifications,
-              harvestDate: "Recent harvest"
-            }} />
+            <ProductPurchase product={productDetailsForPurchase} />
 
             <ProductDetails 
               nutritionalInfo={nutritionalInfo}
-              certifications={certifications}
+              certifications={product.is_organic ? ["Organic Certified"] : []}
               harvestDate="Recent harvest"
               longDescription={product.description || "No detailed description available."}
             />
