@@ -35,8 +35,8 @@ export function ProductCard({ id, name, price, image, category, producer }: Prod
     });
   };
 
-  // Always use the tomato image
-  const imageUrl = "https://images.unsplash.com/photo-1592924357228-becb1ab0fc8a?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=500";
+  // Use the image provided in props, fallback to placeholder if needed
+  const imageUrl = image || "/placeholder.svg";
 
   return (
     <Card className="overflow-hidden h-full flex flex-col">
