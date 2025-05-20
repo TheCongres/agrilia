@@ -19,177 +19,187 @@ export interface BlogPostType {
 export const blogPosts: BlogPostType[] = [
   {
     id: 1,
-    slug: 'benefits-of-organic-farming',
-    title: 'The Benefits of Organic Farming for Biodiversity and Soil Health',
-    excerpt: 'Discover how organic farming practices promote biodiversity and improve soil health compared to conventional farming methods.',
+    slug: 'traditional-algerian-farming',
+    title: 'Traditional Algerian Farming Methods That Preserve Our Land',
+    excerpt: 'Discover how ancestral Algerian farming techniques continue to inspire sustainable agriculture practices while preserving our cultural heritage.',
     content: `
-      <p>Organic farming stands as a beacon of sustainable agriculture, offering numerous benefits for biodiversity and soil health compared to conventional farming practices. By eliminating synthetic pesticides and fertilizers, organic farmers create environments where wildlife can thrive.</p>
+      <p>Algeria's traditional farming methods represent centuries of accumulated wisdom, carefully adapted to our diverse climate zones from the Mediterranean coast to the Sahara. These time-tested techniques not only produce high-quality crops but also preserve our cultural identity and protect our environment.</p>
       
-      <h2>Biodiversity Benefits</h2>
-      <p>Studies consistently show that organic farms support 30% more species and 50% more abundance of organisms than conventional farms. This includes:</p>
+      <h2>The Oasis Farming System</h2>
+      <p>Perhaps the most ingenious of Algeria's traditional farming methods is the oasis cultivation system found in the Saharan regions. This multi-layered approach includes:</p>
       <ul>
-        <li>Greater variety of birds and beneficial insects</li>
-        <li>More diverse plant species in and around fields</li>
-        <li>Higher populations of pollinators like bees and butterflies</li>
-        <li>Increased presence of natural predators that control pest populations</li>
+        <li>Palm trees at the top level providing essential shade</li>
+        <li>Fruit trees forming a middle layer</li>
+        <li>Vegetables, herbs, and cereals at ground level</li>
+        <li>Ancient water management systems called "foggaras" that distribute precious groundwater efficiently</li>
       </ul>
       
-      <h2>Soil Health Improvements</h2>
-      <p>Organic farming practices focus on building soil health through techniques that add organic matter and minimize disturbance:</p>
+      <h2>Terraced Cultivation in the Atlas Mountains</h2>
+      <p>In the mountainous regions of Algeria, farmers have practiced terrace cultivation for generations, creating:</p>
       <ul>
-        <li>Cover cropping to prevent erosion and add nutrients</li>
-        <li>Crop rotation that breaks pest cycles and balances nutrient demands</li>
-        <li>Composting to recycle nutrients and build soil structure</li>
-        <li>Minimal tillage to preserve soil biology and prevent erosion</li>
+        <li>Flat planting areas that prevent soil erosion on steep slopes</li>
+        <li>Water catchment systems that maximize the use of rainfall</li>
+        <li>Stone walls that create microclimates for different crops</li>
+        <li>Biodiversity zones that support both agriculture and native species</li>
       </ul>
       
-      <p>The result is soil with higher organic carbon, better structure, improved water retention, and more biological activity. Research has shown that organically managed soils can contain up to 3.5 times more organic matter than conventionally farmed soils.</p>
+      <p>These terraces represent not just agricultural ingenuity but also community cooperation, as they require collective maintenance and care to function properly.</p>
       
-      <h2>Climate Resilience</h2>
-      <p>These soil improvements translate directly to climate resilience. Healthy, organic soils:</p>
+      <h2>Seed Preservation Traditions</h2>
+      <p>Algerian farmers have long practiced seed saving techniques that:</p>
       <ul>
-        <li>Sequester more carbon, helping mitigate climate change</li>
-        <li>Hold more water during droughts</li>
-        <li>Drain better during floods</li>
-        <li>Reduce erosion during extreme weather events</li>
+        <li>Preserve genetic diversity adapted to local conditions</li>
+        <li>Maintain drought-resistant varieties perfect for our climate</li>
+        <li>Keep alive heirloom varieties with cultural significance</li>
+        <li>Ensure food sovereignty and reduce dependence on imported seeds</li>
       </ul>
       
-      <p>By supporting organic farming through your purchasing choices, you're not just getting food free from synthetic chemicals—you're supporting farming systems that protect biodiversity, build soil health, and help create a more resilient food system for future generations.</p>
+      <p>Today, many agricultural communities are working to document and revive these traditional methods, understanding that they offer sustainable solutions to modern farming challenges while honoring our rich cultural heritage. By supporting farmers who practice these methods, we not only get healthier food but also help preserve Algeria's agricultural legacy for future generations.</p>
     `,
-    coverImage: 'https://images.unsplash.com/photo-1523712999610-f77fbcfc3843',
+    coverImage: 'https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?q=80&w=3174&auto=format&fit=crop',
     author: {
-      name: 'Emma Johnson',
+      name: 'Karim Belhadj',
       avatar: 'https://i.pravatar.cc/150?img=1'
     },
-    category: 'Sustainable Farming',
-    tags: ['Organic', 'Biodiversity', 'Soil Health', 'Sustainability'],
+    category: 'Traditional Farming',
+    tags: ['Algerian Agriculture', 'Sustainable Farming', 'Cultural Heritage', 'Traditional Knowledge'],
     publishedDate: 'May 12, 2025',
     readTime: 5
   },
   {
     id: 2,
-    slug: 'seasonal-eating-guide',
-    title: 'Your Complete Guide to Seasonal Eating: Why Local is Better',
-    excerpt: 'Learn why eating seasonally and locally grown produce is better for your health, the environment, and your local community.',
+    slug: 'seasonal-eating-algerian-way',
+    title: 'Eating with the Seasons: The Algerian Way',
+    excerpt: 'Explore how traditional Algerian cuisine follows seasonal rhythms and how this wisdom applies to modern healthy eating patterns.',
     content: `
-      <p>Eating seasonally and locally isn't just a culinary trend—it's a return to how humans have eaten throughout history, with significant benefits for health, flavor, and environmental sustainability.</p>
+      <p>In Algeria, seasonal eating isn't just a modern health trend—it's a way of life deeply rooted in our cultural practices and traditional wisdom. From the Mediterranean coast to the Sahara Desert, Algerian cuisine has always been guided by the natural rhythm of the seasons.</p>
       
-      <h2>Superior Taste and Nutrition</h2>
-      <p>Produce that's harvested at peak ripeness and consumed quickly offers:</p>
+      <h2>The Four Seasons of Algerian Cuisine</h2>
+      
+      <h3>Spring Abundance</h3>
+      <p>Spring in Algeria brings a celebration of fresh herbs and early vegetables:</p>
       <ul>
-        <li>Maximum flavor development due to natural ripening processes</li>
-        <li>Higher nutrient content, as vitamins and antioxidants haven't degraded during long transport</li>
-        <li>Better texture and eating quality</li>
+        <li><strong>Chakchouka primeur</strong> - A springtime version of our classic dish made with the first tender peppers and tomatoes of the season</li>
+        <li><strong>Souped Khodar</strong> - Spring vegetable soup rich with fresh fava beans, peas, and artichokes</li>
+        <li><strong>Berkoukess</strong> - Hand-rolled pasta served with spring lamb and seasonal vegetables</li>
       </ul>
       
-      <h2>Environmental Benefits</h2>
-      <p>The environmental footprint of seasonal, local eating is substantially smaller:</p>
+      <h3>Summer's Bounty</h3>
+      <p>Summer tables in Algeria feature:</p>
       <ul>
-        <li>Reduced transportation emissions (food miles)</li>
-        <li>Less energy used for artificial growing conditions (heated greenhouses, etc.)</li>
-        <li>Lower storage requirements and associated energy costs</li>
-        <li>Reduced packaging needs for local distribution</li>
+        <li><strong>Hmiss</strong> - Roasted peppers and tomatoes seasoned with olive oil and garlic</li>
+        <li><strong>Various salads</strong> with fresh cucumbers, tomatoes, and herbs from family gardens</li>
+        <li><strong>Meshwi</strong> - Grilled meats served with seasonal vegetables</li>
+        <li><strong>Fresh figs and watermelon</strong> - Nature's perfect summer desserts</li>
       </ul>
       
-      <h2>Supporting Local Economy</h2>
-      <p>When you buy local, seasonal produce:</p>
+      <h3>Autumn Harvests</h3>
+      <p>Fall brings rich flavors and heartier dishes:</p>
       <ul>
-        <li>More of your food dollar stays in the local community</li>
-        <li>Small-scale farmers receive fair prices for their crops</li>
-        <li>Regional food security improves</li>
-        <li>Food traditions and agricultural diversity are preserved</li>
+        <li><strong>Couscous aux légumes d'automne</strong> - Our national dish adorned with pumpkin, turnips, and seasonal roots</li>
+        <li><strong>Olive harvesting</strong> and the first pressing of new olive oil</li>
+        <li><strong>Date harvests</strong> - Especially the prized Deglet Nour variety</li>
       </ul>
       
-      <h2>Seasonal Eating Calendar</h2>
-      <p>While specific availability varies by region, here's a general guide to seasonal eating:</p>
+      <h3>Winter Warmth</h3>
+      <p>Winter meals provide comfort and nutrition:</p>
+      <ul>
+        <li><strong>Chorba frik</strong> - Warming soup with cracked wheat and preserved seasonal vegetables</li>
+        <li><strong>Doubara</strong> - Hearty bean stew perfect for cold days</li>
+        <li><strong>Preserved fruits</strong> - Oranges, lemons and other citrus that peak in winter</li>
+      </ul>
       
-      <h3>Spring</h3>
-      <p>Asparagus, artichokes, peas, spring greens, radishes, strawberries, rhubarb</p>
+      <h2>The Wisdom in Seasonal Eating</h2>
+      <p>This traditional approach to eating offers numerous benefits:</p>
+      <ul>
+        <li>Maximum nutritional value from produce harvested at peak ripeness</li>
+        <li>Support for local farming communities and traditional agricultural practices</li>
+        <li>Natural alignment with the body's changing needs throughout the year</li>
+        <li>Reduced environmental impact through decreased transportation and storage needs</li>
+      </ul>
       
-      <h3>Summer</h3>
-      <p>Tomatoes, zucchini, peppers, berries, stone fruits, cucumbers, corn, melons</p>
-      
-      <h3>Fall</h3>
-      <p>Apples, pears, pumpkins, winter squash, beets, Brussels sprouts, grapes</p>
-      
-      <h3>Winter</h3>
-      <p>Root vegetables, hardy greens (kale, collards), citrus fruits, stored apples, winter squash</p>
-      
-      <p>By attuning your eating habits to nature's cycles, you'll enjoy more flavorful meals while supporting both environmental sustainability and local farmers. Start small by committing to one seasonal meal per week, or visit your local farmers market to discover what's currently at its peak in your area.</p>
+      <p>By embracing these seasonal rhythms in our modern kitchens, we not only enjoy better-tasting food but also connect with our cultural heritage and contribute to a more sustainable food system. The next time you plan your meals, consider what grows naturally in Algeria during the current season—your taste buds and your health will thank you.</p>
     `,
-    coverImage: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085',
+    coverImage: 'https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?q=80&w=3164&auto=format&fit=crop',
     author: {
-      name: 'Miguel Santos',
+      name: 'Amina Kaddour',
       avatar: 'https://i.pravatar.cc/150?img=2'
     },
     category: 'Nutrition',
-    tags: ['Seasonal Eating', 'Local Food', 'Sustainability', 'Nutrition'],
+    tags: ['Seasonal Eating', 'Algerian Cuisine', 'Traditional Food', 'Healthy Eating'],
     publishedDate: 'May 8, 2025',
     readTime: 6
   },
   {
     id: 3,
-    slug: 'organic-certification-explained',
-    title: 'Organic Certification Explained: What Those Labels Really Mean',
-    excerpt: 'Understand what organic certification entails and how to decode various organic labels when shopping for groceries.',
+    slug: 'organic-certification-algeria',
+    title: 'Organic Certification in Algeria: Preserving Traditions While Meeting Global Standards',
+    excerpt: 'Learn how Algerian farmers are navigating the path between traditional organic practices and modern certification requirements.',
     content: `
-      <p>With the growing interest in organic foods, the marketplace has become filled with various labels and certifications that can confuse even the most dedicated organic shopper. Understanding what these labels actually mean is crucial for making informed food choices.</p>
+      <p>Algeria has a rich history of traditional farming that has been naturally organic for centuries. Today, as global markets demand formal certification, Algerian producers face both challenges and opportunities in getting their heritage growing methods recognized officially.</p>
       
-      <h2>What Makes Food "Organic"?</h2>
-      <p>At its core, organic production is an ecological production management system that promotes biodiversity, biological cycles, and soil health. Organic production:</p>
+      <h2>Traditional Algerian Farming: Organically Grown Before It Had a Name</h2>
+      <p>Many Algerian farming communities, particularly in rural areas, have practiced what would now be called organic farming for generations:</p>
       <ul>
-        <li>Prohibits the use of synthetic pesticides and fertilizers</li>
-        <li>Bans genetically modified organisms (GMOs)</li>
-        <li>Forbids the use of sewage sludge as fertilizer</li>
-        <li>Requires sustainable farming practices that maintain or improve soil fertility</li>
-        <li>Mandates humane treatment of animals with access to outdoors</li>
-        <li>Restricts the use of antibiotics and hormones in livestock</li>
+        <li>Use of natural fertilizers such as animal manure and compost</li>
+        <li>Traditional pest management techniques using companion planting and natural repellents</li>
+        <li>Water conservation methods adapted to our semi-arid climate</li>
+        <li>Seed saving and use of locally adapted varieties</li>
       </ul>
       
-      <h2>Major Organic Certifications</h2>
+      <p>These methods—developed over centuries of agricultural experience—align perfectly with many organic principles but often lack formal documentation and certification.</p>
       
-      <h3>USDA Organic (United States)</h3>
-      <p>This is the federal standard for organic products in the US, with several levels:</p>
+      <h2>The Path to Certification</h2>
+      <p>For Algerian farmers seeking to enter the certified organic market, several paths exist:</p>
+      
+      <h3>National Certification</h3>
+      <p>Algeria's organic certification system is still developing, with the Ministry of Agriculture working to establish standards that respect both international norms and local agricultural traditions.</p>
+      
+      <h3>International Certifications Recognized in Algeria</h3>
+      <p>Several international organic certifications are available to Algerian producers:</p>
       <ul>
-        <li><strong>100% Organic:</strong> Contains only organic ingredients</li>
-        <li><strong>Organic:</strong> Contains at least 95% organic ingredients</li>
-        <li><strong>Made with Organic Ingredients:</strong> Contains at least 70% organic ingredients</li>
+        <li><strong>EU Organic Certification</strong> - Essential for exporting to European markets</li>
+        <li><strong>USDA Organic</strong> - Required for the American market</li>
+        <li><strong>CAAQ (Conseil des appellations agroalimentaires du Québec)</strong> - Important for francophone markets</li>
       </ul>
       
-      <h3>EU Organic Logo (European Union)</h3>
-      <p>Products with this logo must have at least 95% of their agricultural ingredients produced organically, with stricter standards than many other certifications.</p>
-      
-      <h3>Soil Association (UK)</h3>
-      <p>The UK's leading organic certification body, with standards that exceed the minimum requirements of EU regulations in some areas.</p>
-      
-      <h2>Beyond Organic: Other Certifications</h2>
-      
-      <p>Several other certifications may appear alongside or instead of organic labels:</p>
-      
-      <h3>Regenerative Organic Certified</h3>
-      <p>A newer certification that builds on USDA Organic with additional requirements for soil health, animal welfare, and social fairness.</p>
-      
-      <h3>Certified Naturally Grown</h3>
-      <p>A peer-review certification program following organic standards, designed for small-scale farmers who find USDA certification prohibitively expensive.</p>
-      
-      <h2>Tips for Organic Shoppers</h2>
+      <h2>Challenges Facing Algerian Organic Producers</h2>
+      <p>The journey to certification presents several obstacles:</p>
       <ul>
-        <li>Prioritize organic for items on the "Dirty Dozen" list (strawberries, spinach, kale, etc.)</li>
-        <li>Know that "natural" is not the same as "organic" and has no regulated definition</li>
-        <li>Look for certification logos, not just the word "organic" in branding</li>
-        <li>Consider talking directly to producers at farmers markets about their growing practices</li>
+        <li><strong>Cost</strong> - Certification fees can be prohibitive for small-scale farmers</li>
+        <li><strong>Documentation requirements</strong> - Many traditional farmers are not accustomed to the detailed record-keeping needed</li>
+        <li><strong>Transition periods</strong> - The required 2-3 year transition period can cause financial strain</li>
+        <li><strong>Technical support</strong> - Limited access to consultants familiar with both international standards and local conditions</li>
       </ul>
       
-      <p>By understanding organic certifications, you can make more informed choices about the food you purchase and the agricultural practices you support with your consumer dollars.</p>
+      <h2>Success Stories</h2>
+      <p>Despite these challenges, success stories are emerging across Algeria:</p>
+      <ul>
+        <li>Cooperatives in the Aurès Mountains pooling resources to achieve organic certification for their olive oil</li>
+        <li>Date producers in the southern oases obtaining premium prices for certified organic Deglet Nour dates</li>
+        <li>Medicinal herb collectors in the Tell Atlas working with international partners to document sustainable wild-harvesting practices</li>
+      </ul>
+      
+      <h2>The Future of Algerian Organic Agriculture</h2>
+      <p>The path forward involves balancing tradition with modern requirements:</p>
+      <ul>
+        <li>Development of participatory guarantee systems appropriate for small producers</li>
+        <li>Documentation of traditional knowledge that aligns with organic principles</li>
+        <li>Training programs specifically designed for Algerian agricultural conditions</li>
+        <li>Consumer education to build domestic market appreciation for certified organic products</li>
+      </ul>
+      
+      <p>By supporting the transition to formal organic certification while honoring traditional practices, we can help Algerian farmers gain recognition and fair compensation for the environmentally sound methods they have maintained for generations.</p>
     `,
-    coverImage: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158',
+    coverImage: 'https://images.unsplash.com/photo-1466442929976-97f336a657be?q=80&w=1470&auto=format&fit=crop',
     author: {
-      name: 'Priya Patel',
+      name: 'Omar Benali',
       avatar: 'https://i.pravatar.cc/150?img=3'
     },
-    category: 'Consumer Education',
-    tags: ['Organic', 'Certification', 'Food Labels', 'Shopping Guide'],
+    category: 'Certification',
+    tags: ['Organic Certification', 'Algerian Agriculture', 'Traditional Farming', 'Global Standards'],
     publishedDate: 'May 3, 2025',
     readTime: 7
   }
 ];
+
