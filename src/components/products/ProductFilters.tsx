@@ -23,6 +23,8 @@ const ProductFilters = ({ filters, onChange }: ProductFiltersProps) => {
     { id: "bakery", label: "Bakery" },
     { id: "honey", label: "Honey & Preserves" },
     { id: "meat", label: "Meat & Poultry" },
+    { id: "herbs", label: "Herbs & Spices" },
+    { id: "couscous", label: "Couscous & Grains" },
   ];
 
   const handleCategoryChange = (category: string) => {
