@@ -23,7 +23,7 @@ const categoriesData = [
     id: 'dairy',
     name: 'Dairy & Eggs',
     description: 'Free-range eggs and organic dairy products from Algerian farms',
-    image: 'https://images.unsplash.com/photo-1639557381932-5e3d5d2a1bfd?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=500',
+    image: 'https://images.unsplash.com/photo-1588083402307-ad42a3870779?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     productCount: 18
   },
   {
@@ -37,7 +37,7 @@ const categoriesData = [
     id: 'honey',
     name: 'Honey & Preserves',
     description: 'Local Algerian honey and homemade preserves',
-    image: 'https://images.unsplash.com/photo-1587049633312-d628ae20a4fa?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=500',
+    image: 'https://plus.unsplash.com/premium_photo-1722013256877-9ab0a780d25c?q=80&w=1432&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     productCount: 9
   },
   {
@@ -58,7 +58,7 @@ const categoriesData = [
     id: 'couscous',
     name: 'Couscous & Grains',
     description: 'Authentic Algerian grains, including traditional hand-rolled couscous',
-    image: 'https://images.unsplash.com/photo-1574323347407-f5e1c0b24776?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=500',
+    image: 'https://images.unsplash.com/photo-1541518763669-27fef04b14ea?q=80&w=1466&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     productCount: 15
   },
 ];

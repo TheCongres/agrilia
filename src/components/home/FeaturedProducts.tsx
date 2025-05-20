@@ -87,7 +87,7 @@ const products = [
     name: 'Couscous',
     price: 320,
     unit: 'pack',
-    image: 'https://images.unsplash.com/photo-1612258272175-91b8e70a8529?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800',
+    image: 'https://plus.unsplash.com/premium_photo-1713089941197-0a4c8b3dfeca?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     producer: 'Céréales de Sétif',
     category: 'Grains',
     rating: 4.4,

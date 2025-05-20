@@ -64,7 +64,7 @@ const Login = () => {
           <div className="bg-white rounded-lg border border-natural-200 shadow-sm p-6 md:p-8">
             <div className="mb-6 text-center">
               <h1 className="text-2xl font-bold text-earth-700 mb-2">Welcome Back</h1>
-              <p className="text-earth-500">Sign in to your OrganiMarket account</p>
+              <p className="text-earth-500">Sign in to your AgriLia account</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">

@@ -18,18 +18,18 @@ const Account = () => {
   
   // Mock user data - in a real app this would come from a context or API
   const userData = {
-    firstName: "Jane",
-    lastName: "Doe",
-    email: "jane.doe@example.com",
-    phone: "(555) 123-4567",
+    firstName: "lina",
+    lastName: "yousfi",
+    email: "linayousfi@gmail.com",
+    phone: "(213) 123-4567",
     addresses: [
       {
         id: 1,
-        type: "Home",
+        type: "femme",
         street: "123 Organic Way",
         city: "Greenville",
-        state: "CA",
-        zipCode: "90210",
+        state: "medea",
+        zipCode: "26000",
         isDefault: true
       },
       {
@@ -37,7 +37,7 @@ const Account = () => {
         type: "Work",
         street: "456 Natural Blvd",
         city: "Ecotown",
-        state: "CA",
+        state: "blida",
         zipCode: "92382",
         isDefault: false
       }
