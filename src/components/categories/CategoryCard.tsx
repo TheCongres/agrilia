@@ -31,7 +31,7 @@ const CategoryCard = ({ category, onClick }: CategoryProps) => {
         <p className="text-earth-500 text-sm mb-3 flex-grow">{category.description}</p>
         <div className="flex justify-between items-center">
           <span className="text-sm text-natural-600 font-medium">
-            {category.productCount} products
+            {category.productCount} {category.productCount === 1 ? 'product' : 'products'}
           </span>
           <span className="text-natural-500 font-medium text-sm">
             Browse →

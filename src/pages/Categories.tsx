@@ -10,56 +10,56 @@ const categoriesData = [
     name: 'Fruits',
     description: 'Fresh organic fruits from local Algerian orchards',
     image: 'https://images.unsplash.com/photo-1619566636858-adf3ef46400b?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=500',
-    productCount: 24
+    productCount: 3 // Updated to actual count
   },
   {
     id: 'vegetables',
     name: 'Vegetables',
     description: 'Seasonal vegetables grown without pesticides in the fertile lands of Algeria',
     image: 'https://images.unsplash.com/photo-1597362925123-77861d3fbac7?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=500',
-    productCount: 36
+    productCount: 2 // Updated to actual count
   },
   {
     id: 'dairy',
     name: 'Dairy & Eggs',
     description: 'Free-range eggs and organic dairy products from Algerian farms',
     image: 'https://images.unsplash.com/photo-1588083402307-ad42a3870779?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    productCount: 18
+    productCount: 2 // Updated to actual count
   },
   {
     id: 'bakery',
     name: 'Bakery',
     description: 'Traditional Algerian baked goods using organic local flour',
     image: 'https://images.unsplash.com/photo-1549931319-a545dcf3bc73?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=500',
-    productCount: 12
+    productCount: 1 // Updated to actual count
   },
   {
     id: 'honey',
     name: 'Honey & Preserves',
     description: 'Local Algerian honey and homemade preserves',
     image: 'https://plus.unsplash.com/premium_photo-1664273586888-859762c34ce4?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    productCount: 9
+    productCount: 1 // Updated to actual count
   },
   {
     id: 'meat',
     name: 'Meat & Poultry',
     description: 'Ethically raised, organic meat products from Algerian farms',
     image: 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    productCount: 18
+    productCount: 2 // Updated to actual count
   },
   {
     id: 'herbs',
     name: 'Herbs & Spices',
     description: 'Traditional Algerian herbs and spices grown with care in our rich soil',
     image: 'https://images.unsplash.com/photo-1515586000433-45406d8e6662?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=500',
-    productCount: 24
+    productCount: 1 // Updated to actual count
   },
   {
     id: 'couscous',
     name: 'Couscous & Grains',
     description: 'Authentic Algerian grains, including traditional hand-rolled couscous',
     image: 'https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    productCount: 15
+    productCount: 2 // Updated to actual count
   },
 ];
 

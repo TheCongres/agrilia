@@ -1,42 +1,43 @@
 
 import { Link } from 'react-router-dom';
 
+// Updated category counts based on the actual number of products in each category
 const categories = [
   {
     id: 'fruits',
     name: 'Fruits',
     image: 'https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80',
-    count: 32,
+    count: 3, // Updated to actual count (Strawberries, Avocados, Apples)
   },
   {
     id: 'vegetables',
     name: 'Vegetables',
     image: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80',
-    count: 45,
+    count: 2, // Updated to actual count (Tomatoes, Spinach)
   },
   {
     id: 'dairy',
     name: 'Dairy',
     image: 'https://images.unsplash.com/photo-1588083402307-ad42a3870779?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    count: 18,
+    count: 2, // Updated to actual count (Milk, Eggs)
   },
   {
     id: 'herbs',
     name: 'Herbs',
     image: 'https://images.unsplash.com/photo-1515586000433-45406d8e6662?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80',
-    count: 24,
+    count: 1, // Updated to actual count (Fresh Mint Bundle)
   },
   {
     id: 'couscous',
     name: 'Couscous & Grains',
     image: 'https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    count: 15,
+    count: 2, // Updated to actual count (Traditional Hand-Rolled Couscous, Whole Grain Couscous)
   },
   {
     id: 'meat',
     name: 'Meat',
     image: 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    count: 12,
+    count: 2, // Updated to actual count (Grass-Fed Beef, Organic Chicken)
   },
 ];
 
