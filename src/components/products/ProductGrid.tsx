@@ -53,7 +53,7 @@ const productsData = [
     name: "Grass-Fed Whole Milk",
     category: "dairy",
     price: 290,
-    image: "https://images.unsplash.com/photo-1734104739790-855195038d93?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "https://images.unsplash.com/photo-1563636619-e9143da7973b?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     producer: "Sunshine Dairy Co-op",
     organic: true,
     inStock: true,
@@ -120,6 +120,117 @@ const productsData = [
     rating: 4.4,
     reviewCount: 12
   },
+  // New herbs products
+  {
+    id: 10,
+    name: "Fresh Mint Bundle",
+    category: "herbs",
+    price: 120,
+    image: "https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800",
+    producer: "Atlas Herb Garden",
+    organic: true,
+    inStock: true,
+    rating: 4.9,
+    reviewCount: 18
+  },
+  {
+    id: 11,
+    name: "Organic Basil Pot",
+    category: "herbs",
+    price: 180,
+    image: "https://images.unsplash.com/photo-1627163439134-7a8c47e08208?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    producer: "Green Oasis Farm",
+    organic: true,
+    inStock: true,
+    rating: 4.7,
+    reviewCount: 14
+  },
+  {
+    id: 12,
+    name: "Wild Thyme",
+    category: "herbs",
+    price: 150,
+    image: "https://images.unsplash.com/photo-1532509774891-141d37f25ae9?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    producer: "Mountain Herbs",
+    organic: true,
+    inStock: true,
+    rating: 4.6,
+    reviewCount: 11
+  },
+  // New couscous products
+  {
+    id: 13,
+    name: "Traditional Hand-Rolled Couscous",
+    category: "couscous",
+    price: 320,
+    image: "https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    producer: "Artisanal Grains",
+    organic: true,
+    inStock: true,
+    rating: 5.0,
+    reviewCount: 28
+  },
+  {
+    id: 14,
+    name: "Whole Grain Couscous",
+    category: "couscous",
+    price: 280,
+    image: "https://images.unsplash.com/photo-1515942400420-2b98fed1f515?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    producer: "Sétif Cereals",
+    organic: true,
+    inStock: true,
+    rating: 4.8,
+    reviewCount: 15
+  },
+  {
+    id: 15,
+    name: "Organic Pearl Couscous",
+    category: "couscous",
+    price: 350,
+    image: "https://images.unsplash.com/photo-1596097635121-14b63b7a0c19?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    producer: "Sahara Grain Cooperative",
+    organic: true,
+    inStock: false,
+    rating: 4.7,
+    reviewCount: 19
+  },
+  // New meat products
+  {
+    id: 16,
+    name: "Organic Grass-Fed Beef",
+    category: "meat",
+    price: 850,
+    image: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    producer: "Sustainable Farms",
+    organic: true,
+    inStock: true,
+    rating: 4.9,
+    reviewCount: 31
+  },
+  {
+    id: 17,
+    name: "Free-Range Lamb",
+    category: "meat",
+    price: 980,
+    image: "https://images.unsplash.com/photo-1603048592822-5408fa8f754f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    producer: "Highlands Pasture",
+    organic: true,
+    inStock: true,
+    rating: 4.8,
+    reviewCount: 22
+  },
+  {
+    id: 18,
+    name: "Organic Chicken",
+    category: "meat",
+    price: 550,
+    image: "https://images.unsplash.com/photo-1587593810167-a84920ea0781?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    producer: "Valley Poultry",
+    organic: true,
+    inStock: true,
+    rating: 4.7,
+    reviewCount: 19
+  }
 ];
 
 const ProductGrid = ({ filters }: ProductGridProps) => {

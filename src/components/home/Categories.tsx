@@ -29,14 +29,14 @@ const categories = [
   {
     id: 'couscous',
     name: 'Couscous & Grains',
-    image: 'https://images.unsplash.com/photo-1541518763669-27fef04b14ea?q=80&w=1466&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    image: 'https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     count: 15,
   },
   {
-    id: 'honey',
-    name: 'Honey',
-    image: 'https://plus.unsplash.com/premium_photo-1722013256877-9ab0a780d25c?q=80&w=1432&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    count: 7,
+    id: 'meat',
+    name: 'Meat',
+    image: 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    count: 12,
   },
 ];
 
