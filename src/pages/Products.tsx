@@ -3,15 +3,29 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ProductGrid from "@/components/products/ProductGrid";
 import ProductFilters from "@/components/products/ProductFilters";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
 const Products = () => {
+  const [searchParams] = useSearchParams();
+  const categoryFromUrl = searchParams.get('category');
+
   const [activeFilters, setActiveFilters] = useState({
-    categories: [],
+    categories: categoryFromUrl ? [categoryFromUrl] : [],
     priceRange: [0, 100],
     organic: false,
     inStock: false
   });
+
+  // Update filters when URL parameters change
+  useEffect(() => {
+    if (categoryFromUrl) {
+      setActiveFilters(prev => ({
+        ...prev,
+        categories: [categoryFromUrl]
+      }));
+    }
+  }, [categoryFromUrl]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -20,7 +34,15 @@ const Products = () => {
         <div className="container-custom py-8">
           <div className="text-center mb-10">
             <h1 className="text-3xl md:text-4xl font-bold text-earth-700 mb-4">
-              All <span className="text-natural-500">Products</span>
+              {categoryFromUrl ? (
+                <>
+                  <span className="text-natural-500">{categoryFromUrl.charAt(0).toUpperCase() + categoryFromUrl.slice(1)}</span> Products
+                </>
+              ) : (
+                <>
+                  All <span className="text-natural-500">Products</span>
+                </>
+              )}
             </h1>
             <p className="text-earth-500 max-w-2xl mx-auto">
               Browse our selection of fresh organic produce, dairy, and more. 
