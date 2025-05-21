@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useCart } from "@/context/CartContext";
 import Header from "@/components/layout/Header";
@@ -8,7 +9,7 @@ import { ChevronRight } from "lucide-react";
 import { formatCurrency } from "@/lib/utils";
 
 const Checkout = () => {
-  const { cartState, cartTotal } = useCart();
+  const { cartState, cartTotal, clearCart } = useCart();
   const [currentStep, setCurrentStep] = useState(1);
 
   // Mock checkout steps for now
@@ -42,6 +43,18 @@ const Checkout = () => {
       </div>
     );
   }
+
+  // Handle completing the order
+  const handleCompleteOrder = async () => {
+    // In a real app, this would submit the order to the backend
+    // For now, we're just clearing the cart and moving to the confirmation step
+    try {
+      await clearCart();
+      setCurrentStep(4);
+    } catch (error) {
+      console.error("Error completing order:", error);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -192,7 +205,7 @@ const Checkout = () => {
                 </Button>
                 <Button 
                   className="bg-natural-500 hover:bg-natural-600"
-                  onClick={() => setCurrentStep(4)}
+                  onClick={handleCompleteOrder}
                 >
                   Complete Order
                 </Button>
