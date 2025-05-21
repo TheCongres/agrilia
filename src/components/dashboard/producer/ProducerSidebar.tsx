@@ -53,7 +53,7 @@ const ProducerSidebar = () => {
       <SidebarTrigger className="m-2 self-end text-earth-600" />
 
       <SidebarContent>
-        <SidebarGroup defaultOpen={isGroupExpanded}>
+        <SidebarGroup>
           <SidebarGroupLabel>Dashboard</SidebarGroupLabel>
 
           <SidebarGroupContent>

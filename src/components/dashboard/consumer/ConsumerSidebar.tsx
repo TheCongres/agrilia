@@ -14,6 +14,7 @@ import {
   SidebarTrigger,
   useSidebar,
 } from '@/components/ui/sidebar';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 
 const ConsumerSidebar = () => {
   const { state } = useSidebar();
@@ -41,7 +42,7 @@ const ConsumerSidebar = () => {
       <SidebarTrigger className="m-2 self-end text-earth-600" />
 
       <SidebarContent>
-        <SidebarGroup defaultOpen={isGroupExpanded}>
+        <SidebarGroup>
           <SidebarGroupLabel>Dashboard</SidebarGroupLabel>
 
           <SidebarGroupContent>
