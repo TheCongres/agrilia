@@ -2,7 +2,6 @@
 import { ReactNode } from "react";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
-import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { 
   SidebarProvider, 
@@ -47,7 +46,7 @@ const DashboardLayout = ({ children, sidebarContent, pageTitle }: DashboardLayou
       <div className="min-h-screen flex w-full">
         <Sidebar>
           <SidebarHeader className="border-b p-4">
-            <h2 className="text-xl font-bold text-earth-700">OrganiMarket</h2>
+            <h2 className="text-xl font-bold text-earth-700">AgriLia</h2>
             <p className="text-sm text-earth-500">
               {user.user_type === 'producer' ? 'Producer Portal' : 'Consumer Dashboard'}
             </p>
