@@ -48,6 +48,7 @@ const Login = () => {
     setIsLoading(true);
     
     try {
+      // Pass the selected user type to signIn for validation
       await signIn(email, password, userType);
       // Navigation is handled in the signIn function
     } catch (error) {

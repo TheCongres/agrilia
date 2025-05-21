@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Session } from '@supabase/supabase-js';
 import { useNavigate } from 'react-router-dom';
@@ -107,7 +106,7 @@ export function useAuthProvider() {
     };
   }, []);
 
-  const signIn = async (email: string, password: string, userType?: 'consumer' | 'producer') => {
+  const signIn = async (email: string, password: string, requiredUserType?: 'consumer' | 'producer') => {
     try {
       const { error, data } = await supabase.auth.signInWithPassword({ email, password });
 
@@ -115,16 +114,23 @@ export function useAuthProvider() {
         throw error;
       }
       
-      // If userType is provided, update the profile
-      if (userType && data.user) {
-        const { error: updateError } = await supabase
-          .from('profiles')
-          .update({ user_type: userType })
-          .eq('id', data.user.id);
-          
-        if (updateError) {
-          console.error("Error updating user type:", updateError);
-        }
+      // Fetch the user's profile to check their user type
+      const { data: userData, error: profileError } = await supabase
+        .from('profiles')
+        .select('user_type')
+        .eq('id', data.user.id)
+        .single();
+        
+      if (profileError) {
+        console.error("Error fetching user profile:", profileError);
+        throw new Error("Could not verify user type");
+      }
+      
+      // Check if the user has the required user type
+      if (requiredUserType && userData.user_type !== requiredUserType) {
+        // Sign out the user if they don't have the required user type
+        await supabase.auth.signOut();
+        throw new Error(`Access denied. This login is only for ${requiredUserType}s.`);
       }
       
       toast({
