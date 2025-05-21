@@ -15,7 +15,7 @@ const Header = () => {
         <nav className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="text-xl font-bold text-earth-800">
-            OrganiMarket
+            AgriLia
           </Link>
 
           {/* Desktop Navigation */}
