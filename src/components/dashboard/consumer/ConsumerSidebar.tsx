@@ -1,7 +1,7 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { ShoppingCart, User, FileText, Package } from 'lucide-react';
+import { ShoppingCart, User, Heart, Package, Home, Settings } from 'lucide-react';
 import {
   Sidebar,
   SidebarContent,
@@ -14,7 +14,6 @@ import {
   SidebarTrigger,
   useSidebar,
 } from '@/components/ui/sidebar';
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 
 const ConsumerSidebar = () => {
   const { state } = useSidebar();
@@ -23,9 +22,6 @@ const ConsumerSidebar = () => {
   const currentPath = location.pathname;
 
   const isActive = (path: string) => currentPath === path || currentPath.startsWith(path);
-  const isGroupExpanded = ['/dashboard/orders', '/dashboard/account', '/dashboard/favorites', '/dashboard/addresses'].some(
-    path => isActive(path)
-  );
 
   const getNavClass = (path: string) => {
     return isActive(path)
@@ -48,6 +44,15 @@ const ConsumerSidebar = () => {
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
+                <SidebarMenuButton asChild tooltip="Home">
+                  <NavLink to="/dashboard/consumer" end className={getNavClass('/dashboard/consumer')}>
+                    <Home className="mr-2 h-5 w-5" />
+                    {!collapsed && <span>Dashboard</span>}
+                  </NavLink>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              
+              <SidebarMenuItem>
                 <SidebarMenuButton asChild tooltip="Orders">
                   <NavLink to="/dashboard/orders" className={getNavClass('/dashboard/orders')}>
                     <ShoppingCart className="mr-2 h-5 w-5" />
@@ -68,7 +73,7 @@ const ConsumerSidebar = () => {
               <SidebarMenuItem>
                 <SidebarMenuButton asChild tooltip="Favorites">
                   <NavLink to="/dashboard/favorites" className={getNavClass('/dashboard/favorites')}>
-                    <FileText className="mr-2 h-5 w-5" />
+                    <Heart className="mr-2 h-5 w-5" />
                     {!collapsed && <span>Favorites</span>}
                   </NavLink>
                 </SidebarMenuButton>
@@ -79,6 +84,15 @@ const ConsumerSidebar = () => {
                   <NavLink to="/dashboard/addresses" className={getNavClass('/dashboard/addresses')}>
                     <Package className="mr-2 h-5 w-5" />
                     {!collapsed && <span>My Addresses</span>}
+                  </NavLink>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild tooltip="Settings">
+                  <NavLink to="/dashboard/settings" className={getNavClass('/dashboard/settings')}>
+                    <Settings className="mr-2 h-5 w-5" />
+                    {!collapsed && <span>Settings</span>}
                   </NavLink>
                 </SidebarMenuButton>
               </SidebarMenuItem>
