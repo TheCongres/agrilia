@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import { useCart } from '@/context/CartContext';
+import { useFavorites } from '@/context/FavoritesContext';
 import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
@@ -13,12 +14,16 @@ import { formatCurrency } from '@/lib/utils';
 const ConsumerDashboard = () => {
   const { user } = useAuth();
   const { cartState } = useCart();
+  const { favoritesState } = useFavorites();
   const navigate = useNavigate();
   const [recentOrders, setRecentOrders] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   
   // For demo purposes, we'll show the cart items as "recent orders"
   const hasOrders = cartState.items.length > 0;
+  
+  // Check if there are favorites
+  const hasFavorites = favoritesState.items.length > 0;
   
   return (
     <div className="space-y-6">
@@ -95,10 +100,9 @@ const ConsumerDashboard = () => {
             </p>
             <Separator className="my-2" />
             
-            {/* For demo purposes, showing products from the cart as "favorites" */}
-            {hasOrders ? (
+            {hasFavorites ? (
               <div className="space-y-3 max-h-48 overflow-auto">
-                {cartState.items.slice(0, 3).map((item) => (
+                {favoritesState.items.slice(0, 3).map((item) => (
                   <div key={item.id} className="flex items-center gap-3">
                     <div className="w-12 h-12 rounded overflow-hidden border border-natural-200">
                       <img 
@@ -109,7 +113,7 @@ const ConsumerDashboard = () => {
                     </div>
                     <div className="flex-1">
                       <h5 className="text-sm font-medium">{item.name}</h5>
-                      <p className="text-xs text-natural-500">{item.category}</p>
+                      <p className="text-xs text-natural-500 capitalize">{item.category}</p>
                     </div>
                     <div className="text-sm font-medium text-earth-700">
                       {formatCurrency(item.price)}
@@ -125,11 +129,11 @@ const ConsumerDashboard = () => {
           </CardContent>
           <CardFooter>
             <Button 
-              onClick={() => navigate('/products')} 
+              onClick={() => navigate('/dashboard/consumer/favorites')} 
               variant="outline" 
               className="w-full text-earth-700"
             >
-              Browse Products <ChevronRight className="ml-2 h-4 w-4" />
+              View All Favorites <ChevronRight className="ml-2 h-4 w-4" />
             </Button>
           </CardFooter>
         </Card>

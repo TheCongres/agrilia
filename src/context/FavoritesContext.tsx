@@ -96,6 +96,8 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       if (user) {
         dispatch({ type: "SET_LOADING", payload: true });
         try {
+          console.log("Fetching favorites for user:", user.id);
+          
           // Get favorites items from Supabase using a raw SQL query
           // This avoids TypeScript issues until the database types are updated
           const { data, error } = await supabase
@@ -103,8 +105,13 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({ chi
             .select('*')
             .eq('user_id', user.id);
 
-          if (error) throw error;
+          if (error) {
+            console.error("Error fetching favorites:", error);
+            throw error;
+          }
 
+          console.log("Favorites data fetched:", data);
+          
           // Type cast the data as FavoriteItem[] since we know the structure
           const favoriteItems = data as unknown as FavoriteItem[];
           dispatch({ type: "SET_ITEMS", payload: favoriteItems });
@@ -114,6 +121,8 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({ chi
           if (storedFavorites) {
             const guestFavorites = JSON.parse(storedFavorites);
             if (guestFavorites.items && guestFavorites.items.length > 0) {
+              console.log("Migrating guest favorites:", guestFavorites.items);
+              
               // Add each guest favorite item to the user's favorites in Supabase
               for (const item of guestFavorites.items) {
                 // Check if the item already exists in the user's favorites
@@ -145,6 +154,7 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({ chi
                 .select('*');
                 
               if (updatedData) {
+                console.log("Updated favorites after migration:", updatedData);
                 // Type cast again
                 const updatedItems = updatedData as unknown as FavoriteItem[];
                 dispatch({ type: "SET_ITEMS", payload: updatedItems });
@@ -160,6 +170,7 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({ chi
         // For guest users, load from localStorage
         const storedFavorites = localStorage.getItem("guest_favorites");
         if (storedFavorites) {
+          console.log("Loading guest favorites from storage:", storedFavorites);
           const parsedFavorites = JSON.parse(storedFavorites);
           dispatch({ type: "SET_ITEMS", payload: parsedFavorites.items || [] });
         }
@@ -172,6 +183,7 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({ chi
   // Save guest favorites to localStorage when it changes
   useEffect(() => {
     if (!user) {
+      console.log("Saving guest favorites to storage:", favoritesState);
       localStorage.setItem("guest_favorites", JSON.stringify(favoritesState));
     }
   }, [favoritesState, user]);
