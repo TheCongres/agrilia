@@ -1,13 +1,14 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useFavorites } from '@/context/FavoritesContext';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { formatCurrency } from '@/lib/utils';
-import { Heart, ShoppingCart, Trash2 } from 'lucide-react';
+import { Heart, ShoppingCart, Trash2, ArrowRight } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 import { Link } from 'react-router-dom';
+import { toast } from '@/components/ui/use-toast';
 
 const FavoritesPage = () => {
   const { favoritesState, removeFromFavorites, clearFavorites } = useFavorites();
@@ -24,10 +25,19 @@ const FavoritesPage = () => {
       image: item.image,
       category: item.category,
     });
+    
+    toast({
+      title: "Added to cart",
+      description: `${item.name} has been added to your cart`,
+    });
   };
 
   if (loading) {
-    return <div className="flex justify-center p-8">Loading your favorites...</div>;
+    return (
+      <div className="flex justify-center items-center p-12">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-earth-600"></div>
+      </div>
+    );
   }
 
   return (
@@ -39,7 +49,7 @@ const FavoritesPage = () => {
           <Button 
             variant="outline" 
             size="sm"
-            className="text-natural-600"
+            className="text-natural-600 hover:text-red-600 hover:border-red-200"
             onClick={() => clearFavorites()}
           >
             <Trash2 className="h-4 w-4 mr-2" />
@@ -66,15 +76,15 @@ const FavoritesPage = () => {
           </Button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {favorites.map((item) => (
             <Card key={item.id} className="overflow-hidden hover:shadow-md transition-shadow">
-              <div className="h-36 w-full overflow-hidden relative">
+              <div className="h-48 w-full overflow-hidden relative group">
                 <Link to={`/product/${item.product_id}`}>
                   <img 
                     src={item.image} 
                     alt={item.name}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </Link>
                 <Button
@@ -92,10 +102,10 @@ const FavoritesPage = () => {
                   to={`/product/${item.product_id}`} 
                   className="block hover:text-earth-600 transition-colors"
                 >
-                  <h3 className="font-medium text-lg mb-1">{item.name}</h3>
+                  <h3 className="font-medium text-lg mb-1 line-clamp-2">{item.name}</h3>
                 </Link>
-                <p className="text-xs text-natural-500 mb-2">{item.category}</p>
-                <div className="flex items-center justify-between">
+                <p className="text-xs text-natural-500 mb-2 capitalize">{item.category}</p>
+                <div className="flex items-center justify-between mt-3">
                   <p className="font-semibold text-earth-700">{formatCurrency(item.price)}</p>
                   <Button 
                     size="sm" 
@@ -107,6 +117,19 @@ const FavoritesPage = () => {
                   </Button>
                 </div>
               </CardContent>
+              <CardFooter className="px-4 py-3 pt-0">
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className="w-full text-earth-600 hover:text-earth-800" 
+                  asChild
+                >
+                  <Link to={`/product/${item.product_id}`}>
+                    View Details
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </CardFooter>
             </Card>
           ))}
         </div>
