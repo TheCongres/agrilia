@@ -16,7 +16,6 @@ const ConsumerDashboard = () => {
   const { cartState } = useCart();
   const { favoritesState } = useFavorites();
   const navigate = useNavigate();
-  const [recentOrders, setRecentOrders] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   
   // For demo purposes, we'll show the cart items as "recent orders"
@@ -129,7 +128,7 @@ const ConsumerDashboard = () => {
           </CardContent>
           <CardFooter>
             <Button 
-              onClick={() => navigate('/dashboard/consumer/favorites')} 
+              onClick={() => navigate('/dashboard/favorites')} 
               variant="outline" 
               className="w-full text-earth-700"
             >
