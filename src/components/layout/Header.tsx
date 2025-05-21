@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, ShoppingCart, User, Menu, X, LogOut } from 'lucide-react';
+import { Search, ShoppingCart, User, Menu, X, LogOut, LayoutDashboard } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/context/CartContext';
 import { useAuth } from '@/hooks/useAuth';
@@ -99,6 +99,12 @@ const Header = () => {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-48 bg-white">
                   <DropdownMenuItem asChild>
+                    <Link to="/dashboard" className="w-full cursor-pointer">
+                      <LayoutDashboard className="h-4 w-4 mr-2" />
+                      Dashboard
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
                     <Link to="/account" className="w-full cursor-pointer">
                       My Account
                     </Link>
@@ -194,12 +200,20 @@ const Header = () => {
                   {user ? (
                     <>
                       <Link 
+                        to="/dashboard" 
+                        className="flex items-center space-x-2 text-earth-600 hover:text-natural-500 transition-colors"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        <LayoutDashboard className="h-5 w-5" />
+                        <span>Dashboard</span>
+                      </Link>
+                      <Link 
                         to="/account" 
                         className="flex items-center space-x-2 text-earth-600 hover:text-natural-500 transition-colors"
                         onClick={() => setIsMenuOpen(false)}
                       >
                         <User className="h-5 w-5" />
-                        <span>{user.first_name || user.email.split('@')[0]}'s Account</span>
+                        <span>My Account</span>
                       </Link>
                       <button 
                         onClick={(e) => {
