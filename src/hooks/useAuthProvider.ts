@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Session } from '@supabase/supabase-js';
 import { useNavigate } from 'react-router-dom';
@@ -130,7 +131,7 @@ export function useAuthProvider() {
       if (requiredUserType && userData.user_type !== requiredUserType) {
         // Sign out the user if they don't have the required user type
         await supabase.auth.signOut();
-        throw new Error(`Access denied. This login is only for ${requiredUserType}s.`);
+        throw new Error(`Access denied. This account is registered as a ${userData.user_type}. Please select the correct account type.`);
       }
       
       toast({
