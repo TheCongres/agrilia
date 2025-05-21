@@ -24,6 +24,9 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import NotFound from "./pages/NotFound";
 import CartDrawer from "./components/cart/CartDrawer";
+import Dashboard from "./pages/dashboard/Dashboard";
+import ProducerDashboard from "./pages/dashboard/producer/ProducerDashboard";
+import ConsumerDashboard from "./pages/dashboard/consumer/ConsumerDashboard";
 
 const queryClient = new QueryClient();
 
@@ -64,6 +67,24 @@ const App = () => (
                   <Checkout />
                 </ProtectedRoute>
               } />
+              
+              {/* Dashboard Routes */}
+              <Route path="/dashboard" element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              } />
+              <Route path="/dashboard/producer" element={
+                <ProtectedRoute>
+                  <ProducerDashboard />
+                </ProtectedRoute>
+              } />
+              <Route path="/dashboard/consumer" element={
+                <ProtectedRoute>
+                  <ConsumerDashboard />
+                </ProtectedRoute>
+              } />
+              
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
