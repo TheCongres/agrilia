@@ -4,10 +4,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart } from "lucide-react";
+import { Heart, ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useCart } from "@/context/CartContext";
+import { useFavorites } from "@/context/FavoritesContext";
 import { formatCurrency } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 interface ProductCardProps {
   id: number;
@@ -23,6 +25,9 @@ interface ProductCardProps {
 
 export function ProductCard({ id, name, price, image, category, producer }: ProductCardProps) {
   const { addToCart } = useCart();
+  const { isProductFavorite, toggleFavorite } = useFavorites();
+
+  const isFavorite = isProductFavorite(id);
 
   const handleAddToCart = () => {
     addToCart({
@@ -35,11 +40,24 @@ export function ProductCard({ id, name, price, image, category, producer }: Prod
     });
   };
 
+  const handleToggleFavorite = (e: React.MouseEvent) => {
+    e.preventDefault(); // Prevent navigating to product details
+    e.stopPropagation(); // Prevent event bubbling
+    
+    toggleFavorite({
+      product_id: id,
+      name,
+      price,
+      image,
+      category,
+    });
+  };
+
   // Use the image provided in props, fallback to placeholder if needed
   const imageUrl = image || "/placeholder.svg";
 
   return (
-    <Card className="overflow-hidden h-full flex flex-col">
+    <Card className="overflow-hidden h-full flex flex-col group">
       <div className="relative">
         <AspectRatio ratio={4/3}>
           <img 
@@ -52,7 +70,25 @@ export function ProductCard({ id, name, price, image, category, producer }: Prod
             }}
           />
         </AspectRatio>
-        <Badge className="absolute top-2 right-2">{category}</Badge>
+        <div className="absolute top-2 right-2 flex gap-2">
+          <Badge className="z-10">{category}</Badge>
+          <button
+            onClick={handleToggleFavorite}
+            className={cn(
+              "h-8 w-8 rounded-full flex items-center justify-center transition-colors",
+              isFavorite 
+                ? "bg-red-50 text-red-500 hover:bg-red-100" 
+                : "bg-white/80 text-gray-400 hover:bg-gray-100"
+            )}
+          >
+            <Heart 
+              className={cn(
+                "h-4 w-4 transition-all", 
+                isFavorite && "fill-red-500"
+              )} 
+            />
+          </button>
+        </div>
       </div>
       <CardContent className="p-4 flex flex-col flex-grow">
         <h3 className="font-semibold text-lg mb-2 line-clamp-1">{name}</h3>

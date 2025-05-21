@@ -7,6 +7,9 @@ import ProductImages from "@/components/product/ProductImages";
 import ProductHeader from "@/components/product/ProductHeader";
 import ProductPurchase from "@/components/product/ProductPurchase";
 import ProductDetails from "@/components/product/ProductDetails";
+import { useFavorites } from "@/context/FavoritesContext";
+import { Heart } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 // This is mock data for the MVP. In a real app, this would come from an API
 const productData = {
@@ -47,10 +50,23 @@ const productData = {
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
+  const { isProductFavorite, toggleFavorite } = useFavorites();
 
   // In a real app, you would fetch the product based on the ID
   // For the MVP, we'll just use the mock data
   const product = productData;
+  
+  const isFavorite = isProductFavorite(product.id);
+
+  const handleToggleFavorite = () => {
+    toggleFavorite({
+      product_id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.images[0],
+      category: product.category,
+    });
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -66,12 +82,32 @@ const ProductDetail = () => {
 
           {/* Product Info */}
           <div>
-            <ProductHeader 
-              name={product.name} 
-              category={product.category} 
-              description={product.description} 
-              producer={product.producer} 
-            />
+            <div className="flex items-center justify-between mb-2">
+              <ProductHeader 
+                name={product.name} 
+                category={product.category} 
+                description={product.description} 
+                producer={product.producer} 
+              />
+              
+              <button
+                onClick={handleToggleFavorite}
+                className={cn(
+                  "h-10 w-10 rounded-full flex items-center justify-center transition-colors",
+                  isFavorite 
+                    ? "bg-red-50 text-red-500 hover:bg-red-100" 
+                    : "bg-gray-100 text-gray-400 hover:bg-gray-200"
+                )}
+                aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
+              >
+                <Heart 
+                  className={cn(
+                    "h-5 w-5 transition-all", 
+                    isFavorite && "fill-red-500"
+                  )} 
+                />
+              </button>
+            </div>
 
             <ProductPurchase product={product} />
 
