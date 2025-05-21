@@ -152,6 +152,8 @@ export function useAuthProvider() {
     userType: 'consumer' | 'producer' = 'consumer'
   ) => {
     try {
+      console.log("Signing up with user type:", userType);
+      
       const { error, data } = await supabase.auth.signUp({ 
         email, 
         password,
@@ -165,6 +167,7 @@ export function useAuthProvider() {
       });
 
       if (error) {
+        console.error("Signup error:", error);
         throw error;
       }
 
@@ -176,6 +179,7 @@ export function useAuthProvider() {
       navigate('/login');
       return data;
     } catch (error: any) {
+      console.error("Full signup error:", error);
       toast({
         title: "Sign up failed",
         description: error.message || "There was a problem creating your account.",

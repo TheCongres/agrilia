@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "@/components/layout/Header";
@@ -71,6 +70,8 @@ const SignUp = () => {
     setIsLoading(true);
     
     try {
+      console.log("Form submitted with user type:", userType);
+      
       await signUp(
         formData.email,
         formData.password,
