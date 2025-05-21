@@ -75,6 +75,39 @@ export type Database = {
         }
         Relationships: []
       }
+      favorites: {
+        Row: {
+          added_at: string
+          category: string
+          id: string
+          image: string
+          name: string
+          price: number
+          product_id: number
+          user_id: string
+        }
+        Insert: {
+          added_at?: string
+          category: string
+          id?: string
+          image: string
+          name: string
+          price: number
+          product_id: number
+          user_id: string
+        }
+        Update: {
+          added_at?: string
+          category?: string
+          id?: string
+          image?: string
+          name?: string
+          price?: number
+          product_id?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
       producers: {
         Row: {
           contact_email: string | null
