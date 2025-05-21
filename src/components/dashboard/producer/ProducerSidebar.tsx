@@ -7,7 +7,11 @@ import {
   User, 
   Package, 
   Settings,
-  ChartBar
+  ChartBar,
+  FileText,
+  Tag,
+  Truck,
+  Bell
 } from 'lucide-react';
 import {
   Sidebar,
@@ -35,7 +39,11 @@ const ProducerSidebar = () => {
     '/dashboard/orders', 
     '/dashboard/analytics',
     '/dashboard/account',
-    '/dashboard/settings'
+    '/dashboard/settings',
+    '/dashboard/inventory',
+    '/dashboard/notifications',
+    '/dashboard/reports',
+    '/dashboard/shipping'
   ].some(path => isActive(path));
 
   const getNavClass = (path: string) => {
@@ -54,7 +62,7 @@ const ProducerSidebar = () => {
 
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Dashboard</SidebarGroupLabel>
+          <SidebarGroupLabel>Main</SidebarGroupLabel>
 
           <SidebarGroupContent>
             <SidebarMenu>
@@ -86,6 +94,24 @@ const ProducerSidebar = () => {
               </SidebarMenuItem>
 
               <SidebarMenuItem>
+                <SidebarMenuButton asChild tooltip="Inventory">
+                  <NavLink to="/dashboard/inventory" className={getNavClass('/dashboard/inventory')}>
+                    <Tag className="mr-2 h-5 w-5" />
+                    {!collapsed && <span>Inventory</span>}
+                  </NavLink>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild tooltip="Shipping">
+                  <NavLink to="/dashboard/shipping" className={getNavClass('/dashboard/shipping')}>
+                    <Truck className="mr-2 h-5 w-5" />
+                    {!collapsed && <span>Shipping</span>}
+                  </NavLink>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+
+              <SidebarMenuItem>
                 <SidebarMenuButton asChild tooltip="Analytics">
                   <NavLink to="/dashboard/analytics" className={getNavClass('/dashboard/analytics')}>
                     <ChartBar className="mr-2 h-5 w-5" />
@@ -93,7 +119,33 @@ const ProducerSidebar = () => {
                   </NavLink>
                 </SidebarMenuButton>
               </SidebarMenuItem>
-              
+
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild tooltip="Reports">
+                  <NavLink to="/dashboard/reports" className={getNavClass('/dashboard/reports')}>
+                    <FileText className="mr-2 h-5 w-5" />
+                    {!collapsed && <span>Reports</span>}
+                  </NavLink>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild tooltip="Notifications">
+                  <NavLink to="/dashboard/notifications" className={getNavClass('/dashboard/notifications')}>
+                    <Bell className="mr-2 h-5 w-5" />
+                    {!collapsed && <span>Notifications</span>}
+                  </NavLink>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <SidebarGroupLabel>Account</SidebarGroupLabel>
+
+          <SidebarGroupContent>
+            <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild tooltip="Account">
                   <NavLink to="/dashboard/account" className={getNavClass('/dashboard/account')}>
