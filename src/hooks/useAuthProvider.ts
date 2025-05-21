@@ -161,7 +161,7 @@ export function useAuthProvider() {
           data: {
             first_name: firstName,
             last_name: lastName,
-            user_type: userType
+            user_type: userType // Make sure this exactly matches the enum in the database
           }
         }
       });
