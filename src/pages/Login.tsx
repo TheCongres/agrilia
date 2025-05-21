@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import Header from "@/components/layout/Header";
@@ -6,12 +7,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/components/ui/use-toast";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useAuth } from "@/hooks/useAuth";
-import { supabase } from "@/integrations/supabase/client";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [userType, setUserType] = useState<"consumer" | "producer">("consumer");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -46,7 +48,7 @@ const Login = () => {
     setIsLoading(true);
     
     try {
-      await signIn(email, password);
+      await signIn(email, password, userType);
       // Navigation is handled in the signIn function
     } catch (error) {
       // Error toast is handled in the signIn function
@@ -64,7 +66,7 @@ const Login = () => {
           <div className="bg-white rounded-lg border border-natural-200 shadow-sm p-6 md:p-8">
             <div className="mb-6 text-center">
               <h1 className="text-2xl font-bold text-earth-700 mb-2">Welcome Back</h1>
-              <p className="text-earth-500">Sign in to your AgriLia account</p>
+              <p className="text-earth-500">Sign in to your OrganiMarket account</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -95,6 +97,24 @@ const Login = () => {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="userType" className="block mb-2">Sign in as:</Label>
+                <RadioGroup 
+                  value={userType} 
+                  onValueChange={(value) => setUserType(value as "consumer" | "producer")}
+                  className="flex space-x-4"
+                >
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="consumer" id="login-consumer" />
+                    <Label htmlFor="login-consumer">Consumer</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="producer" id="login-producer" />
+                    <Label htmlFor="login-producer">Producer</Label>
+                  </div>
+                </RadioGroup>
               </div>
 
               <Button 

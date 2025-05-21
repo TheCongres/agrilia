@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "@/components/layout/Header";
@@ -7,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/components/ui/use-toast";
 import { Checkbox } from "@/components/ui/checkbox";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useAuth } from "@/hooks/useAuth";
 
 const SignUp = () => {
@@ -17,6 +19,7 @@ const SignUp = () => {
     password: "",
     confirmPassword: "",
   });
+  const [userType, setUserType] = useState<"consumer" | "producer">("consumer");
   const [isLoading, setIsLoading] = useState(false);
   const [agreeTerms, setAgreeTerms] = useState(false);
   const { user, signUp } = useAuth();
@@ -72,7 +75,8 @@ const SignUp = () => {
         formData.email,
         formData.password,
         formData.firstName,
-        formData.lastName
+        formData.lastName,
+        userType
       );
       // Navigation and success toast are handled in the signUp function
     } catch (error) {
@@ -161,6 +165,30 @@ const SignUp = () => {
                   onChange={handleChange}
                   required
                 />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="userType" className="block mb-2">I am registering as a:</Label>
+                <RadioGroup 
+                  value={userType} 
+                  onValueChange={(value) => setUserType(value as "consumer" | "producer")}
+                  className="flex flex-col space-y-2"
+                >
+                  <div className="flex items-center space-x-2 p-3 rounded-md border border-gray-200 hover:bg-gray-50">
+                    <RadioGroupItem value="consumer" id="consumer" />
+                    <Label htmlFor="consumer" className="cursor-pointer flex-1">
+                      <span className="font-medium">Consumer</span>
+                      <p className="text-sm text-earth-500">I want to buy organic products</p>
+                    </Label>
+                  </div>
+                  <div className="flex items-center space-x-2 p-3 rounded-md border border-gray-200 hover:bg-gray-50">
+                    <RadioGroupItem value="producer" id="producer" />
+                    <Label htmlFor="producer" className="cursor-pointer flex-1">
+                      <span className="font-medium">Producer</span>
+                      <p className="text-sm text-earth-500">I want to sell my organic products</p>
+                    </Label>
+                  </div>
+                </RadioGroup>
               </div>
 
               <div className="flex items-center space-x-2 mt-4">

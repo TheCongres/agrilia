@@ -10,6 +10,7 @@ export type User = {
   email: string;
   first_name?: string;
   last_name?: string;
+  user_type?: 'consumer' | 'producer';
 };
 
 export function useAuthProvider() {
@@ -45,6 +46,7 @@ export function useAuthProvider() {
                 email: session.user.email || '',
                 first_name: userData.first_name,
                 last_name: userData.last_name,
+                user_type: userData.user_type,
               });
             } else {
               console.error("Error fetching user profile:", error);
@@ -87,6 +89,7 @@ export function useAuthProvider() {
                 email: session.user.email || '',
                 first_name: userData.first_name,
                 last_name: userData.last_name,
+                user_type: userData.user_type,
               });
             } else {
               console.error("Error fetching user profile:", error);
@@ -104,12 +107,24 @@ export function useAuthProvider() {
     };
   }, []);
 
-  const signIn = async (email: string, password: string) => {
+  const signIn = async (email: string, password: string, userType?: 'consumer' | 'producer') => {
     try {
       const { error, data } = await supabase.auth.signInWithPassword({ email, password });
 
       if (error) {
         throw error;
+      }
+      
+      // If userType is provided, update the profile
+      if (userType && data.user) {
+        const { error: updateError } = await supabase
+          .from('profiles')
+          .update({ user_type: userType })
+          .eq('id', data.user.id);
+          
+        if (updateError) {
+          console.error("Error updating user type:", updateError);
+        }
       }
       
       toast({
@@ -129,7 +144,13 @@ export function useAuthProvider() {
     }
   };
 
-  const signUp = async (email: string, password: string, firstName: string, lastName: string) => {
+  const signUp = async (
+    email: string, 
+    password: string, 
+    firstName: string, 
+    lastName: string,
+    userType: 'consumer' | 'producer' = 'consumer'
+  ) => {
     try {
       const { error, data } = await supabase.auth.signUp({ 
         email, 
@@ -138,6 +159,7 @@ export function useAuthProvider() {
           data: {
             first_name: firstName,
             last_name: lastName,
+            user_type: userType
           }
         }
       });

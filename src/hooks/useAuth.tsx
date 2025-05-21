@@ -8,8 +8,8 @@ export interface AuthContextType {
   user: User | null;
   session: Session | null;
   loading: boolean;
-  signIn: (email: string, password: string) => Promise<any>;
-  signUp: (email: string, password: string, firstName: string, lastName: string) => Promise<any>;
+  signIn: (email: string, password: string, userType?: 'consumer' | 'producer') => Promise<any>;
+  signUp: (email: string, password: string, firstName: string, lastName: string, userType?: 'consumer' | 'producer') => Promise<any>;
   signOut: () => Promise<void>;
   updateProfile: (data: Partial<User>) => Promise<void>;
 }

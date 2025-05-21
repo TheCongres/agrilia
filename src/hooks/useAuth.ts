@@ -8,13 +8,14 @@ export interface AuthContextType {
     email: string;
     first_name?: string;
     last_name?: string;
+    user_type?: 'consumer' | 'producer';
   } | null;
   session: any;
   loading: boolean;
-  signIn: (email: string, password: string) => Promise<any>;
-  signUp: (email: string, password: string, firstName: string, lastName: string) => Promise<any>;
+  signIn: (email: string, password: string, userType?: 'consumer' | 'producer') => Promise<any>;
+  signUp: (email: string, password: string, firstName: string, lastName: string, userType?: 'consumer' | 'producer') => Promise<any>;
   signOut: () => Promise<void>;
-  updateProfile: (data: Partial<{ first_name: string; last_name: string; email: string }>) => Promise<void>;
+  updateProfile: (data: Partial<{ first_name: string; last_name: string; email: string; user_type: 'consumer' | 'producer'; }>) => Promise<void>;
 }
 
 export const useAuth = (): AuthContextType => {
