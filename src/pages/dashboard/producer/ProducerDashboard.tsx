@@ -196,7 +196,7 @@ const ProducerDashboard = () => {
         <Card className="border-natural-100 hover:shadow-sm transition-shadow">
           <CardContent className="p-4">
             <div className="text-earth-600 font-medium mb-1">Today</div>
-            <div className="text-2xl font-bold text-natural-800">
+            <div className="text-xl md:text-2xl font-bold text-natural-800 truncate">
               {loading ? '...' : formatCurrency(stats.todaySales)}
             </div>
           </CardContent>
@@ -205,7 +205,7 @@ const ProducerDashboard = () => {
         <Card className="border-natural-100 hover:shadow-sm transition-shadow">
           <CardContent className="p-4">
             <div className="text-earth-600 font-medium mb-1">This Week</div>
-            <div className="text-2xl font-bold text-natural-800">
+            <div className="text-xl md:text-2xl font-bold text-natural-800 truncate">
               {loading ? '...' : formatCurrency(stats.weekSales)}
             </div>
           </CardContent>
@@ -214,7 +214,7 @@ const ProducerDashboard = () => {
         <Card className="border-natural-100 hover:shadow-sm transition-shadow">
           <CardContent className="p-4">
             <div className="text-earth-600 font-medium mb-1">This Month</div>
-            <div className="text-2xl font-bold text-natural-800">
+            <div className="text-xl md:text-2xl font-bold text-natural-800 truncate">
               {loading ? '...' : formatCurrency(stats.monthSales)}
             </div>
           </CardContent>
@@ -223,7 +223,7 @@ const ProducerDashboard = () => {
         <Card className="border-natural-100 hover:shadow-sm transition-shadow">
           <CardContent className="p-4">
             <div className="text-earth-600 font-medium mb-1">This Year</div>
-            <div className="text-2xl font-bold text-natural-800">
+            <div className="text-xl md:text-2xl font-bold text-natural-800 truncate">
               {loading ? '...' : formatCurrency(stats.yearSales)}
             </div>
           </CardContent>
