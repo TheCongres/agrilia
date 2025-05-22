@@ -25,7 +25,8 @@ import {
   YAxis, 
   CartesianGrid, 
   ResponsiveContainer,
-  Tooltip
+  Tooltip,
+  TooltipProps
 } from 'recharts';
 
 // Sample data for the charts
@@ -167,7 +168,9 @@ const ProducerDashboard = () => {
                       if (active && payload && payload.length) {
                         return (
                           <div className="bg-white p-2 border border-gray-200 rounded shadow-md">
-                            <p className="text-sm font-medium">{`${payload[0].payload.name}: ${formatCurrency(payload[0].value)}`}</p>
+                            <p className="text-sm font-medium">
+                              {`${payload[0].payload.name}: ${formatCurrency(payload[0].value as number)}`}
+                            </p>
                           </div>
                         );
                       }
