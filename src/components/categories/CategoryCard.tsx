@@ -14,16 +14,22 @@ interface CategoryProps {
 }
 
 const CategoryCard = ({ category, onClick }: CategoryProps) => {
+  // Optimize Unsplash image URLs
+  const optimizedImage = category.image.includes('unsplash.com') 
+    ? `${category.image}${category.image.includes('?') ? '&' : '?'}w=500&q=80&auto=format&fit=crop` 
+    : category.image;
+
   return (
     <Card 
       className="overflow-hidden border border-natural-200 hover:shadow-md transition-all cursor-pointer h-full flex flex-col" 
       onClick={onClick}
     >
-      <div className="relative h-48 overflow-hidden">
+      <div className="relative h-40 sm:h-48 overflow-hidden">
         <img 
-          src={category.image} 
+          src={optimizedImage} 
           alt={category.name}
           className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+          loading="lazy"
         />
       </div>
       <CardContent className="p-5 flex flex-col flex-grow">

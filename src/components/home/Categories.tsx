@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 
 // Updated category counts based on the actual number of products in each category
@@ -41,6 +40,15 @@ const categories = [
   },
 ];
 
+// Image optimization utility
+const optimizeImageUrl = (url: string) => {
+  if (url.includes('unsplash.com')) {
+    const hasParams = url.includes('?');
+    return `${url}${hasParams ? '&' : '?'}w=400&q=80&auto=format&fit=crop`;
+  }
+  return url;
+};
+
 const Categories = () => {
   return (
     <section className="py-16 bg-cream">
@@ -65,9 +73,10 @@ const Categories = () => {
             >
               <div className="aspect-square relative overflow-hidden">
                 <img
-                  src={category.image}
+                  src={optimizeImageUrl(category.image)}
                   alt={category.name}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-earth-700/30 group-hover:bg-earth-700/10 transition-colors duration-300"></div>
                 <div className="absolute inset-0 flex flex-col justify-end p-4">

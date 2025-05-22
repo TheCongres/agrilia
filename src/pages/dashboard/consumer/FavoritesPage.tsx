@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useFavorites } from '@/context/FavoritesContext';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
@@ -9,6 +8,15 @@ import { Heart, ShoppingCart, Trash2, ArrowRight } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 import { Link } from 'react-router-dom';
 import { toast } from '@/components/ui/use-toast';
+
+// Image optimization utility
+const optimizeImageUrl = (url: string) => {
+  if (url.includes('unsplash.com')) {
+    const hasParams = url.includes('?');
+    return `${url}${hasParams ? '&' : '?'}w=400&q=80&auto=format&fit=crop`;
+  }
+  return url;
+};
 
 const FavoritesPage = () => {
   const { favoritesState, removeFromFavorites, clearFavorites } = useFavorites();
@@ -79,12 +87,13 @@ const FavoritesPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {favorites.map((item) => (
             <Card key={item.id} className="overflow-hidden hover:shadow-md transition-shadow">
-              <div className="h-48 w-full overflow-hidden relative group">
+              <div className="h-40 w-full overflow-hidden relative group">
                 <Link to={`/product/${item.product_id}`}>
                   <img 
-                    src={item.image} 
+                    src={optimizeImageUrl(item.image)}
                     alt={item.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
                   />
                 </Link>
                 <Button

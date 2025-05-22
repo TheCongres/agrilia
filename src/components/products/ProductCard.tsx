@@ -23,6 +23,15 @@ interface ProductCardProps {
   };
 }
 
+// Image optimization utility
+const optimizeImageUrl = (url: string) => {
+  if (url.includes('unsplash.com')) {
+    const hasParams = url.includes('?');
+    return `${url}${hasParams ? '&' : '?'}w=500&q=80&auto=format&fit=crop`;
+  }
+  return url;
+};
+
 export function ProductCard({ id, name, price, image, category, producer }: ProductCardProps) {
   const { addToCart } = useCart();
   const { isProductFavorite, toggleFavorite } = useFavorites();
@@ -54,7 +63,7 @@ export function ProductCard({ id, name, price, image, category, producer }: Prod
   };
 
   // Use the image provided in props, fallback to placeholder if needed
-  const imageUrl = image || "/placeholder.svg";
+  const imageUrl = image ? optimizeImageUrl(image) : "/placeholder.svg";
 
   return (
     <Card className="overflow-hidden h-full flex flex-col group">
@@ -64,6 +73,7 @@ export function ProductCard({ id, name, price, image, category, producer }: Prod
             src={imageUrl}
             alt={name}
             className="object-cover w-full h-full"
+            loading="lazy"
             onError={(e) => {
               // Fallback if the image fails to load
               (e.target as HTMLImageElement).src = "/placeholder.svg";
