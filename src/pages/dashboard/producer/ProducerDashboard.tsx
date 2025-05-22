@@ -5,12 +5,39 @@ import { useAuth } from '@/hooks/useAuth';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Button } from '@/components/ui/button';
-import { ShoppingCart, Package, ChartBar, Users, ArrowRight, ChevronRight } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { formatCurrency } from '@/lib/utils';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { useToast } from '@/components/ui/use-toast';
+import { 
+  ChartContainer, 
+  ChartTooltip, 
+  ChartTooltipContent 
+} from '@/components/ui/chart';
+import { 
+  LineChart, 
+  Line, 
+  AreaChart, 
+  Area,
+  XAxis, 
+  YAxis, 
+  CartesianGrid, 
+  ResponsiveContainer,
+  Tooltip
+} from 'recharts';
+
+// Sample data for the charts
+const salesData = [
+  { name: 'Jan', sales: 400 },
+  { name: 'Feb', sales: 300 },
+  { name: 'Mar', sales: 600 },
+  { name: 'Apr', sales: 800 },
+  { name: 'May', sales: 700 },
+  { name: 'Jun', sales: 900 },
+  { name: 'Jul', sales: 750 },
+];
 
 const ProducerDashboard = () => {
   const { user } = useAuth();
@@ -19,10 +46,10 @@ const ProducerDashboard = () => {
   
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState({
-    orderCount: 0,
-    productCount: 0,
-    revenue: 0,
-    customerVisits: 0
+    todaySales: 287.00,
+    weekSales: 1252.00,
+    monthSales: 2293.00, 
+    yearSales: 24215.00
   });
   const [recentOrders, setRecentOrders] = useState([]);
   const [popularProducts, setPopularProducts] = useState([]);
@@ -47,13 +74,6 @@ const ProducerDashboard = () => {
         const orderCount = Math.floor(Math.random() * 20);
         const revenue = Math.floor(Math.random() * 5000);
         const customerVisits = Math.floor(Math.random() * 100) + 30;
-        
-        setStats({
-          orderCount,
-          productCount: productsData?.length || 0,
-          revenue,
-          customerVisits
-        });
         
         // Simulate recent orders
         const simulatedOrders = [];
@@ -112,7 +132,7 @@ const ProducerDashboard = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 max-w-5xl mx-auto">
       <div>
         <h1 className="text-2xl font-semibold text-earth-800">
           Producer Dashboard
@@ -122,59 +142,101 @@ const ProducerDashboard = () => {
         </p>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-        <Card className="hover:shadow-md transition-shadow">
-          <CardHeader className="pb-2 flex flex-row items-center justify-between space-y-0">
-            <CardTitle className="text-sm font-medium">Total Orders</CardTitle>
-            <ShoppingCart className="h-4 w-4 text-natural-600" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{loading ? '...' : stats.orderCount}</div>
-            <p className="text-xs text-natural-500">
-              +12% from last month
-            </p>
+      {/* Sales Chart Area */}
+      <Card className="bg-natural-50 border-natural-200">
+        <CardContent className="p-6">
+          <div className="h-[200px] w-full">
+            {loading ? (
+              <div className="flex items-center justify-center h-full">
+                <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-earth-600"></div>
+              </div>
+            ) : (
+              <ResponsiveContainer width="100%" height="100%">
+                <AreaChart data={salesData}>
+                  <defs>
+                    <linearGradient id="colorSales" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#38804c" stopOpacity={0.8}/>
+                      <stop offset="95%" stopColor="#38804c" stopOpacity={0.1}/>
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" />
+                  <XAxis dataKey="name" stroke="#718096" fontSize={12} tickLine={false} axisLine={false} />
+                  <YAxis stroke="#718096" fontSize={12} tickLine={false} axisLine={false} />
+                  <Tooltip 
+                    content={({ active, payload }) => {
+                      if (active && payload && payload.length) {
+                        return (
+                          <div className="bg-white p-2 border border-gray-200 rounded shadow-md">
+                            <p className="text-sm font-medium">{`${payload[0].payload.name}: ${formatCurrency(payload[0].value)}`}</p>
+                          </div>
+                        );
+                      }
+                      return null;
+                    }} 
+                  />
+                  <Area 
+                    type="monotone" 
+                    dataKey="sales" 
+                    stroke="#38804c" 
+                    fillOpacity={1} 
+                    fill="url(#colorSales)" 
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
+            )}
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Sales Stats Cards */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <Card className="border-natural-100 hover:shadow-sm transition-shadow">
+          <CardContent className="p-4">
+            <div className="text-earth-600 font-medium mb-1">Today</div>
+            <div className="text-2xl font-bold text-natural-800">
+              {loading ? '...' : formatCurrency(stats.todaySales)}
+            </div>
           </CardContent>
         </Card>
         
-        <Card className="hover:shadow-md transition-shadow">
-          <CardHeader className="pb-2 flex flex-row items-center justify-between space-y-0">
-            <CardTitle className="text-sm font-medium">Active Products</CardTitle>
-            <Package className="h-4 w-4 text-natural-600" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{loading ? '...' : stats.productCount}</div>
-            <p className="text-xs text-natural-500">
-              +{Math.floor(Math.random() * 5)} new this month
-            </p>
+        <Card className="border-natural-100 hover:shadow-sm transition-shadow">
+          <CardContent className="p-4">
+            <div className="text-earth-600 font-medium mb-1">This Week</div>
+            <div className="text-2xl font-bold text-natural-800">
+              {loading ? '...' : formatCurrency(stats.weekSales)}
+            </div>
           </CardContent>
         </Card>
         
-        <Card className="hover:shadow-md transition-shadow">
-          <CardHeader className="pb-2 flex flex-row items-center justify-between space-y-0">
-            <CardTitle className="text-sm font-medium">Revenue</CardTitle>
-            <ChartBar className="h-4 w-4 text-natural-600" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{loading ? '...' : formatCurrency(stats.revenue)}</div>
-            <p className="text-xs text-natural-500">
-              +8% from last month
-            </p>
+        <Card className="border-natural-100 hover:shadow-sm transition-shadow">
+          <CardContent className="p-4">
+            <div className="text-earth-600 font-medium mb-1">This Month</div>
+            <div className="text-2xl font-bold text-natural-800">
+              {loading ? '...' : formatCurrency(stats.monthSales)}
+            </div>
           </CardContent>
         </Card>
         
-        <Card className="hover:shadow-md transition-shadow">
-          <CardHeader className="pb-2 flex flex-row items-center justify-between space-y-0">
-            <CardTitle className="text-sm font-medium">Customer Visits</CardTitle>
-            <Users className="h-4 w-4 text-natural-600" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{loading ? '...' : stats.customerVisits}</div>
-            <p className="text-xs text-natural-500">
-              +15% from last month
-            </p>
+        <Card className="border-natural-100 hover:shadow-sm transition-shadow">
+          <CardContent className="p-4">
+            <div className="text-earth-600 font-medium mb-1">This Year</div>
+            <div className="text-2xl font-bold text-natural-800">
+              {loading ? '...' : formatCurrency(stats.yearSales)}
+            </div>
           </CardContent>
         </Card>
       </div>
+      
+      {/* View Detailed Analytics Button */}
+      <Card className="border-natural-100">
+        <CardContent className="p-4">
+          <Button variant="outline" asChild className="w-full flex items-center justify-between">
+            <Link to="/dashboard/analytics">
+              View Detailed Analytics <ChevronRight className="h-4 w-4" />
+            </Link>
+          </Button>
+        </CardContent>
+      </Card>
       
       <div className="grid gap-6 md:grid-cols-2">
         <Card>
@@ -267,147 +329,6 @@ const ProducerDashboard = () => {
             <Button variant="outline" asChild className="w-full flex items-center justify-between">
               <Link to="/dashboard/products">
                 Manage Products <ChevronRight className="h-4 w-4" />
-              </Link>
-            </Button>
-          </CardFooter>
-        </Card>
-      </div>
-      
-      <div>
-        <Card>
-          <CardHeader>
-            <CardTitle>Quick Actions</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid gap-4 md:grid-cols-3">
-              <Button asChild className="w-full">
-                <Link to="/dashboard/products/new">Add New Product</Link>
-              </Button>
-              <Button variant="outline" asChild className="w-full">
-                <Link to="/dashboard/analytics">View Analytics</Link>
-              </Button>
-              <Button variant="outline" asChild className="w-full">
-                <Link to="/dashboard/settings">Update Settings</Link>
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-      
-      <div>
-        <Card>
-          <CardHeader>
-            <CardTitle>Analytics Overview</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Tabs defaultValue="sales">
-              <TabsList className="mb-4">
-                <TabsTrigger value="sales">Sales</TabsTrigger>
-                <TabsTrigger value="traffic">Traffic</TabsTrigger>
-                <TabsTrigger value="customers">Customers</TabsTrigger>
-              </TabsList>
-              
-              <TabsContent value="sales" className="space-y-4">
-                <div className="h-[200px] bg-natural-100 rounded-md flex items-center justify-center">
-                  <p className="text-natural-500">Sales chart will appear here</p>
-                </div>
-                <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-                  <Card>
-                    <CardContent className="p-4">
-                      <div className="text-sm font-medium text-natural-500">Today</div>
-                      <div className="text-2xl font-bold">{formatCurrency(Math.floor(Math.random() * 500))}</div>
-                    </CardContent>
-                  </Card>
-                  <Card>
-                    <CardContent className="p-4">
-                      <div className="text-sm font-medium text-natural-500">This Week</div>
-                      <div className="text-2xl font-bold">{formatCurrency(Math.floor(Math.random() * 2000) + 500)}</div>
-                    </CardContent>
-                  </Card>
-                  <Card>
-                    <CardContent className="p-4">
-                      <div className="text-sm font-medium text-natural-500">This Month</div>
-                      <div className="text-2xl font-bold">{formatCurrency(Math.floor(Math.random() * 4000) + 2000)}</div>
-                    </CardContent>
-                  </Card>
-                  <Card>
-                    <CardContent className="p-4">
-                      <div className="text-sm font-medium text-natural-500">This Year</div>
-                      <div className="text-2xl font-bold">{formatCurrency(Math.floor(Math.random() * 20000) + 10000)}</div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </TabsContent>
-              
-              <TabsContent value="traffic" className="space-y-4">
-                <div className="h-[200px] bg-natural-100 rounded-md flex items-center justify-center">
-                  <p className="text-natural-500">Traffic chart will appear here</p>
-                </div>
-                <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-                  <Card>
-                    <CardContent className="p-4">
-                      <div className="text-sm font-medium text-natural-500">Views</div>
-                      <div className="text-2xl font-bold">{Math.floor(Math.random() * 1000) + 500}</div>
-                    </CardContent>
-                  </Card>
-                  <Card>
-                    <CardContent className="p-4">
-                      <div className="text-sm font-medium text-natural-500">Unique</div>
-                      <div className="text-2xl font-bold">{Math.floor(Math.random() * 500) + 200}</div>
-                    </CardContent>
-                  </Card>
-                  <Card>
-                    <CardContent className="p-4">
-                      <div className="text-sm font-medium text-natural-500">Bounce Rate</div>
-                      <div className="text-2xl font-bold">{Math.floor(Math.random() * 40) + 20}%</div>
-                    </CardContent>
-                  </Card>
-                  <Card>
-                    <CardContent className="p-4">
-                      <div className="text-sm font-medium text-natural-500">Avg. Time</div>
-                      <div className="text-2xl font-bold">{Math.floor(Math.random() * 2) + 1}m {Math.floor(Math.random() * 50) + 10}s</div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </TabsContent>
-              
-              <TabsContent value="customers" className="space-y-4">
-                <div className="h-[200px] bg-natural-100 rounded-md flex items-center justify-center">
-                  <p className="text-natural-500">Customer demographics chart will appear here</p>
-                </div>
-                <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-                  <Card>
-                    <CardContent className="p-4">
-                      <div className="text-sm font-medium text-natural-500">New</div>
-                      <div className="text-2xl font-bold">{Math.floor(Math.random() * 50) + 10}</div>
-                    </CardContent>
-                  </Card>
-                  <Card>
-                    <CardContent className="p-4">
-                      <div className="text-sm font-medium text-natural-500">Returning</div>
-                      <div className="text-2xl font-bold">{Math.floor(Math.random() * 100) + 50}</div>
-                    </CardContent>
-                  </Card>
-                  <Card>
-                    <CardContent className="p-4">
-                      <div className="text-sm font-medium text-natural-500">Conversion</div>
-                      <div className="text-2xl font-bold">{Math.floor(Math.random() * 10) + 5}%</div>
-                    </CardContent>
-                  </Card>
-                  <Card>
-                    <CardContent className="p-4">
-                      <div className="text-sm font-medium text-natural-500">Loyalty</div>
-                      <div className="text-2xl font-bold">{Math.floor(Math.random() * 30) + 70}%</div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </TabsContent>
-            </Tabs>
-          </CardContent>
-          <CardFooter className="border-t px-6 py-4">
-            <Button variant="outline" asChild className="w-full flex items-center justify-between">
-              <Link to="/dashboard/analytics">
-                View Detailed Analytics <ChevronRight className="h-4 w-4" />
               </Link>
             </Button>
           </CardFooter>

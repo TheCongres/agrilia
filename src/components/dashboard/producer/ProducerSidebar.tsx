@@ -54,7 +54,7 @@ const ProducerSidebar = () => {
 
   return (
     <Sidebar
-      className={collapsed ? "w-14" : "w-64"}
+      className={collapsed ? "w-14 bg-white" : "w-64 bg-white"}
       collapsible="icon" 
       variant="sidebar"
     >
@@ -62,14 +62,14 @@ const ProducerSidebar = () => {
 
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Main</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-earth-700">Main</SidebarGroupLabel>
 
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild tooltip="Overview">
                   <NavLink to="/dashboard" end className={getNavClass('/dashboard')}>
-                    <LayoutDashboard className="mr-2 h-5 w-5" />
+                    <LayoutDashboard className="mr-2 h-5 w-5 text-earth-600" />
                     {!collapsed && <span>Overview</span>}
                   </NavLink>
                 </SidebarMenuButton>
@@ -78,7 +78,7 @@ const ProducerSidebar = () => {
               <SidebarMenuItem>
                 <SidebarMenuButton asChild tooltip="Products">
                   <NavLink to="/dashboard/products" className={getNavClass('/dashboard/products')}>
-                    <Package className="mr-2 h-5 w-5" />
+                    <Package className="mr-2 h-5 w-5 text-earth-600" />
                     {!collapsed && <span>Products</span>}
                   </NavLink>
                 </SidebarMenuButton>
@@ -87,7 +87,7 @@ const ProducerSidebar = () => {
               <SidebarMenuItem>
                 <SidebarMenuButton asChild tooltip="Orders">
                   <NavLink to="/dashboard/orders" className={getNavClass('/dashboard/orders')}>
-                    <ShoppingCart className="mr-2 h-5 w-5" />
+                    <ShoppingCart className="mr-2 h-5 w-5 text-earth-600" />
                     {!collapsed && <span>Orders</span>}
                   </NavLink>
                 </SidebarMenuButton>
@@ -96,7 +96,7 @@ const ProducerSidebar = () => {
               <SidebarMenuItem>
                 <SidebarMenuButton asChild tooltip="Inventory">
                   <NavLink to="/dashboard/inventory" className={getNavClass('/dashboard/inventory')}>
-                    <Tag className="mr-2 h-5 w-5" />
+                    <Tag className="mr-2 h-5 w-5 text-earth-600" />
                     {!collapsed && <span>Inventory</span>}
                   </NavLink>
                 </SidebarMenuButton>
@@ -105,7 +105,7 @@ const ProducerSidebar = () => {
               <SidebarMenuItem>
                 <SidebarMenuButton asChild tooltip="Shipping">
                   <NavLink to="/dashboard/shipping" className={getNavClass('/dashboard/shipping')}>
-                    <Truck className="mr-2 h-5 w-5" />
+                    <Truck className="mr-2 h-5 w-5 text-earth-600" />
                     {!collapsed && <span>Shipping</span>}
                   </NavLink>
                 </SidebarMenuButton>
@@ -114,7 +114,7 @@ const ProducerSidebar = () => {
               <SidebarMenuItem>
                 <SidebarMenuButton asChild tooltip="Analytics">
                   <NavLink to="/dashboard/analytics" className={getNavClass('/dashboard/analytics')}>
-                    <ChartBar className="mr-2 h-5 w-5" />
+                    <ChartBar className="mr-2 h-5 w-5 text-earth-600" />
                     {!collapsed && <span>Analytics</span>}
                   </NavLink>
                 </SidebarMenuButton>
@@ -123,7 +123,7 @@ const ProducerSidebar = () => {
               <SidebarMenuItem>
                 <SidebarMenuButton asChild tooltip="Reports">
                   <NavLink to="/dashboard/reports" className={getNavClass('/dashboard/reports')}>
-                    <FileText className="mr-2 h-5 w-5" />
+                    <FileText className="mr-2 h-5 w-5 text-earth-600" />
                     {!collapsed && <span>Reports</span>}
                   </NavLink>
                 </SidebarMenuButton>
@@ -132,7 +132,7 @@ const ProducerSidebar = () => {
               <SidebarMenuItem>
                 <SidebarMenuButton asChild tooltip="Notifications">
                   <NavLink to="/dashboard/notifications" className={getNavClass('/dashboard/notifications')}>
-                    <Bell className="mr-2 h-5 w-5" />
+                    <Bell className="mr-2 h-5 w-5 text-earth-600" />
                     {!collapsed && <span>Notifications</span>}
                   </NavLink>
                 </SidebarMenuButton>
@@ -142,14 +142,14 @@ const ProducerSidebar = () => {
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel>Account</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-earth-700">Account</SidebarGroupLabel>
 
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild tooltip="Account">
                   <NavLink to="/dashboard/account" className={getNavClass('/dashboard/account')}>
-                    <User className="mr-2 h-5 w-5" />
+                    <User className="mr-2 h-5 w-5 text-earth-600" />
                     {!collapsed && <span>Account</span>}
                   </NavLink>
                 </SidebarMenuButton>
@@ -158,7 +158,7 @@ const ProducerSidebar = () => {
               <SidebarMenuItem>
                 <SidebarMenuButton asChild tooltip="Settings">
                   <NavLink to="/dashboard/settings" className={getNavClass('/dashboard/settings')}>
-                    <Settings className="mr-2 h-5 w-5" />
+                    <Settings className="mr-2 h-5 w-5 text-earth-600" />
                     {!collapsed && <span>Settings</span>}
                   </NavLink>
                 </SidebarMenuButton>

@@ -13,12 +13,12 @@ const DashboardLayout: React.FC = () => {
   const userType = user?.user_type || 'consumer';
 
   return (
-    <div className="flex flex-col min-h-screen bg-natural-50">
+    <div className="flex flex-col min-h-screen bg-white">
       <Header />
       <SidebarProvider>
         <div className="flex flex-1 w-full">
           {userType === 'producer' ? <ProducerSidebar /> : <ConsumerSidebar />}
-          <main className="flex-1 p-4 md:p-6">
+          <main className="flex-1 p-4 md:p-6 bg-natural-50">
             <Outlet />
           </main>
         </div>
