@@ -142,35 +142,35 @@ const Header = () => {
             <nav className="flex flex-col space-y-4">
               <Link 
                 to="/products" 
-                className="text-earth-600 hover:text-natural-500 font-medium transition-colors"
+                className="text-left text-earth-600 hover:text-natural-500 font-medium transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 All Products
               </Link>
               <Link 
                 to="/categories" 
-                className="text-earth-600 hover:text-natural-500 font-medium transition-colors"
+                className="text-left text-earth-600 hover:text-natural-500 font-medium transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Categories
               </Link>
               <Link 
                 to="/producers" 
-                className="text-earth-600 hover:text-natural-500 font-medium transition-colors"
+                className="text-left text-earth-600 hover:text-natural-500 font-medium transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Our Producers
               </Link>
               <Link 
                 to="/blog" 
-                className="text-earth-600 hover:text-natural-500 font-medium transition-colors"
+                className="text-left text-earth-600 hover:text-natural-500 font-medium transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Blog
               </Link>
               <Link 
                 to="/about" 
-                className="text-earth-600 hover:text-natural-500 font-medium transition-colors"
+                className="text-left text-earth-600 hover:text-natural-500 font-medium transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 About Us
@@ -191,7 +191,7 @@ const Header = () => {
                       toggleCart(true);
                       setIsMenuOpen(false);
                     }} 
-                    className="flex items-center space-x-2 text-earth-600 hover:text-natural-500 transition-colors"
+                    className="flex items-center justify-start space-x-2 text-left text-earth-600 hover:text-natural-500 transition-colors"
                   >
                     <ShoppingCart className="h-5 w-5" />
                     <span>Cart {cartCount > 0 && `(${cartCount})`}</span>
@@ -201,7 +201,7 @@ const Header = () => {
                     <>
                       <Link 
                         to="/dashboard" 
-                        className="flex items-center space-x-2 text-earth-600 hover:text-natural-500 transition-colors"
+                        className="flex items-center justify-start space-x-2 text-left text-earth-600 hover:text-natural-500 transition-colors"
                         onClick={() => setIsMenuOpen(false)}
                       >
                         <LayoutDashboard className="h-5 w-5" />
@@ -209,7 +209,7 @@ const Header = () => {
                       </Link>
                       <Link 
                         to="/account" 
-                        className="flex items-center space-x-2 text-earth-600 hover:text-natural-500 transition-colors"
+                        className="flex items-center justify-start space-x-2 text-left text-earth-600 hover:text-natural-500 transition-colors"
                         onClick={() => setIsMenuOpen(false)}
                       >
                         <User className="h-5 w-5" />
@@ -220,7 +220,7 @@ const Header = () => {
                           handleSignOut(e);
                           setIsMenuOpen(false);
                         }}
-                        className="flex items-center space-x-2 text-earth-600 hover:text-natural-500 transition-colors"
+                        className="flex items-center justify-start space-x-2 text-left text-earth-600 hover:text-natural-500 transition-colors"
                       >
                         <LogOut className="h-5 w-5" />
                         <span>Sign Out</span>
@@ -229,7 +229,7 @@ const Header = () => {
                   ) : (
                     <Link 
                       to="/login" 
-                      className="flex items-center space-x-2 text-earth-600 hover:text-natural-500 transition-colors"
+                      className="flex items-center justify-start space-x-2 text-left text-earth-600 hover:text-natural-500 transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       <User className="h-5 w-5" />
