@@ -24,7 +24,7 @@ const Hero = () => {
                 Meet Our Producers
               </Link>
             </div>
-            <div className="flex flex-col sm:flex-row gap-6 mt-8 justify-center md:justify-start text-sm">
+            <div className="flex flex-col sm:flex-row gap-6 mt-8 justify-center md:justify-start items-center md:items-start text-sm text-center md:text-left">
               <div className="flex items-center gap-2">
                 <div className="w-10 h-10 rounded-full bg-natural-100 flex items-center justify-center">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-natural-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
