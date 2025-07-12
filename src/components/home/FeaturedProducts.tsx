@@ -238,7 +238,7 @@ const FeaturedProducts = () => {
                   <button
                     onClick={(e) => handleToggleFavorite(e, product)}
                     className={cn(
-                      "absolute top-3 right-3 h-8 w-8 rounded-full flex items-center justify-center transition-colors z-10",
+                      "absolute top-3 left-3 sm:left-auto sm:right-3 h-8 w-8 rounded-full flex items-center justify-center transition-colors z-10",
                       isFavorite 
                         ? "bg-red-50 text-red-500 hover:bg-red-100" 
                         : "bg-white/80 text-gray-400 hover:bg-gray-100"
