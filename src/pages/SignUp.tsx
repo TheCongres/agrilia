@@ -96,7 +96,7 @@ const SignUp = () => {
           <div className="bg-white rounded-lg border border-natural-200 shadow-sm p-6 md:p-8">
             <div className="mb-6 text-center">
               <h1 className="text-2xl font-bold text-earth-700 mb-2">Create Your Account</h1>
-              <p className="text-earth-500">Join OrganiMarket to order fresh organic products</p>
+              <p className="text-earth-500">Join Agrilia to order fresh products</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">

@@ -136,7 +136,7 @@ export function useAuthProvider() {
       
       toast({
         title: "Login successful",
-        description: "Welcome back to OrganiMarket!",
+        description: "Welcome back to Agrilia!",
       });
       
       navigate('/');
@@ -179,7 +179,7 @@ export function useAuthProvider() {
       }
 
       toast({
-        title: "Account created successfully",
+        title: "Welcome to Agrilia!",
         description: "Please check your email to confirm your account before logging in.",
       });
       
