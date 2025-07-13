@@ -32,6 +32,8 @@ import ProducerDashboard from "./pages/dashboard/producer/ProducerDashboard";
 import OrdersPage from "./pages/dashboard/consumer/OrdersPage";
 import AccountPage from "./pages/dashboard/consumer/AccountPage";
 import FavoritesPage from "./pages/dashboard/consumer/FavoritesPage";
+import ScrollToTop from "./components/common/ScrollToTop";
+import BackToTopButton from "./components/common/BackToTopButton";
 
 const queryClient = new QueryClient();
 
@@ -39,12 +41,14 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <BrowserRouter>
+        <ScrollToTop />
         <AuthProvider>
           <CartProvider>
             <FavoritesProvider>
               <Toaster />
               <Sonner />
               <CartDrawer />
+              <BackToTopButton />
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/products" element={<Products />} />
