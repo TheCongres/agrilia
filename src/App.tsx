@@ -4,6 +4,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "@/components/theme/ThemeProvider";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { CartProvider } from "@/context/CartContext";
 import { FavoritesProvider } from "@/context/FavoritesContext";
 import { AuthProvider } from "@/context/AuthContext";
@@ -40,15 +42,17 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <BrowserRouter>
-        <ScrollToTop />
-        <AuthProvider>
+      <ThemeProvider>
+        <BrowserRouter>
+          <ScrollToTop />
+          <AuthProvider>
           <CartProvider>
             <FavoritesProvider>
               <Toaster />
               <Sonner />
               <CartDrawer />
               <BackToTopButton />
+              <ThemeToggle />
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/products" element={<Products />} />
@@ -103,8 +107,9 @@ const App = () => (
           </CartProvider>
         </AuthProvider>
       </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+    </ThemeProvider>
+  </TooltipProvider>
+</QueryClientProvider>
 );
 
 export default App;
