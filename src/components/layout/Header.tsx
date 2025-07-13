@@ -64,19 +64,6 @@ const Header = () => {
             </Link>
           </nav>
 
-          {/* Tablet Navigation - Simplified */}
-          <nav className="hidden md:flex lg:hidden space-x-4">
-            <Link to="/products" className="text-earth-600 hover:text-natural-500 font-medium transition-colors text-sm">
-              Products
-            </Link>
-            <Link to="/categories" className="text-earth-600 hover:text-natural-500 font-medium transition-colors text-sm">
-              Categories
-            </Link>
-            <Link to="/producers" className="text-earth-600 hover:text-natural-500 font-medium transition-colors text-sm">
-              Producers
-            </Link>
-          </nav>
-
           {/* Desktop - Search, Cart, Account */}
           <div className="hidden lg:flex items-center space-x-4">
             <div className="relative">
@@ -139,69 +126,18 @@ const Header = () => {
             )}
           </div>
 
-          {/* Tablet - Cart and Account only */}
-          <div className="hidden md:flex lg:hidden items-center space-x-3">
-            <button 
-              onClick={() => toggleCart(true)} 
-              className="relative text-earth-600 hover:text-natural-500 transition-colors"
-            >
-              <ShoppingCart className="h-6 w-6" />
-              {cartCount > 0 && (
-                <span className="absolute -top-2 -right-2 w-5 h-5 bg-natural-500 text-white text-xs rounded-full flex items-center justify-center">
-                  {cartCount}
-                </span>
-              )}
-            </button>
-            
-            {user ? (
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <button className="text-earth-600 hover:text-natural-500 transition-colors">
-                    <User className="h-6 w-6" />
-                  </button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-48 bg-white">
-                  <DropdownMenuItem asChild>
-                    <Link to="/dashboard" className="w-full cursor-pointer">
-                      <LayoutDashboard className="h-4 w-4 mr-2" />
-                      Dashboard
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
-                    <Link to="/account" className="w-full cursor-pointer">
-                      My Account
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
-                    <Link to="/orders" className="w-full cursor-pointer">
-                      My Orders
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={handleSignOut} className="cursor-pointer">
-                    <LogOut className="h-4 w-4 mr-2" />
-                    Sign Out
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            ) : (
-              <Link to="/login" className="text-earth-600 hover:text-natural-500 transition-colors">
-                <User className="h-6 w-6" />
-              </Link>
-            )}
-          </div>
-
-          {/* Mobile menu button */}
+          {/* Mobile & Tablet menu button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-earth-600 hover:text-natural-500 transition-colors"
+            className="lg:hidden text-earth-600 hover:text-natural-500 transition-colors"
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile & Tablet menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-natural-200">
+          <div className="lg:hidden py-4 border-t border-natural-200">
             <nav className="flex flex-col space-y-4">
               <Link 
                 to="/products" 
