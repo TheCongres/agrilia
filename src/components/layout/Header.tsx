@@ -75,7 +75,7 @@ const Header = () => {
               />
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-natural-400" />
             </div>
-            <ThemeToggle />
+            
             <button 
               onClick={() => toggleCart(true)} 
               className="relative text-earth-600 hover:text-natural-500 transition-colors"
