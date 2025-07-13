@@ -41,7 +41,7 @@ const ProductImages = ({ images, productName }: ProductImagesProps) => {
       <Dialog>
         <DialogTrigger asChild>
           <div 
-            className="relative border border-border rounded-lg overflow-hidden aspect-[4/3] lg:aspect-[3/2] cursor-pointer group hover:shadow-lg transition-all duration-300"
+            className="relative border border-border rounded-lg overflow-hidden aspect-square sm:aspect-[4/3] lg:aspect-[3/2] cursor-pointer group hover:shadow-lg transition-all duration-300"
             onClick={() => setModalImageIndex(selectedImage)}
           >
             <img
@@ -58,7 +58,7 @@ const ProductImages = ({ images, productName }: ProductImagesProps) => {
           </div>
         </DialogTrigger>
         
-        <DialogContent className="max-w-4xl w-full h-[80vh] p-0">
+        <DialogContent className="max-w-4xl w-[95vw] h-[80vh] p-0 sm:w-full">
           <div className="relative w-full h-full flex items-center justify-center bg-background">
             <img
               src={optimizeImageUrl(images[modalImageIndex], 'large')}
@@ -106,7 +106,7 @@ const ProductImages = ({ images, productName }: ProductImagesProps) => {
               selectedImage === index
                 ? "border-primary shadow-md scale-105"
                 : "border-border hover:border-primary/50 hover:scale-102"
-            } w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28`}
+            } w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28`}
           >
             <img
               src={optimizeImageUrl(image, 'thumbnail')}
