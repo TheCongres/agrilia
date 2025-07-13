@@ -10,7 +10,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ThemeToggle } from '@/components/theme/ThemeToggle';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,7 +26,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-background border-b border-border sticky top-0 z-50">
+    <header className="bg-white border-b border-natural-200 sticky top-0 z-50">
       <div className="container-custom py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -75,7 +74,6 @@ const Header = () => {
               />
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-natural-400" />
             </div>
-            
             <button 
               onClick={() => toggleCart(true)} 
               className="relative text-earth-600 hover:text-natural-500 transition-colors"
@@ -98,7 +96,7 @@ const Header = () => {
                     <User className="h-6 w-6" />
                   </button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-48">
+                <DropdownMenuContent align="end" className="w-48 bg-white">
                   <DropdownMenuItem asChild>
                     <Link to="/dashboard" className="w-full cursor-pointer">
                       <LayoutDashboard className="h-4 w-4 mr-2" />
@@ -139,7 +137,7 @@ const Header = () => {
 
         {/* Mobile & Tablet menu */}
         {isMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-border">
+          <div className="lg:hidden py-4 border-t border-natural-200">
             <nav className="flex flex-col space-y-4">
               <Link 
                 to="/products" 
