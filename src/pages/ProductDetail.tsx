@@ -69,31 +69,35 @@ const ProductDetail = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-x-hidden">
       <Header />
 
-      <main className="container-custom py-8">
+      <main className="container-custom py-4 sm:py-6 lg:py-8">
         <Breadcrumbs category={product.category} productName={product.name} />
 
         {/* Product Detail */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
           {/* Product Images */}
-          <ProductImages images={product.images} productName={product.name} />
+          <div className="lg:flex-1">
+            <ProductImages images={product.images} productName={product.name} />
+          </div>
 
           {/* Product Info */}
-          <div>
-            <div className="flex items-center justify-between mb-2">
-              <ProductHeader 
-                name={product.name} 
-                category={product.category} 
-                description={product.description} 
-                producer={product.producer} 
-              />
+          <div className="lg:flex-1 lg:max-w-none">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 sm:gap-2 mb-4 sm:mb-2">
+              <div className="flex-1 min-w-0">
+                <ProductHeader 
+                  name={product.name} 
+                  category={product.category} 
+                  description={product.description} 
+                  producer={product.producer} 
+                />
+              </div>
               
               <button
                 onClick={handleToggleFavorite}
                 className={cn(
-                  "h-10 w-10 rounded-full flex items-center justify-center transition-colors",
+                  "h-12 w-12 sm:h-10 sm:w-10 rounded-full flex items-center justify-center transition-colors flex-shrink-0",
                   isFavorite 
                     ? "bg-red-50 text-red-500 hover:bg-red-100" 
                     : "bg-gray-100 text-gray-400 hover:bg-gray-200"
@@ -102,7 +106,7 @@ const ProductDetail = () => {
               >
                 <Heart 
                   className={cn(
-                    "h-5 w-5 transition-all", 
+                    "h-6 w-6 sm:h-5 sm:w-5 transition-all", 
                     isFavorite && "fill-red-500"
                   )} 
                 />

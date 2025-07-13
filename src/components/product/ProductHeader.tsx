@@ -14,15 +14,15 @@ interface ProductHeaderProps {
 
 const ProductHeader = ({ name, category, description, producer }: ProductHeaderProps) => {
   return (
-    <div className="mb-6">
-      <div className="flex items-center gap-2 mb-2">
-        <span className="category-badge">{category}</span>
-        <span className="category-badge bg-natural-100 text-natural-600">Organic</span>
+    <div className="mb-4 sm:mb-6">
+      <div className="flex flex-wrap items-center gap-2 mb-3">
+        <span className="category-badge text-xs sm:text-sm">{category}</span>
+        <span className="category-badge bg-natural-100 text-natural-600 text-xs sm:text-sm">Organic</span>
       </div>
-      <h1 className="text-2xl md:text-3xl font-bold text-earth-700 mb-2">
+      <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-earth-700 mb-3 leading-tight break-words">
         {name}
       </h1>
-      <div className="flex items-center gap-2 mb-2">
+      <div className="flex flex-wrap items-center gap-2 mb-3">
         <div className="flex text-honey">
           {[...Array(5)].map((_, i) => (
             <svg
@@ -37,9 +37,9 @@ const ProductHeader = ({ name, category, description, producer }: ProductHeaderP
         </div>
         <span className="text-sm text-earth-500">(24 reviews)</span>
       </div>
-      <p className="text-earth-500 mb-4">{description}</p>
-      <div className="flex items-center">
-        <Link to={`/producer/${producer.id}`} className="text-earth-600 hover:text-natural-600">
+      <p className="text-earth-500 mb-4 text-sm sm:text-base leading-relaxed break-words">{description}</p>
+      <div className="flex flex-wrap items-center">
+        <Link to={`/producer/${producer.id}`} className="text-earth-600 hover:text-natural-600 text-sm sm:text-base break-words">
           <span className="font-medium">From:</span> {producer.name}, {producer.location}
         </Link>
       </div>
