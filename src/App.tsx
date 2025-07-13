@@ -29,6 +29,8 @@ import DashboardLayout from "./components/dashboard/DashboardLayout";
 import Dashboard from "./pages/dashboard/Dashboard";
 import ConsumerDashboard from "./pages/dashboard/consumer/ConsumerDashboard";
 import ProducerDashboard from "./pages/dashboard/producer/ProducerDashboard";
+import OrdersPage from "./pages/dashboard/consumer/OrdersPage";
+import AccountPage from "./pages/dashboard/consumer/AccountPage";
 import FavoritesPage from "./pages/dashboard/consumer/FavoritesPage";
 
 const queryClient = new QueryClient();
@@ -81,8 +83,8 @@ const App = () => (
                   <Route index element={<Dashboard />} />
                   <Route path="consumer" element={<ConsumerDashboard />} />
                   <Route path="producer" element={<ProducerDashboard />} />
-                  <Route path="orders" element={<Orders />} />
-                  <Route path="account" element={<Account />} />
+                  <Route path="orders" element={<OrdersPage />} />
+                  <Route path="account" element={<AccountPage />} />
                   <Route path="favorites" element={<FavoritesPage />} />
                   <Route path="products" element={<NotFound />} />
                   <Route path="products/new" element={<NotFound />} />
