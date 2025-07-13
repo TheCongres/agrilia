@@ -86,6 +86,16 @@ const AccountPage = () => {
     });
   };
 
+  if (loading) {
+    return (
+      <div className="space-y-6">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-earth-700">Loading Account...</h1>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6">
       <div className="mb-8">
