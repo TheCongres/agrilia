@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -8,12 +8,23 @@ import { toast } from "@/components/ui/use-toast";
 import { useAuth } from "@/hooks/useAuth";
 
 const AccountPage = () => {
-  const { user, updateProfile } = useAuth();
+  const { user, updateProfile, loading } = useAuth();
   const [formData, setFormData] = useState({
-    firstName: user?.first_name || "",
-    lastName: user?.last_name || "",
-    email: user?.email || "",
+    firstName: "",
+    lastName: "",
+    email: "",
   });
+
+  // Update form data when user data loads
+  useEffect(() => {
+    if (user) {
+      setFormData({
+        firstName: user.first_name || "",
+        lastName: user.last_name || "",
+        email: user.email || "",
+      });
+    }
+  }, [user]);
   const [isLoading, setIsLoading] = useState(false);
   const [passwordData, setPasswordData] = useState({
     currentPassword: "",
@@ -207,7 +218,15 @@ const AccountPage = () => {
             </div>
             <div>
               <Label className="text-sm font-medium text-muted-foreground">Member Since</Label>
-              <p className="mt-1">January 2025</p>
+              <p className="mt-1">
+                {user?.created_at 
+                  ? new Date(user.created_at).toLocaleDateString('en-US', { 
+                      year: 'numeric', 
+                      month: 'long' 
+                    })
+                  : 'Loading...'
+                }
+              </p>
             </div>
           </div>
         </CardContent>

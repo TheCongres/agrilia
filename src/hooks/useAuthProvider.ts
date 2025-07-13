@@ -11,6 +11,7 @@ export type User = {
   first_name?: string;
   last_name?: string;
   user_type?: 'consumer' | 'producer';
+  created_at?: string;
 };
 
 export function useAuthProvider() {
@@ -47,6 +48,7 @@ export function useAuthProvider() {
                 first_name: userData.first_name,
                 last_name: userData.last_name,
                 user_type: userData.user_type,
+                created_at: userData.created_at,
               });
             } else {
               console.error("Error fetching user profile:", error);
@@ -90,6 +92,7 @@ export function useAuthProvider() {
                 first_name: userData.first_name,
                 last_name: userData.last_name,
                 user_type: userData.user_type,
+                created_at: userData.created_at,
               });
             } else {
               console.error("Error fetching user profile:", error);
