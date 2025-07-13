@@ -104,7 +104,7 @@ const Header = () => {
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link to="/account" className="w-full cursor-pointer">
+                    <Link to="/dashboard/account" className="w-full cursor-pointer">
                       My Account
                     </Link>
                   </DropdownMenuItem>
@@ -209,7 +209,7 @@ const Header = () => {
                         <span>Dashboard</span>
                       </Link>
                       <Link 
-                        to="/account" 
+                        to="/dashboard/account" 
                         className="flex items-center justify-start space-x-2 text-left text-earth-600 hover:text-natural-500 transition-colors"
                         onClick={() => setIsMenuOpen(false)}
                       >

@@ -17,7 +17,7 @@ import AboutUs from "./pages/AboutUs";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import ProductDetail from "./pages/ProductDetail";
-import Account from "./pages/Account";
+
 import Orders from "./pages/Orders";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
@@ -59,11 +59,6 @@ const App = () => (
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/product/:id" element={<ProductDetail />} />
-                <Route path="/account" element={
-                  <ProtectedRoute>
-                    <Account />
-                  </ProtectedRoute>
-                } />
                 <Route path="/orders" element={
                   <ProtectedRoute>
                     <Orders />
