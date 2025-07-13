@@ -53,10 +53,12 @@ const ProducerCard = ({ producer }: ProducerCardProps) => {
           </div>
         </div>
         
-        <div className="mt-auto pt-3 flex items-center justify-between">
-          <span className="text-sm text-earth-500">
-            {producer.productsCount} products
-          </span>
+        <div className="mt-auto pt-4 border-t border-natural-100">
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-sm text-earth-500 font-medium">
+              {producer.productsCount} products
+            </span>
+          </div>
           <div className="flex gap-2">
             <Link to={`/producer/${producer.id}`}>
               <Button 
