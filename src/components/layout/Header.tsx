@@ -176,13 +176,15 @@ const Header = () => {
               </Link>
 
               <div className="pt-2 flex flex-col space-y-4">
-                <div className="relative">
-                  <input
-                    type="text"
-                    placeholder="Search products..."
-                    className="w-full pl-9 pr-4 py-2 border border-natural-200 rounded-full bg-natural-50 focus:outline-none focus:ring-1 focus:ring-natural-500 focus:border-natural-500"
-                  />
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-natural-400" />
+                <div className="hidden md:block">
+                  <div className="relative">
+                    <input
+                      type="text"
+                      placeholder="Search products..."
+                      className="w-full pl-9 pr-4 py-2 border border-natural-200 rounded-full bg-natural-50 focus:outline-none focus:ring-1 focus:ring-natural-500 focus:border-natural-500"
+                    />
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-natural-400" />
+                  </div>
                 </div>
                 <div className="flex flex-col space-y-2">
                   <button 
