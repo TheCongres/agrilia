@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "@/context/CartContext";
 import { FavoritesProvider } from "@/context/FavoritesContext";
 import { AuthProvider } from "@/context/AuthContext";
+import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import ProtectedRoute from "@/components/auth/ProtectedRoute";
 import Index from "./pages/Index";
 import Products from "./pages/Products";
@@ -39,12 +40,13 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <BrowserRouter>
-        <ScrollToTop />
-        <AuthProvider>
-          <CartProvider>
-            <FavoritesProvider>
+    <ThemeProvider defaultTheme="system" storageKey="ui-theme">
+      <TooltipProvider>
+        <BrowserRouter>
+          <ScrollToTop />
+          <AuthProvider>
+            <CartProvider>
+              <FavoritesProvider>
               <Toaster />
               <Sonner />
               <CartDrawer />
@@ -104,6 +106,7 @@ const App = () => (
         </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 
